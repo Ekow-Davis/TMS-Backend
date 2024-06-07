@@ -19,7 +19,7 @@ const Sidebar = () => {
         const pathname = location.pathname;
         // Update activeItem based on the current pathname
         switch (pathname) {
-          case '/':
+          case '/Dashboard':
             setActiveItem('Dashboard');
             break;
           case '/BookedPage':
@@ -40,50 +40,49 @@ const Sidebar = () => {
 
   return (
     <>
-    <aside className={`bg-custom-blue min-h-screen border-r border-green-200 ${expanded ? 'w-96' : 'w-24'}`}>
-      <h1 className={`text-green-700 text-3xl py-2 px-4 ${expanded ? 'w-96' : 'w-20'}`}>{expanded && "Hi, User"} 
-      <button onClick={() => setExpanded (!expanded)} >
-        {expanded? <FontAwesomeIcon icon={faChevronLeft} className="ml-56 h-6 w-6" />:<FontAwesomeIcon icon={faHamburger} className="ml-6 h-6 w-6" />} </button>
-      </h1>
-      <p className="text-green-600 text-2xl py-1 px-4">{expanded && "Your affiliation with us is greatly appreciated!"}</p>
-      <nav className="mt-2">
-            <ul>
-              <hr size="2"></hr>
-                <li>
-                    <Link to="/" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-green-500 hover:text-white rounded-md ml-2 mr-2 ${activeItem === 'Dashboard' ? 'bg-green-500 text-white' : 'hover:bg-green-500 hover:text-white'}`}
-                    >
-                        <FontAwesomeIcon icon={faUser} className="ml-3 mr-12" />
-                        {expanded && "Dashboard"}
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/BookedPage" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-green-500 hover:text-white rounded-md ml-2 mr-2 ${activeItem === 'Booked' ? 'bg-green-500 text-white' : 'hover:bg-green-500 hover:text-white'}`}
-                    >
-                        <FontAwesomeIcon icon={faAddressBook} className="ml-3 mr-11" />
-                            {expanded && "Booked Sessions"}
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/PaymentPage" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-green-500 hover:text-white rounded-md ml-2 mr-2 ${activeItem === 'Payment' ? 'bg-green-500 text-white' : 'hover:bg-green-500 hover:text-white'}`}
-                    >
-                    <FontAwesomeIcon icon={faHeart} className="ml-3 mr-11" />
-                        {expanded && "Payment"}
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/RequestSessionPage" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-green-500 hover:text-white rounded-md ml-2 mr-2 ${activeItem === 'RequestSession' ? 'bg-green-500 text-white' : 'hover:bg-green-500 hover:text-white'}`}
-                    >
-                    <FontAwesomeIcon icon={faMapMarkerAlt} className="ml-4 mr-12" />
-                        {expanded && "RequestSession"}
-                    </Link>
-                </li>              
-            </ul>
-      </nav>
-    </aside>
+      <aside className={`bg-custom-blue min-h-screen border-r border-green-200 ${expanded ? 'w-72' : 'w-24'}`}>
+        <h1 className={`text-green-700 text-3xl py-2 px-4 ${expanded ? 'w-96' : 'w-20'}`}>{expanded && "Logo"} 
+        <button onClick={() => setExpanded (!expanded)} >
+          {expanded? <FontAwesomeIcon icon={faChevronLeft} className="ml-40 h-6 w-6" />:<FontAwesomeIcon icon={faHamburger} className="ml-6 h-6 w-6" />} </button>
+        </h1>
+        <nav className="mt-2">
+              <ul>
+                <hr size="2"></hr>
+                  <li>
+                      <Link to="/Dashboard" 
+                      className={`block text-xl my-1 py-3 px-5 hover:bg-green-500 hover:text-custom-blue rounded-md ml-2 mr-2 ${activeItem === 'Dashboard' ? 'bg-white text-blue-800' : 'hover:bg-white hover:text-blue-500'}`}
+                      >
+                          <FontAwesomeIcon icon={faUser} className="ml-3 mr-12" />
+                          {expanded && "Dashboard"}
+                      </Link>
+                  </li>
+                  <li>
+                      <Link to="/BookedPage" 
+                      className={`block text-xl my-1 py-3 px-5 hover:bg-green-500 hover:text-custom-blue rounded-md ml-2 mr-2 ${activeItem === 'Booked' ? 'bg-white text-blue-800' : 'hover:bg-white hover:text-blue-500'}`}
+                      >
+                          <FontAwesomeIcon icon={faAddressBook} className="ml-3 mr-11" />
+                              {expanded && "Booked Sessions"}
+                      </Link>
+                  </li>
+                  <li>
+                      <Link to="/PaymentPage" 
+                      className={`block text-xl my-1 py-3 px-5 hover:bg-green-500 hover:text-custom-blue rounded-md ml-2 mr-2 ${activeItem === 'Payment' ? 'bg-white text-blue-800' : 'hover:bg-white hover:text-blue-500'}`}
+                      >
+                      <FontAwesomeIcon icon={faHeart} className="ml-3 mr-11" />
+                          {expanded && "Payment"}
+                      </Link>
+                  </li>
+                  <li>
+                      <Link to="/RequestSessionPage" 
+                      className={`block text-xl my-1 py-3 px-5 hover:bg-green-500 hover:text-custom-blue rounded-md ml-2 mr-2 ${activeItem === 'RequestSession' ? 'bg-white text-blue-800' : 'hover:bg-white hover:text-blue-500'}`}
+                      >
+                      <FontAwesomeIcon icon={faMapMarkerAlt} className="ml-4 mr-12" />
+                          {expanded && "RequestSession"}
+                      </Link>
+                  </li>              
+              </ul>
+        </nav>
+      </aside>
     </>
   )
 }
