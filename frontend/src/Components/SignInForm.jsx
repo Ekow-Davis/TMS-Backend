@@ -71,14 +71,15 @@ const SignInForm = () => {
               checked={isChecked}
               onChange={handleCheckboxChange}
               className='mr-2'
+              id='remember'
               /> 
-              Remember Me</p>
+              <label for='remember'>Remember Me</label></p>
             </div>
 
             
             <Link to='/Dashboard'>
-              <button className='text-white text-xl bg-custom-blue rounded-full px-10 py-4' type='submit'>
-                Sign Up
+              <button className='text-white text-xl bg-custom-blue rounded-xl w-full px-10 py-4' type='submit'>
+                Sign In
               </button>
             </Link>
 

@@ -155,14 +155,14 @@ const SignUpForm = () => {
         </div>
 
         <div>
-          <p className='text-lg text-custom-blue'>Already have an account? 
+          <p className='text-lg mb-5 text-custom-blue'>Already have an account? 
             <Link to='/SignInPage'>Sign In</Link>
           </p>
         </div>
 
       </div>
       <Link to='/Dashboard'>
-      <button className='text-white text-xl bg-custom-blue rounded-full px-10 py-4' type='submit'>
+      <button className='text-white text-xl bg-custom-blue rounded-xl w-full px-10 py-4' type='submit'>
         Sign Up
       </button>
       </Link>

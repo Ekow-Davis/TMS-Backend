@@ -4,8 +4,11 @@ import Sidebar from '../Components/Sidebar'
 const DashboardPage = () => {
   return (
     <>
-    <Sidebar />
-    <div>DashboardPage</div>
+    <div className='flex'>
+      <Sidebar />
+    <div className='flex-grow'>DashboardPage</div>
+    </div>
+    
     </>
   )
 }

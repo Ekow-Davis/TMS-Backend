@@ -10,10 +10,12 @@ const SignUpPage = () => {
         </div>
 
         <div className='hidden relative lg:flex h-full items-center w-1/2 justify-center'>
-        <div className='flex relative'>
-          Logo
+        <div className='flex absolute flex-col items-center justify-center'>
+        <div className='relative z-10 text-white mb-24 text-3xl'>
+logo
         </div>
-          <div className='w-60 h-60 bg-gradient-to-tr to-violet-500 from-custom-blue animate-bounce rounded-full' />
+        </div>
+          <div className='w-60 h-60 bg-gradient-to-tr to-violet-500 from-custom-blue animate-bounce rounded-full cursor-pointer' />
           <div className='w-full h-1/2 absolute bottom-0 bg-white/10 backdrop-blur-lg'/>
         </div>
         
