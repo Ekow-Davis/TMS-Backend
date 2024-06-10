@@ -39,7 +39,7 @@ const SignInForm = () => {
 
   return (
     <>
-    <div className='bg-gray-100 px-12 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
+    <div className='bg-gray-100 px-10 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
       <div className='flex flex-col items-center'>
         <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
         <h1 className='text-3xl justify-center flex text-custom-blue my-3'> 

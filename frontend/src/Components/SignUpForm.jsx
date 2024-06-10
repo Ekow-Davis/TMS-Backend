@@ -74,11 +74,11 @@ const SignUpForm = () => {
 
   return (
     <>
-    <div className='bg-gray-100 px-12 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
+    <div className='bg-gray-100 px-6 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
 
       <div className='flex flex-col items-center'>
         <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
-      <h1 className='text-3xl justify-center flex text-blue-900 my-4'> Sign Up</h1>
+      <h1 className='text-3xl justify-center flex text-custom-blue my-4'> Sign Up</h1>
       </div>
 
     <form onSubmit={handleSignUp}>
