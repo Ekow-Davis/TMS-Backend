@@ -9,9 +9,7 @@ const RequestSessionPage = () => {
     <div className='flex'>
       <Sidebar />
       <div className='flex-grow'>
-        <Link to='./RequestSessionFormPage'>
-        Request Session
-        </Link>
+        
 
         <div>
           <StatusCards
