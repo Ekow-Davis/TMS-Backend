@@ -40,12 +40,14 @@ const SignInForm = () => {
   return (
     <>
     <div className='bg-gray-100 px-10 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
+      
       <div className='flex flex-col items-center'>
         <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
         <h1 className='text-3xl justify-center flex text-custom-blue my-3'> 
           Sign In 
         </h1>
       </div>
+
             <form onSubmit={handleSignIn}>            
 
             <div className='mt-10 mb-16 lg:text-lg'>
@@ -66,9 +68,14 @@ const SignInForm = () => {
               setValue={setPassword}
               />
             </div>
+            
 
             <div className='text-sm lg:text-lg my-8 text-custom-blue flex'>
-            <p><Link to='/'> Do not have an account? Sign Up</Link></p>
+
+            <p><Link to='/'> 
+            Do not have an account? Sign Up
+            </Link></p>
+
             <p className='ml-10 lg:ml-32'> 
               <input
               type="checkbox"
@@ -82,7 +89,7 @@ const SignInForm = () => {
 
             
             <Link to='/Dashboard'>
-              <button className='text-white text-xl bg-custom-blue rounded-xl w-full px-10 py-4' type='submit'>
+              <button className='text-white text-xl bg-custom-blue rounded-xl w-full px-10 py-4 my-3' type='submit'>
                 Sign In
               </button>
             </Link>

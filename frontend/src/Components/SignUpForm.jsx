@@ -74,16 +74,15 @@ const SignUpForm = () => {
 
   return (
     <>
-    <div className='bg-gray-100 px-6 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
+    {/* <div className='bg-gray-100 px-10 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
 
       <div className='flex flex-col items-center'>
         <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
-      <h1 className='text-3xl justify-center flex text-custom-blue my-4'> Sign Up</h1>
+        <h1 className='text-3xl justify-center flex text-custom-blue my-4'> Sign Up</h1>
       </div>
 
     <form onSubmit={handleSignUp}>
-    <div>
-      <div>
+    
         <div className='flex flex-row my-4 gap-24 text-lg'>
           <SignInputBox
           type="text" 
@@ -98,6 +97,7 @@ const SignUpForm = () => {
           setValue={setOtherNames}
           />
         </div>
+
         <div className='my-4 gap-24 text-lg'>
           <SignInputBox 
             type="text"
@@ -164,16 +164,110 @@ const SignUpForm = () => {
           </p>
         </div>
 
-      </div>
+      
+
       <Link to='/Dashboard'>
       <button className='text-white text-xl bg-custom-blue rounded-xl w-full px-10 py-4' type='submit'>
         Sign Up
       </button>
       </Link>
       
-    </div>
+    
     </form>
-    </div>
+    </div> */}
+
+<div className='bg-gray-100 px-10 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
+      
+      <div className='flex flex-col items-center'>
+        <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
+        <h1 className='text-3xl justify-center flex text-custom-blue my-3'> 
+          Sign Up 
+        </h1>
+      </div>
+
+            <form onSubmit={handleSignUp}> 
+
+              <div className='flex flex-row my-4 gap-10 lg:gap-24 text-lg'>
+                <SignInputBox
+                type="text" 
+                placeholder="Last Name"
+                width="w-fit"
+                setValue={setLastName}
+                />
+                <SignInputBox
+                type="text" 
+                placeholder="Other Names"
+                width="w-fit"
+                setValue={setOtherNames}
+                />
+              </div>
+
+              <div className='my-4 gap-2 lg:gap-24 text-lg'>
+                <SignInputBox 
+                  type="text"
+                  placeholder="Username"
+                  width="w-full"
+                  validationRegex={USER_REGEX}
+                  errorMessage="Username must be 3 or more characters"
+                  setValue={setUsername}
+                  />
+              </div>
+              <div className='my-4 text-lg'>
+                <SignInputBox 
+                  type="email"
+                  placeholder="E-mail"
+                  width="w-full"
+                  validationRegex={EMAIL_REGEX}
+                  errorMessage="Invalid Email"
+                  setValue={setEmail}
+                  />
+              </div>
+
+              <div className='flex flex-row my-4 gap-2 lg:gap-6 text-lg'>
+                <SignInputBox
+                  type={showPassword ? "text" : "password"} 
+                  placeholder="Password"
+                  width="w-fit"
+                  validationRegex={PWD_REGEX}
+                  errorMessage="Password more than 7 characters have '0-9' and '!@#$%'"
+                  value={password}
+                  setValue={setPassword}
+                />
+
+              <button type="button"
+                className='text-custom-blue my-1'
+                  onClick={togglePasswordVisibility}>
+                    {showPassword ? "Hide" : "Show"}
+              </button> 
+                        
+                <SignInputBox
+                  type={showPassword ? "text" : "password"} 
+                  placeholder="Confirm"
+                  width="w-fit"
+                  confirmedValue={password}
+                  differentErrorMessage="Password does not match"
+                />
+              </div>
+              
+
+          
+            
+
+            <div>
+              <p className='text-lg mb-5 text-custom-blue'>Already have an account? 
+                <Link to='/SignInPage'>Sign In</Link>
+              </p>
+            </div>
+
+            
+            <Link to='/Dashboard'>
+              <button className='text-white text-xl bg-custom-blue rounded-xl w-full px-10 py-4 my-3' type='submit'>
+                Sign In
+              </button>
+            </Link>
+
+          </form>
+        </div>
     
     </>
   )
