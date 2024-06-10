@@ -32,6 +32,19 @@ const RequestSessionFormPage = () => {
       />
       <CollapsableBox label="Additional Information" icon={<faChevronDown />}>
         <p>This is some additional information you can toggle.</p>
+
+        <FormInputBox 
+      width="w-full" 
+      type="email" 
+      miniLabel="Enter your email" 
+      label="Email" 
+      />
+      <CheckboxInputBox
+        options={['Option 1', 'Option 2', 'Option 3']}
+        selectionType="multiple"
+        miniLabel="Select your preferences"
+        label="Preferences"
+      />
       </CollapsableBox>
     </form>
 

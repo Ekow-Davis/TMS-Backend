@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar'
 import { Link } from 'react-router-dom'
-import RequestSessionFormPage from '../TransitionPages/RequestSessionFormPage'
+import StatusCards from '../Components/StatusCards'
 
 const RequestSessionPage = () => {
   return (
@@ -12,7 +12,12 @@ const RequestSessionPage = () => {
         <Link to='./RequestSessionFormPage'>
         Request Session
         </Link>
-        RequestSessionPage
+
+        <div>
+          <StatusCards
+          
+          />
+        </div>
       </div>
     </div>
     

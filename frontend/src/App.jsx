@@ -21,8 +21,6 @@ function App() {
       <Route path="/BookedPage" element={<BookedPage />} />
     </Routes>
     </BrowserRouter>
-    
-
   );
 }
 
