@@ -12,9 +12,7 @@ const RequestSessionPage = () => {
         
 
         <div>
-          <StatusCards
-          
-          />
+          <StatusCards/>
         </div>
       </div>
     </div>
