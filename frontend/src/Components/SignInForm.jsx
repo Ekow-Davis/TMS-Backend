@@ -40,8 +40,12 @@ const SignInForm = () => {
   return (
     <>
   <div className='bg-gray-100 px-12 py-20 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
-    <h1 className='text-3xl justify-center flex text-blue-900 my-4'> Sign In</h1>
-    <p className='justify-center flex text-lg my-6 text-blue-900'>Welcome back to 'insert name'! Please enter your details</p>
+    <div className='flex flex-col items-center'>
+    <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
+    <h1 className='text-3xl justify-center flex text-custom-blue my-6 mx-6'> 
+      Sign In
+    </h1>
+    </div>
             <form onSubmit={handleSignIn}>            
 
             <div className='mt-10 mb-16 lg:text-lg'>
