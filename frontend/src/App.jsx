@@ -1,9 +1,10 @@
-import DashboardPage from "./Pages/DashboardPage"
-import PaymentPage from "./Pages/PaymentPage"
-import RequestSessionPage from "./Pages/RequestSessionPage"
-import BookedPage from "./Pages/BookedPage"
-import SignInPage from "./Pages/SignInPage"
-import SignUpPage from "./Pages/SignUpPage"
+import DashboardPage from "./MainPages/DashboardPage"
+import PaymentPage from "./MainPages/PaymentPage"
+import RequestSessionPage from "./MainPages/RequestSessionPage"
+import BookedPage from "./MainPages/BookedPage"
+import SignInPage from "./MainPages/SignInPage"
+import SignUpPage from "./MainPages/SignUpPage"
+import RequestSessionFormPage from "./TransitionPages/RequestSessionFormPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
       <Route path="/" element={<SignUpPage />} />
       <Route path="/SignInPage" element={<SignInPage />} />
       <Route path="/PaymentPage" element={<PaymentPage />} />
+      <Route path="/SignUpPage" element={<SignUpPage />} />
       <Route path="/RequestSessionPage" element={<RequestSessionPage />} />
+      <Route path="/RequestSessionPage/RequestSessionFormPage" element={<RequestSessionFormPage />} />
       <Route path="/BookedPage" element={<BookedPage />} />
     </Routes>
     </BrowserRouter>

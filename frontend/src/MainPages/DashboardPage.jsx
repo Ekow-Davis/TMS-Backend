@@ -6,7 +6,7 @@ const DashboardPage = () => {
     <>
     <div className='flex'>
       <Sidebar />
-    <div className='flex-grow'>DashboardPage</div>
+      <div className='flex-grow'>DashboardPage</div>
     </div>
     
     </>
