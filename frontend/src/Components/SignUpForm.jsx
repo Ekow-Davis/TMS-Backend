@@ -249,6 +249,20 @@ const SignUpForm = () => {
                 />
               </div>
               
+              <div className='flex flex-row mt-4 mb-10 gap-10 lg:gap-24 text-lg'>
+                <SignInputBox
+                  type="number" 
+                  placeholder="Phone Number"
+                  width="w-fit"
+                  setValue={setPhoneNumber}
+                />
+                <SignInputBox
+                  type="date" 
+                  placeholder="Date of Birth"
+                  width="w-fit"
+                  setValue={setDateOfBirth}
+                />
+              </div>
 
           
             
