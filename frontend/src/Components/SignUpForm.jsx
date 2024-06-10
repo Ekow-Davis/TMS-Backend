@@ -74,9 +74,13 @@ const SignUpForm = () => {
 
   return (
     <>
-    <div className='bg-gray-100 px-12 py-20 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
-    <h1 className='text-3xl justify-center flex text-blue-900 my-4'> Sign Up</h1>
-    <p className='justify-center flex text-lg my-6 text-blue-900'>Welcome to 'insert name'! Please enter your details</p>
+    <div className='bg-gray-100 px-12 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
+
+      <div className='flex flex-col items-center'>
+        <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
+      <h1 className='text-3xl justify-center flex text-blue-900 my-4'> Sign Up</h1>
+      </div>
+
     <form onSubmit={handleSignUp}>
     <div>
       <div>
@@ -84,13 +88,13 @@ const SignUpForm = () => {
           <SignInputBox
           type="text" 
           placeholder="Last Name"
-          width="w-[280px]"
+          width="w-fit"
           setValue={setLastName}
           />
           <SignInputBox
           type="text" 
           placeholder="Other Names"
-          width="w-[280px]"
+          width="w-fit"
           setValue={setOtherNames}
           />
         </div>
@@ -118,7 +122,7 @@ const SignUpForm = () => {
           <SignInputBox
             type={showPassword ? "text" : "password"} 
             placeholder="Password"
-            width="w-[280px]"
+            width="w-fit"
             validationRegex={PWD_REGEX}
             errorMessage="Password more than 7 characters have '0-9' and '!@#$%'"
             value={password}
@@ -134,7 +138,7 @@ const SignUpForm = () => {
           <SignInputBox
             type={showPassword ? "text" : "password"} 
             placeholder="Confirm Password"
-            width="w-[280px]"
+            width="w-fit"
             confirmedValue={password}
             differentErrorMessage="Password does not match"
           />
@@ -143,13 +147,13 @@ const SignUpForm = () => {
           <SignInputBox
             type="number" 
             placeholder="Phone Number"
-            width="w-[280px]"
+            width="w-fit"
             setValue={setPhoneNumber}
           />
           <SignInputBox
             type="date" 
             placeholder="Date of Birth"
-            width="w-[280px]"
+            width="w-fit"
             setValue={setDateOfBirth}
           />
         </div>
