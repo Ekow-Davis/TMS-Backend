@@ -43,8 +43,8 @@ const SignInForm = () => {
       
       <div className='flex flex-col items-center'>
         <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
-        <h1 className='text-3xl justify-center flex text-custom-blue my-3'> 
-          Sign In 
+        <h1 className='text-4xl font-bold justify-center flex text-custom-blue my-4'> 
+          SIGN IN
         </h1>
       </div>
 
@@ -89,7 +89,7 @@ const SignInForm = () => {
 
             
             <Link to='/Dashboard'>
-              <button className='text-white text-xl bg-custom-blue rounded-xl w-full px-10 py-4 my-3' type='submit'>
+              <button className='text-white text-xl font-bold bg-custom-blue rounded-xl w-full px-10 py-4 my-3' type='submit'>
                 Sign In
               </button>
             </Link>

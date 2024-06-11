@@ -180,8 +180,8 @@ const SignUpForm = () => {
       
       <div className='flex flex-col items-center'>
         <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
-        <h1 className='text-3xl justify-center flex text-custom-blue my-3'> 
-          Sign Up 
+        <h1 className='text-4xl justify-center font-bold flex text-custom-blue my-3'> 
+          SIGN UP 
         </h1>
       </div>
 
@@ -242,14 +242,14 @@ const SignUpForm = () => {
                         
                 <SignInputBox
                   type={showPassword ? "text" : "password"} 
-                  placeholder="Confirm"
+                  placeholder="Confirm Password"
                   width="w-fit"
                   confirmedValue={password}
                   differentErrorMessage="Password does not match"
                 />
               </div>
               
-              <div className='flex flex-row mt-4 mb-10 gap-10 lg:gap-24 text-lg'>
+              <div className='flex flex-row mt-3 mb-7 gap-12 lg:gap-24 text-lg'>
                 <SignInputBox
                   type="number" 
                   placeholder="Phone Number"
@@ -259,24 +259,23 @@ const SignUpForm = () => {
                 <SignInputBox
                   type="date" 
                   placeholder="Date of Birth"
-                  width="w-fit"
+                  width="w-full"
                   setValue={setDateOfBirth}
                 />
               </div>
 
-          
-            
-
             <div>
-              <p className='text-lg mb-5 text-custom-blue'>Already have an account? 
-                <Link to='/SignInPage'>Sign In</Link>
-              </p>
+             <Link to='/SignInPage'>
+                <p className='text-lg mb-3 text-custom-blue'>
+                  Already have an account? 
+                  Sign In
+                </p>
+              </Link>
             </div>
-
             
             <Link to='/Dashboard'>
-              <button className='text-white text-xl bg-custom-blue rounded-xl w-full px-10 py-4 my-3' type='submit'>
-                Sign In
+              <button className='text-white text-xl bg-custom-blue rounded-xl font-bold  w-full px-10 py-4 mt-2 mb-1' type='submit'>
+                Sign Up
               </button>
             </Link>
 

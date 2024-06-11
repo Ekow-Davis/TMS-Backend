@@ -3,20 +3,19 @@ import React from 'react'
 const StatusCards = ({imageLink, label, miniLabel, statistic}) => {
   return (
     <>
-    <div className='w-52 h-32 rounded-md lg:w-1/3 lg:h-56 bg-custom-blue'>
-        <div className='h-8 w-8 '>
-            <img src='../Images/User_Profile_Placeholder.jpg' alt='Profile' />
+    <div className='w-52 h-32 rounded-md lg:w-1/3 lg:h-56 bg-custom-blue p-4 relative'>
+        <div className='text-3xl text-gray-600 mb-2'>
+            {label}
         </div>
-        <div>
-            Requests Made
+        <hr className='border-gray-300 mb-3 mt-1 h-3' />
+        <div className='text-4xl font-extrabold text-white'>
+            {statistic}
         </div>
-        <div>
-            6 
-        </div>
-        <div>
-            This month
+        <div className='text-md text-amber-100 absolute bottom-4 right-6'>
+            {miniLabel}
         </div>
     </div>
+
     </>
   )
 }

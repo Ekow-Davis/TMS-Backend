@@ -15,7 +15,9 @@ const RequestSessionPage = () => {
 
         <div>
           <StatusCards
-          
+          label="Session Requests"
+          statistic="2"
+          miniLabel="This Month"
           />
         </div>
       </div>

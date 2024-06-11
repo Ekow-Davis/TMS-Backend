@@ -10,7 +10,11 @@ const DashboardPage = () => {
       <div className='flex-grow'>
         
         DashboardPage
-      <StatusCards />
+      <StatusCards
+      label="Sessions Remaining"
+      miniLabel="This Month"
+      statistic="23"
+      />
 
       </div>
     </div>
