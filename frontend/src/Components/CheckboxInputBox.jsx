@@ -1,31 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const CheckboxInputBox = ({ options, selectionType, setValue, miniLabel, label }) => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+const CheckboxInputBox = ({ options, selectionType, setSelectedOptions, miniLabel, label }) => {
+  const [selectedOptions, setLocalSelectedOptions] = useState([]);
   
 
   const handleChange = (option) => {
-    {/*
-    const newInputValue = option.target.value;
-    setInputValue(newInputValue);
-    */}
 
     if (selectionType === 'multiple') {
-      setSelectedOptions(prev => prev.includes(option)
+      setLocalSelectedOptions(prev => prev.includes(option)
         ? prev.filter(item => item !== option)
         : [...prev, option]);
     } else {
-      setSelectedOptions([option]);
+      setLocalSelectedOptions([option]);
     }
   };
 
-  {/*
-    useEffect(() => {
-    if (setValue) {
-      setValue(inputValue); // Ensure the parent state is updated when the inputValue changes
-    }
-  }, [inputValue, setValue]);
-  */}
+  useEffect(() => {
+    setSelectedOptions(selectedOptions);
+  }, [selectedOptions, setSelectedOptions]);
 
   return (
     <div className="flex flex-col">

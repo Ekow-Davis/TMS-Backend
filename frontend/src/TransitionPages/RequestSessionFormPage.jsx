@@ -23,11 +23,11 @@ const RequestSessionFormPage = () => {
   
   const [subject, setSubject] = useState('')
   const [course, setCourse] = useState('')
-  const [tutorDays, setTutorDays] = useState('')
+  const [tutorDays, setTutorDays] = useState([])
   const [tutorTime, setTutorTime] = useState('')
   const [levelOfEducation, setLevelOfEducation] = useState('')
-  const [modeOfTeaching, setModeOfTeaching] = useState('')
-  const [videos, setVideos] = useState('')
+  const [modeOfTeaching, setModeOfTeaching] = useState([])
+  const [videos, setVideos] = useState([])
 
 
   const handleSessionSubmit = async (event) => {
@@ -175,7 +175,7 @@ const RequestSessionFormPage = () => {
           type="text" 
           placeholder="Eg Programming Fundamentals" 
           miniLabel="Course or Topic" 
-          
+          setValue={setCourse}
         /> 
         
         <CheckboxInputBox
@@ -183,7 +183,7 @@ const RequestSessionFormPage = () => {
           selectionType="multiple"
           miniLabel="Select your preferred day(s)"
           label="Tutor Days"
-          
+          setSelectedOptions={setTutorDays}
         />
 
         <FormInputBox
@@ -204,7 +204,7 @@ const RequestSessionFormPage = () => {
           options={['Online','In-Person', 'Fine Either Way']}
           label="Mode of Teaching"
           miniLabel="How you would like to be taught"
-          
+          setSelectedOptions={setModeOfTeaching}
         />
         
       </CollapsableBox>
@@ -214,7 +214,7 @@ const RequestSessionFormPage = () => {
         <CheckboxInputBox 
           options={['Yes','No']}        
           miniLabel="Use of Videos and Images in the lesson"
-
+          setSelectedOptions={setVideos}
         />
 
         
