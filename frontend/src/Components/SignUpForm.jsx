@@ -274,7 +274,8 @@ const SignUpForm = () => {
             </div>
             
             <Link to='/Dashboard'>
-              <button className='text-white text-xl bg-custom-blue rounded-xl font-bold  w-full px-10 py-4 mt-2 mb-1' type='submit'>
+              <button className='text-white text-xl bg-custom-blue rounded-xl font-bold  w-full px-10 py-4 mt-2 mb-1' 
+              type='submit'>
                 Sign Up
               </button>
             </Link>
