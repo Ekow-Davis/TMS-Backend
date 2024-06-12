@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-const CheckboxInputBox = ({ options, selectionType, setSelectedOptions, miniLabel, label }) => {
-  const [selectedOptions, setLocalSelectedOptions] = useState([]);
+const CheckboxInputBox = ({ options, selectedOptions = [], selectionType, setSelectedOptions, miniLabel, label }) => {
+  const [localSelectedOptions, setLocalSelectedOptions] = useState(selectedOptions || []);
   
 
   const handleChange = (option) => {
 
     if (selectionType === 'multiple') {
-      setLocalSelectedOptions(prev => prev.includes(option)
+      setLocalSelectedOptions(prev => 
+        prev.includes(option)
         ? prev.filter(item => item !== option)
         : [...prev, option]);
     } else {
@@ -16,8 +17,10 @@ const CheckboxInputBox = ({ options, selectionType, setSelectedOptions, miniLabe
   };
 
   useEffect(() => {
-    setSelectedOptions(selectedOptions);
-  }, [selectedOptions, setSelectedOptions]);
+    setSelectedOptions(localSelectedOptions);
+  }, [localSelectedOptions, setSelectedOptions]);
+
+  
 
   return (
     <div className="flex flex-col">
@@ -27,7 +30,7 @@ const CheckboxInputBox = ({ options, selectionType, setSelectedOptions, miniLabe
           <div key={option} className="flex items-center mb-2">
             <input
               type="checkbox"
-              checked={selectedOptions.includes(option)}
+              checked={localSelectedOptions.includes(option)}
               onChange={() => handleChange(option)}
               className="mr-2"
             />

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState} from 'react'
+import { Link } from 'react-router-dom'
 import Sidebar from '../Components/Sidebar'
 import FormInputBox from '../Components/FormInputBox'
 import CollapsableBox from '../Components/CollapsableBox'
@@ -18,7 +19,6 @@ const RequestSessionFormPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [dateOfBirth, setDateOfBirth] = useState('')
   const [language, setLanguage] = useState('') 
-  
   
   
   const [subject, setSubject] = useState('')
@@ -65,10 +65,10 @@ const RequestSessionFormPage = () => {
 
   return (
     <>
-    <div className='flex'>
+    <div className='flex '>
       <Sidebar />
       <div className='flex-grow'>
-        <div>
+        <div className='text-3xl mx-12 mb-2 mt-6'>
           <p>
           Session Request Form
           </p>
@@ -81,13 +81,15 @@ const RequestSessionFormPage = () => {
               width="w-full" 
               type="text" 
               miniLabel="Name" 
-              label="First Name"              
+              label="First Name"
+              value={otherNames}              
               setValue={setOtherNames} 
             />
             <FormInputBox 
               width="w-full" 
               type="text" 
               miniLabel="Last Name"
+              value={lastName}
               setValue={setLastName}            
             />
             <FormInputBox 
@@ -95,6 +97,7 @@ const RequestSessionFormPage = () => {
               type="text" 
               miniLabel="Street Address" 
               label="Address"
+              value={address}
               setValue={setAddress}
             />
             <FormInputBox
@@ -102,6 +105,7 @@ const RequestSessionFormPage = () => {
               width="w-full" 
               type="text" 
               miniLabel="Street Address 2"
+              value={address2}
               setValue={setAddress2}
             />
             <FormInputBox
@@ -109,6 +113,7 @@ const RequestSessionFormPage = () => {
               width="w-full" 
               type="text" 
               miniLabel="City"
+              value={city}
               setValue={setCity}  
             />
             <FormInputBox
@@ -116,6 +121,7 @@ const RequestSessionFormPage = () => {
               width="w-full" 
               type="text" 
               miniLabel="State/Province"
+              value={providence}
               setValue={setProvidence}
             />
             <FormInputBox
@@ -123,6 +129,7 @@ const RequestSessionFormPage = () => {
               width="w-full" 
               type="text" 
               miniLabel="Postal / Zip Code"
+              value={zipCode}
               setValue={setZipCode}  
             />
 
@@ -144,6 +151,7 @@ const RequestSessionFormPage = () => {
               placeholder="example@gmail.com"
               label="Email" 
               miniLabel="Please enter your email address"  
+              value={email}
               setValue={setEmail}
             />
             <FormInputBox 
@@ -151,12 +159,14 @@ const RequestSessionFormPage = () => {
               type="text" 
               label="Birth Date"
               miniLabel="Date"
+              value={dateOfBirth}
               setValue={setDateOfBirth}
             />
             <FormInputBox 
               width="w-full" 
               type="text"           
               miniLabel="Language"
+              value={language}
               setValue={setLanguage} 
             /> 
           </CollapsableBox>
@@ -169,6 +179,7 @@ const RequestSessionFormPage = () => {
           type="text" 
           placeholder="Eg Biology, Chemistry" 
           miniLabel="Subject to be tutored in" 
+          value={subject}
           setValue={setSubject}
         /> 
         
@@ -177,6 +188,7 @@ const RequestSessionFormPage = () => {
           type="text" 
           placeholder="Eg Programming Fundamentals" 
           miniLabel="Course or Topic" 
+          value={course}
           setValue={setCourse}
         /> 
         
@@ -185,6 +197,7 @@ const RequestSessionFormPage = () => {
           selectionType="multiple"
           miniLabel="Select your preferred day(s)"
           label="Tutor Days"
+          selectedOptions={tutorDays}
           setSelectedOptions={setTutorDays}
         />
 
@@ -193,19 +206,22 @@ const RequestSessionFormPage = () => {
           placeholder="Week days 4pm to 6pm, Weekend 2pm to 4pm"
           label="Time"
           miniLabel="Time of Tutoring"
+          value={tutorTime}
           setValue={setTutorTime}
         />
 
         <FormInputBox 
           miniLabel="Level of Education"
           placeholder="Eg. Degree, Masters"
+          value={levelOfEducation}
           setValue={setLevelOfEducation}
         />
 
         <CheckboxInputBox 
           options={['Online','In-Person', 'Fine Either Way']}
           label="Mode of Teaching"
-          miniLabel="How you would like to be taught"
+          miniLabel="How you would like to be taught"         
+          selectedOptions={modeOfTeaching}
           setSelectedOptions={setModeOfTeaching}
         />
         
@@ -216,15 +232,20 @@ const RequestSessionFormPage = () => {
         <CheckboxInputBox 
           options={['Yes','No']}        
           miniLabel="Use of Videos and Images in the lesson"
+          selectedOptions={videos}
           setSelectedOptions={setVideos}
         />
 
-        
       </CollapsableBox>
 
-      <button type='submit'>
-        Submit
-      </button>
+      
+      <div className='flex justify-center items-center'>
+        <button className=' text-white text-xl hover:cursor-pointer hover:text-gray-700 hover:bg-blue-200 bg-custom-blue w-96 rounded-xl font-bold px-16 py-4 my-3 mx-10' type='submit'>
+          Submit
+        </button>
+      </div>
+        
+         
     </form>
 
       </div>
