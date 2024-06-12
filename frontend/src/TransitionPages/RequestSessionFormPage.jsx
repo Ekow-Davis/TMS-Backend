@@ -81,7 +81,7 @@ const RequestSessionFormPage = () => {
               width="w-full" 
               type="text" 
               miniLabel="Name" 
-              label="First Name"
+              label="First Name"              
               setValue={setOtherNames} 
             />
             <FormInputBox 
@@ -135,6 +135,9 @@ const RequestSessionFormPage = () => {
               label="Phone Number" 
               miniLabel="Please enter a valid phone number"  
               setValue={setPhoneNumber}
+              validationRegex={/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/} 
+              value={phoneNumber} 
+              required
             />
             <FormInputBox 
               width="w-full" 
