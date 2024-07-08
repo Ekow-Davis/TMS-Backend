@@ -1,11 +1,19 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const HorizontalScroll = ({ children}) => {
+const HorizontalScroller = ({ width, children }) => {
   return (
-    <div className="flex overflow-x-auto space-x-4 p-4">
-      {children}
+    <div className={`overflow-hidden`} style={{ width }}>
+      <div className="flex overflow-x-auto whitespace-nowrap space-x-4 p-4">
+        {children}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default HorizontalScroll
+HorizontalScroller.propTypes = {
+  width: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+export default HorizontalScroller;

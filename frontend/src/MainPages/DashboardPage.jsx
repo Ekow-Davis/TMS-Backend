@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from "../Layout/Navbar"
 import Sidebar from '../Components/Sidebar'
 import StatusCards from '../Components/StatusCards'
 
@@ -8,7 +9,7 @@ const DashboardPage = () => {
     <div className='flex'>
       <Sidebar />
       <div className='flex-grow'>
-        
+        <Navbar />
         DashboardPage
       <StatusCards
       label="Sessions Remaining"

@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import Sidebar from '../Components/Sidebar'
 import FormInputBox from '../Components/FormInputBox'
 import CollapsableBox from '../Components/CollapsableBox'
 import CheckboxInputBox from '../Components/CheckboxInputBox'
 
-const RequestSessionFormPage = () => {
+const RequestSessionFormPage = ({addForm}) => {
 
   const [address, setAddress] = useState('')
   const [address2, setAddress2] = useState('')
@@ -19,7 +20,6 @@ const RequestSessionFormPage = () => {
   const [dateOfBirth, setDateOfBirth] = useState('')
   const [language, setLanguage] = useState('') 
   
-  
   const [subject, setSubject] = useState('')
   const [course, setCourse] = useState('')
   const [tutorDays, setTutorDays] = useState([])
@@ -28,6 +28,7 @@ const RequestSessionFormPage = () => {
   const [modeOfTeaching, setModeOfTeaching] = useState([])
   const [videos, setVideos] = useState([])
 
+  const navigate = useNavigate();
 
   const handleSessionSubmit = async (event) => {
     event.preventDefault()
@@ -58,6 +59,10 @@ const RequestSessionFormPage = () => {
 
     console.log("User Information Data:",userInfoFormData)
     console.log("Session Information Data:",sessionInfoFormData)
+
+    addForm({ userInfoFormData, sessionInfoFormData });
+
+    navigate('/RequestSessionPage');
 
   }
 
