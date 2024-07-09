@@ -1,5 +1,5 @@
 import DashboardPage from "./MainPages/Dashboard/DashboardPage"
-import PaymentPage from "./MainPages//PaymentPaymentPage"
+import PaymentPage from "./MainPages/Payment/PaymentPaymentPage"
 import RequestSessionPage from "./MainPages/Session/RequestSessionPage"
 import BookedPage from "./MainPages/Booked/BookedPage"
 import SignInPage from "./MainPages/SignUpIn/SignInPage"
