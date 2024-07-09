@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import Sidebar from '../Components/Sidebar'
+import Sidebar from '../Components/Layout/Sidebar'
 import FormInputBox from '../Components/FormInputBox'
 import CollapsableBox from '../Components/CollapsableBox'
 import CheckboxInputBox from '../Components/CheckboxInputBox'
