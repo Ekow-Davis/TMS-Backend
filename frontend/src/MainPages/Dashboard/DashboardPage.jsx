@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from "../Components/Layout/Navbar"
-import Sidebar from '../Components/Layout/Sidebar'
-import StatusCards from '../Components/StatusCards'
+import Navbar from "../../Components/Layout/Navbar"
+import Sidebar from '../../Components/Layout/Sidebar'
+import StatusCards from '../../Components/StatusCards'
 
 const DashboardPage = () => {
   return (

@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
-import Sidebar from '../Components/Layout/Sidebar'
-import HorizontalScroll from '../Components/HorizontalScroll'
+import Sidebar from '../../Components/Layout/Sidebar'
+import HorizontalScroll from '../../Components/HorizontalScroll'
 import { Link } from 'react-router-dom'
-import StatusCards from '../Components/StatusCards'
+import StatusCards from '../../Components/StatusCards'
 
 const RequestSessionPage = ({ forms, deleteForm }) => {
   return (
