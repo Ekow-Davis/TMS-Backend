@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import Sidebar from '../Components/Sidebar'
+import Sidebar from '../Components/Layout/Sidebar'
 import HorizontalScroll from '../Components/HorizontalScroll'
 import { Link } from 'react-router-dom'
 import StatusCards from '../Components/StatusCards'
