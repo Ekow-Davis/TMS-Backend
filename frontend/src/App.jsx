@@ -1,10 +1,11 @@
 import DashboardPage from "./MainPages/Dashboard/DashboardPage"
 import PaymentPage from "./MainPages/Payment/PaymentPage"
+import Pricing from "./MainPages/Home/PricingPage"
 import RequestSessionPage from "./MainPages/Session/RequestSessionPage"
-import BookedPage from "./MainPages/Booked/BookedPage"
+import SessionPage from "./MainPages/Session/SessionPage"
 import SignInPage from "./MainPages/SignUpIn/SignInPage"
 import SignUpPage from "./MainPages/SignUpIn/SignUpPage"
-import RequestSessionFormPage from "./TransitionPages/RequestSessionFormPage"
+import RequestSessionFormPage from "./MainPages/Session/RequestSessionFormPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react"
 
@@ -27,10 +28,11 @@ function App() {
       <Route path="/" element={<SignUpPage />} />
       <Route path="/SignInPage" element={<SignInPage />} />
       <Route path="/PaymentPage" element={<PaymentPage />} />
+      <Route path="/Pricing" element={<Pricing />} />
       <Route path="/SignUpPage" element={<SignUpPage />} />
       <Route path="/RequestSessionPage" element={<RequestSessionPage forms={forms} deleteForm={deleteForm} />} />
         <Route path="/RequestSessionPage/RequestSessionFormPage" element={<RequestSessionFormPage addForm={addForm} />} />
-      <Route path="/BookedPage" element={<BookedPage />} />
+      <Route path="/SessionPage" element={<SessionPage />} />
     </Routes>
     </BrowserRouter>
   );

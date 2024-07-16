@@ -1,10 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHamburger, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { faAddressBook } from '@fortawesome/free-solid-svg-icons'
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { faBookOpenReader, faCubes,faCreditCard, faUser, faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -28,8 +24,8 @@ const Sidebar = () => {
           case '/PaymentPage':
             setActiveItem('Payment');
             break;
-          case '/RequestSessionPage':
-            setActiveItem('RequestSession');
+          case '/ProfilePage':
+            setActiveItem('Profile');
             break;
           case '/ExtraPage':
             setActiveItem('Extra');
@@ -44,50 +40,50 @@ const Sidebar = () => {
   return (
     <>
       <aside className={`bg-custom-blue min-h-screen border-r  ${expanded ? 'w-72' : 'w-24'}`}>
-        <h1 className={`text-white text-3xl py-2 px-4 ${expanded ? 'w-96' : 'w-20'}`}>{expanded && "Logo"} 
+        <h1 className={`text-white text-3xl py-2 px-4 ${expanded ? 'w-96' : 'w-20'}`}>
         <button onClick={() => setExpanded (!expanded)} >
-          {expanded? <FontAwesomeIcon icon={faChevronLeft} className="ml-40 h-6 w-6" />:<FontAwesomeIcon icon={faHamburger} className="ml-6 h-6 w-6" />} </button>
+          {expanded? <img src="../Images/main-logo-white-transparent.png" alt="Logo" className='h-32 ml-12 items-center justify-center'/>:<FontAwesomeIcon icon={faBookOpenReader} className="ml-6 h-6 w-6 my-16" />} </button>
         </h1>
         <nav className="mt-2">
               <ul>
                 <hr size="2"></hr>
                   <li>
                     <Link to="/Dashboard" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 hover:text-custom-blue rounded-md ml-2 mr-2 ${activeItem === 'Dashboard' ? 'bg-white text-blue-800' : 'hover:bg-white hover:text-blue-500'}`}
+                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Dashboard' ? 'bg-custom-purple text-white' : 'hover:bg-white'}`}
                     >
-                        <FontAwesomeIcon icon={faUser} className="ml-3 mr-12" />
+                        <FontAwesomeIcon icon={faCubes} className="ml-3 mr-12" />
                         {expanded && "Dashboard"}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/BookedPage" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 hover:text-custom-blue rounded-md ml-2 mr-2 ${activeItem === 'Booked' ? 'bg-white text-blue-800' : 'hover:bg-white hover:text-blue-500'}`}
+                    <Link to="/RequestSessionPage" 
+                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Booked' ? 'bg-custom-purple text-white' : 'hover:bg-white'}`}
                     >
-                        <FontAwesomeIcon icon={faAddressBook} className="ml-3 mr-11" />
-                            {expanded && "Booked Sessions"}
+                        <FontAwesomeIcon icon={faCalendar} className="ml-3 mr-11" />
+                            {expanded && "Sessions"}
                     </Link>
                   </li>
                   <li>
                     <Link to="/PaymentPage" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 hover:text-custom-blue rounded-md ml-2 mr-2 ${activeItem === 'Payment' ? 'bg-white text-blue-800' : 'hover:bg-white hover:text-blue-500'}`}
+                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Payment' ? 'bg-custom-purple text-white' : 'hover:bg-white'}`}
                     >
-                    <FontAwesomeIcon icon={faHeart} className="ml-3 mr-11" />
+                    <FontAwesomeIcon icon={faCreditCard} className="ml-3 mr-11" />
                         {expanded && "Payment"}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/RequestSessionPage" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 hover:text-custom-blue rounded-md ml-2 mr-2 ${activeItem === 'RequestSession' ? 'bg-white text-blue-800' : 'hover:bg-white hover:text-blue-500'}`}
+                    <Link to="/ProfilePage" 
+                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Profile' ? 'bg-custom-purple text-white' : 'hover:bg-white'}`}
                     >
-                    <FontAwesomeIcon icon={faMapMarkerAlt} className="ml-4 mr-12" />
-                        {expanded && "Request Session"}
+                    <FontAwesomeIcon icon={faUser} className="ml-4 mr-12" />
+                        {expanded && "Profile"}
                     </Link>
                   </li>              
                   <li>
                     <Link to="/ExtraPage" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 hover:text-custom-blue rounded-md ml-2 mr-2 ${activeItem === 'Extra' ? 'bg-white text-blue-800' : 'hover:bg-white hover:text-blue-500'}`}
+                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Extra' ? 'bg-custom-purple text-white' : 'hover:bg-white'}`}
                     >
-                    <FontAwesomeIcon icon={faMapMarkerAlt} className="ml-4 mr-12" />
+                    <FontAwesomeIcon icon={faCalendar} className="ml-4 mr-12" />
                         {expanded && "Extra"}
                     </Link>
                   </li>              

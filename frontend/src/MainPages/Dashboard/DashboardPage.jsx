@@ -1,4 +1,5 @@
 import React from 'react'
+import DashboardStats from '../../Components/DashboardStats'
 import Navbar from "../../Components/Layout/Navbar"
 import Sidebar from '../../Components/Layout/Sidebar'
 import StatusCards from '../../Components/StatusCards'
@@ -11,11 +12,12 @@ const DashboardPage = () => {
       <div className='flex-grow'>
         <Navbar />
         DashboardPage
-      <StatusCards
-      label="Sessions Remaining"
-      miniLabel="This Month"
-      statistic="23"
-      />
+          <DashboardStats />
+        <StatusCards
+        label="Sessions Remaining"
+        miniLabel="This Month"
+        statistic="23"
+        />
 
       </div>
     </div>

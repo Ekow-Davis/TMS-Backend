@@ -1,11 +1,15 @@
 import React from 'react'
-import Sidebar from '../../Components/Layout/Sidebar'
+import PaymentBody from './PaymentBody'
+import PayNavBar from './PayNavBar'
 
 const PaymentPage = () => {
+  
   return (
     <>
-    <Sidebar />
-    <div>PaymentPage</div>
+    <PayNavBar />
+    <div>
+      <PaymentBody />
+    </div>
     </>
   )
 }
