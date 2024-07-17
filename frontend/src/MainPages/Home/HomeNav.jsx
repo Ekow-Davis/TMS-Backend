@@ -1,7 +1,7 @@
 // src/components/HomeNav.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BellIcon, UserIcon } from '@heroicons/react/24/outline';
+import {  UserIcon } from '@heroicons/react/24/outline';
 
 const HomeNav = () => {
   return (
@@ -12,26 +12,30 @@ const HomeNav = () => {
         </Link>
       </div>
       <div className="flex space-x-4">
-        <Link to="/dashboard" className="text-black hover:bg-[#8bc220] hover:text-white rounded-lg p-2 transition duration-300">
-          Dashboard
+        <Link to="/Dashboard" className="text-black hover:bg-[#8bc220] hover:text-white rounded-lg p-2 transition duration-300">
+          Features
         </Link>
         <Link to="/sessions" className="text-black hover:bg-[#8bc220] hover:text-white rounded-lg p-2 transition duration-300">
-          Sessions
+          Student
         </Link>
         <Link to="/payment-history" className="text-black hover:bg-[#8bc220] hover:text-white rounded-lg p-2 transition duration-300">
-          Payment History
+          Tutor
         </Link>
         <Link to="/help" className="text-black hover:bg-[#8bc220] hover:text-white rounded-lg p-2 transition duration-300">
-          Help
+          Support
         </Link>
-        <Link to="/pricing" className="text-black hover:bg-[#8bc220] hover:text-white rounded-lg p-2 transition duration-300">
+        <Link to="/Pricing" className="text-black hover:bg-[#8bc220] hover:text-white rounded-lg p-2 transition duration-300">
           Pricing
         </Link>
       </div>
-      <div className="flex items-center space-x-4">
-        <BellIcon className="h-6 w-6 text-black" />
-        <UserIcon className="h-6 w-6 text-black" />
-      </div>
+      <div className="flex items-center">
+          <Link to="/SignIn">
+            <button className="flex items-center space-x-2 hover:bg-custom-blue hover:text-white p-2 px-4 rounded-[20px]">
+              <UserIcon className=" h-6 w-6" />
+              <p className="">Log In</p>
+            </button>
+          </Link>
+        </div>
     </nav>
   );
 };

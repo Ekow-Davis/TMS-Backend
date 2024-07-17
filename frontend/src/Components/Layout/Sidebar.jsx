@@ -139,9 +139,12 @@ const Sidebar = () => {
                             <p>Are you sure you want to deactivate your account? All of your data will be permanently removed.</p>
                             <div className="flex gap-4">
                             <button onClick={() => setIsOpen(false)}>Cancel</button>
+                            <Link to="/">
                             <button className='text-red-400' onClick={() => setIsOpen(false)}>
                               Sign Out
                             </button>
+                            </Link>
+                            
                             </div>
                         </DialogPanel>
                         </div>

@@ -1,10 +1,11 @@
 import React from 'react';
-import PayNavbar from '../Payment/PayNavBar';
+import HomeNav from './HomeNav';
+import Footer from '../../Components/Layout/Footer'
 
 const Pricing = () => {
   return (
     <>
-    <PayNavbar />
+    <HomeNav />
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="p-8 bg-gray-100">
       <div className="text-center mb-8">
@@ -49,6 +50,7 @@ const Pricing = () => {
       </div>
     </div>
     </div>
+    <Footer />
     </>
   );
 };
