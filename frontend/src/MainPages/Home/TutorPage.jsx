@@ -42,15 +42,39 @@ const TutorPage = () => {
       </header>
       <div className="container mx-auto py-20 px-4">
         <section className="mb-20">
-          <FadeIn>
-            <h2 className="text-3xl font-bold mb-4">Key Benefits</h2>
-            <ul className="list-disc list-inside text-lg">
-              <li>Scheduling Flexibility</li>
-              <li>Student Management</li>
-              <li>Resource Sharing</li>
-              <li>Billing and Payments</li>
+        <FadeIn>
+        <div className="container mx-auto py-20 px-4">
+          <section className="mb-20">
+            <h2 className="text-3xl font-bold mb-4 text-center">Key Benefits</h2>
+            <ul className="list-disc list-inside text-lg space-y-4">
+              <li className="flex items-center">
+                <img src="placeholder-image.png" alt="Personalized Learning" className="w-12 h-12 mr-4" />
+                <div className="transition transform hover:scale-105 hover:text-custom-purple">
+                  Personalized Learning
+                </div>
+              </li>
+              <li className="flex items-center">
+                <img src="placeholder-image.png" alt="Accessible Resources" className="w-12 h-12 mr-4" />
+                <div className="transition transform hover:scale-105 hover:text-custom-purple">
+                  Accessible Resources
+                </div>
+              </li>
+              <li className="flex items-center">
+                <img src="placeholder-image.png" alt="Progress Tracking" className="w-12 h-12 mr-4" />
+                <div className="transition transform hover:scale-105 hover:text-custom-purple">
+                  Progress Tracking
+                </div>
+              </li>
+              <li className="flex items-center">
+                <img src="placeholder-image.png" alt="Support and Communication" className="w-12 h-12 mr-4" />
+                <div className="transition transform hover:scale-105 hover:text-custom-purple">
+                  Support and Communication
+                </div>
+              </li>
             </ul>
-          </FadeIn>
+          </section>
+        </div>
+      </FadeIn>
         </section>
         <section className="mb-20">
           <FadeIn>
