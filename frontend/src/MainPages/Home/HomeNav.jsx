@@ -1,4 +1,3 @@
-// src/components/HomeNav.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { UserIcon } from '@heroicons/react/24/outline';
@@ -12,13 +11,13 @@ const HomeNav = () => {
         </Link>
       </div>
       <div className="flex space-x-4">
-        <Link to="/Dashboard" className="text-black hover:bg-custom-purple hover:text-white rounded-lg p-2 transition duration-300">
-          Features
+        <Link to="/AboutUs" className="text-black hover:bg-custom-purple hover:text-white rounded-lg p-2 transition duration-300">
+          About Us
         </Link>
-        <Link to="/Sessions" className="text-black hover:bg-custom-purple hover:text-white rounded-lg p-2 transition duration-300">
+        <Link to="/Student" className="text-black hover:bg-custom-purple hover:text-white rounded-lg p-2 transition duration-300">
           Student
         </Link>
-        <Link to="/payment-history" className="text-black hover:bg-custom-purple hover:text-white rounded-lg p-2 transition duration-300">
+        <Link to="/Tutor" className="text-black hover:bg-custom-purple hover:text-white rounded-lg p-2 transition duration-300">
           Tutor
         </Link>
         <Link to="/Help" className="text-black hover:bg-custom-purple hover:text-white rounded-lg p-2 transition duration-300">

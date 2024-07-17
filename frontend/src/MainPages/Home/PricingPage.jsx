@@ -42,16 +42,19 @@ const Pricing = () => {
     <>
       <HomeNav />
       <header className="bg-custom-blue pt-44 text-white text-center py-20">
+      <FadeIn>
         <h1 className="text-5xl font-bold mb-4">Our Payment Plans</h1>
         <p className="text-xl mb-6">Cost Effective Payment Deal Bundles</p>
         <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-[#262ea2]">
           Get Started
         </button>
+        </FadeIn>
       </header>
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="p-8 bg-gray-100">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold mb-4 mt-20">Our Pricing Plans</h1>
+            <p className="text-gray-600"><strong>Tutors</strong></p>
             <p className="text-gray-600">Choose the plan that fits your needs</p>
           </div>
           <FadeIn>
@@ -62,7 +65,7 @@ const Pricing = () => {
                 <p className="text-gray-600 mb-4">$35 / month</p>
                 <ul className="text-center mb-6">
                   {starterPlanBenefits.map((benefit, index) => (
-                    <li key={index} className="my-2 flex items-center justify-center">
+                    <li key={index} className="my-3 flex items-center justify-center">
                       {benefit}
                     </li>
                   ))}

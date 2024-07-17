@@ -2,6 +2,9 @@ import DashboardPage from "./MainPages/Dashboard/DashboardPage"
 import HelpPage from "./MainPages/Help/HelpPage"
 import HomePage from "./MainPages/Home/HomePage"
 import PricingPage from "./MainPages/Home/PricingPage"
+import StudentPage from "./MainPages/Home/StudentPage"
+import TutorPage from "./MainPages/Home/TutorPage"
+import AboutUsPage from "./MainPages/Home/AboutUsPage"
 import MessagePage from "./MainPages/Message/MessagePage"
 import MDetailPage from "./MainPages/Message/MDetailPage"
 import NotificationPage from "./MainPages/Notification/NotificationPage"
@@ -38,6 +41,9 @@ function App() {
       <Route path="/Help" element={<HelpPage />} />
       <Route path="/" element={<HomePage />} />
         <Route path="/Pricing" element={<PricingPage />} />
+        <Route path="/Student" element={<StudentPage />} />
+        <Route path="/Tutor" element={<TutorPage />} />        
+        <Route path="/AboutUs" element={<AboutUsPage />} />        
       <Route path="/Message" element={<MessagePage />} />
         <Route path="/MDetail" element={<MDetailPage />} />
       <Route path="/Notification" element={<NotificationPage />} />

@@ -99,11 +99,13 @@ const HomeBody = () => {
   return (
     <>
       <header className="bg-custom-blue pt-44 text-white text-center py-20">
+        <FadeIn>
         <h1 className="text-5xl font-bold mb-4">Welcome to TMSServices</h1>
         <p className="text-xl mb-6">Efficient management for your teaching business</p>
         <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-[#262ea2]">
           Get Started
         </button>
+        </FadeIn>
       </header>
       <main className="p-8">
         <FadeIn>
