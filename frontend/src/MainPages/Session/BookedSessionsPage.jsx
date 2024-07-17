@@ -4,8 +4,12 @@ import Sidebar from '../../Components/Layout/Sidebar'
 const BookedPage = () => {
   return (
     <>
-    <Sidebar />
-    <div>Booked Session Page</div>
+    <div className='flex'>
+      <Sidebar />
+      <div className='flex-grow'>
+        Booked Session Page
+      </div>
+    </div>
     </>
   )
 }

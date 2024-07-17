@@ -24,17 +24,23 @@ const Sidebar = () => {
           case '/Dashboard':
             setActiveItem('Dashboard');
             break;
-          case '/BookedPage':
-            setActiveItem('Booked');
+          case '/Sessions':
+            setActiveItem('SessionsHistory');
             break;
-          case '/PaymentPage':
-            setActiveItem('Payment');
+          case '/PaymentHistory':
+            setActiveItem('PaymentHistory');
             break;
-          case '/NotificationPage':
+          case '/Notification':
             setActiveItem('Notification');
             break;
-          case '/ProfilePage':
+          case '/Message':
+            setActiveItem('Message');
+            break;
+          case '/Profile':
             setActiveItem('Profile');
+            break;
+          case '/Help':
+            setActiveItem('Help');
             break;
           // Add more cases for other pages as needed
           default:
@@ -62,23 +68,23 @@ const Sidebar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/RequestSessionPage" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Booked' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}
+                    <Link to="/Sessions" 
+                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'SessionsHistory' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}
                     >
                         <FontAwesomeIcon icon={faCalendar} className="ml-3 mr-11" />
                             {expanded && "Sessions"}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/PaymentPage" 
-                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Payment' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}
+                    <Link to="/PaymentHistory" 
+                    className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'PaymentHistory' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}
                     >
                     <FontAwesomeIcon icon={faCreditCard} className="ml-3 mr-11" />
                         {expanded && "Payment"}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/NotificationPage" 
+                    <Link to="/Notification" 
                     className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Notification' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}
                     >
                     <FontAwesomeIcon icon={faBell} className="ml-4 mr-12" />
@@ -86,7 +92,7 @@ const Sidebar = () => {
                     </Link>
                   </li>              
                   <li>
-                    <Link to="/MessagePage" 
+                    <Link to="/Message" 
                     className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Message' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}
                     >
                     <FontAwesomeIcon icon={faComment} className="ml-4 mr-12" />
@@ -94,7 +100,7 @@ const Sidebar = () => {
                     </Link>
                   </li>              
                   <li>
-                    <Link to="/ProfilePage" 
+                    <Link to="/Profile" 
                     className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Profile' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}
                     >
                     <FontAwesomeIcon icon={faUser} className="ml-4 mr-12" />
@@ -102,7 +108,7 @@ const Sidebar = () => {
                     </Link>
                   </li>              
                   <li>
-                    <Link to="/HelpPage" 
+                    <Link to="/Help" 
                     className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Help' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}
                     >
                     <FontAwesomeIcon icon={faInfoCircle} className="ml-4 mr-12" />

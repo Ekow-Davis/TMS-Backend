@@ -1,17 +1,17 @@
 import React from 'react'
 import Sidebar from '../../Components/Layout/Sidebar'
 
-const PaymentHistoryPage = () => {
+const HelpPage = () => {
   return (
     <>
     <div className='flex'>
       <Sidebar />
       <div className='flex-grow'>
-        Payment History
+        Help Page
       </div>
     </div>
     </>
   )
 }
 
-export default PaymentHistoryPage
+export default HelpPage
