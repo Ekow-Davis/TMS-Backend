@@ -72,7 +72,7 @@ const SignInForm = () => {
 
             <div className='text-sm lg:text-lg my-8 text-custom-blue flex'>
 
-            <p><Link to='/'> 
+            <p><Link to='/SignUp'> 
             Do not have an account? Sign Up
             </Link></p>
 

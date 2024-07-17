@@ -265,7 +265,7 @@ const SignUpForm = () => {
               </div>
 
             <div>
-             <Link to='/SignInPage'>
+             <Link to='/SignIn'>
                 <p className='text-lg mb-3 text-custom-blue'>
                   Already have an account? 
                   Sign In
