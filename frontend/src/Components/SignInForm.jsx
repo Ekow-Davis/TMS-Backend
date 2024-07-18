@@ -39,11 +39,11 @@ const SignInForm = () => {
 
   return (
     <>
-    <div className='bg-gray-100 px-10 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
+    <div className='bg-gray-100 px-10 rounded-3xl border-2 border-x-custom-purple lg:border-none lg:bg-transparent'>
       
       <div className='flex flex-col items-center'>
         <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
-        <h1 className='text-4xl font-bold justify-center flex text-custom-blue my-4'> 
+        <h1 className='text-4xl font-bold justify-center flex text-custom-purple my-4'> 
           SIGN IN
         </h1>
       </div>
@@ -70,7 +70,7 @@ const SignInForm = () => {
             </div>
             
 
-            <div className='text-sm lg:text-lg my-8 text-custom-blue flex'>
+            <div className='text-sm lg:text-lg my-8 text-custom-purple flex'>
 
             <p><Link to='/SignUp'> 
             Do not have an account? Sign Up
@@ -89,7 +89,7 @@ const SignInForm = () => {
 
             
             <Link to='/Dashboard'>
-              <button className='text-white text-xl font-bold bg-custom-blue rounded-xl w-full px-10 py-4 my-3' type='submit'>
+              <button className='text-white text-xl font-bold bg-custom-purple rounded-xl w-full px-10 py-4 my-3' type='submit'>
                 Sign In
               </button>
             </Link>

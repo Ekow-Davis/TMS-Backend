@@ -60,7 +60,7 @@ const TutorPage = () => {
                 </div>
               </li>
               <li className="flex items-center">
-                <img src="placeholder-image.png" alt="Progress Tracking" className="w-12 h-12 mr-4" />
+                <img src="./Images/HomePictures/progress_tracking.png" alt="Progress Tracking" className="w-12 h-12 mr-4" />
                 <div className="transition transform hover:scale-105 hover:text-custom-purple">
                   Progress Tracking
                 </div>

@@ -74,11 +74,11 @@ const SignUpForm = () => {
 
   return (
     <>
-    {/* <div className='bg-gray-100 px-10 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
+    {/* <div className='bg-gray-100 px-10 rounded-3xl border-2 border-x-custom-purple lg:border-none lg:bg-transparent'>
 
       <div className='flex flex-col items-center'>
         <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
-        <h1 className='text-3xl justify-center flex text-custom-blue my-4'> Sign Up</h1>
+        <h1 className='text-3xl justify-center flex text-custom-purple my-4'> Sign Up</h1>
       </div>
 
     <form onSubmit={handleSignUp}>
@@ -130,7 +130,7 @@ const SignUpForm = () => {
           />
 
         <button type="button"
-        className='text-custom-blue'
+        className='text-custom-purple'
           onClick={togglePasswordVisibility}>
             {showPassword ? "Hide" : "Show"}
         </button> 
@@ -159,7 +159,7 @@ const SignUpForm = () => {
         </div>
 
         <div>
-          <p className='text-lg mb-5 text-custom-blue'>Already have an account? 
+          <p className='text-lg mb-5 text-custom-purple'>Already have an account? 
             <Link to='/SignInPage'>Sign In</Link>
           </p>
         </div>
@@ -167,7 +167,7 @@ const SignUpForm = () => {
       
 
       <Link to='/Dashboard'>
-      <button className='text-white text-xl bg-custom-blue rounded-xl w-full px-10 py-4' type='submit'>
+      <button className='text-white text-xl bg-custom-purple rounded-xl w-full px-10 py-4' type='submit'>
         Sign Up
       </button>
       </Link>
@@ -176,11 +176,11 @@ const SignUpForm = () => {
     </form>
     </div> */}
 
-<div className='bg-gray-100 px-10 rounded-3xl border-2 border-x-custom-blue lg:border-none lg:bg-transparent'>
+<div className='bg-gray-100 px-10 rounded-3xl border-2 border-x-custom-purple lg:border-none lg:bg-transparent'>
       
       <div className='flex flex-col items-center'>
         <img src='.\Images\main-logo-black-transparent.png' alt='Logo' className='h-32 w-32'/>
-        <h1 className='text-4xl justify-center font-bold flex text-custom-blue my-3'> 
+        <h1 className='text-4xl justify-center font-bold flex text-custom-purple my-3'> 
           SIGN UP 
         </h1>
       </div>
@@ -235,7 +235,7 @@ const SignUpForm = () => {
                 />
 
               <button type="button"
-                className='text-custom-blue my-1'
+                className='text-custom-purple my-1'
                   onClick={togglePasswordVisibility}>
                     {showPassword ? "Hide" : "Show"}
               </button> 
@@ -266,7 +266,7 @@ const SignUpForm = () => {
 
             <div>
              <Link to='/SignIn'>
-                <p className='text-lg mb-3 text-custom-blue'>
+                <p className='text-lg mb-3 text-custom-purple'>
                   Already have an account? 
                   Sign In
                 </p>
@@ -274,7 +274,7 @@ const SignUpForm = () => {
             </div>
             
             <Link to='/Dashboard'>
-              <button className='text-white text-xl bg-custom-blue rounded-xl font-bold  w-full px-10 py-4 mt-2 mb-1' 
+              <button className='text-white text-xl bg-custom-purple rounded-xl font-bold  w-full px-10 py-4 mt-2 mb-1' 
               type='submit'>
                 Sign Up
               </button>

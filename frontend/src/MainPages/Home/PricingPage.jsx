@@ -100,6 +100,54 @@ const Pricing = () => {
               </div>
             </div>
           </FadeIn>
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold mb-4 mt-20">Our Pricing Plans</h1>
+            <p className="text-gray-600"><strong>Students</strong></p>
+            <p className="text-gray-600">Choose the plan that fits your needs</p>
+          </div>
+          <FadeIn>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Starter Plan */}
+              <div className="bg-white shadow-lg rounded-lg p-6 text-center transform transition-transform duration-300 hover:shadow-2xl hover:scale-110 hover:bg-gray-50 relative border-t-8 border-blue-500">
+                <h2 className="text-2xl font-bold mb-4">Starter</h2>
+                <p className="text-gray-600 mb-4">$35 / month</p>
+                <ul className="text-center mb-6">
+                  {starterPlanBenefits.map((benefit, index) => (
+                    <li key={index} className="my-3 flex items-center justify-center">
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+                <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Choose Plan</button>
+              </div>
+              {/* Growing Plan */}
+              <div className="bg-white border-t-8 border-[#8bc220] shadow-lg rounded-lg p-6 text-center transform transition-transform duration-300 hover:shadow-2xl hover:scale-110 hover:bg-gray-50">
+                <h2 className="text-2xl font-bold mb-4">Growing</h2>
+                <p className="text-gray-600 mb-4">$75 / month</p>
+                <ul className="text-center mb-6">
+                  {growingPlanBenefits.map((benefit, index) => (
+                    <li key={index} className="my-2 flex items-center justify-center">
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+                <button className="bg-[#8bc220] text-white px-4 py-2 rounded-lg">Choose Plan</button>
+              </div>
+              {/* Established Plan */}
+              <div className="bg-white shadow-lg border-t-8 border-custom-purple rounded-lg p-6 text-center transform transition-transform duration-300 hover:shadow-2xl hover:scale-110 hover:bg-gray-50">
+                <h2 className="text-2xl font-bold mb-4">Established</h2>
+                <p className="text-gray-600 mb-4">$150 / month</p>
+                <ul className="text-center mb-6">
+                  {establishedPlanBenefits.map((benefit, index) => (
+                    <li key={index} className="mb-2 flex items-center justify-center">
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+                <button className="bg-custom-purple text-white px-4 py-2 rounded-lg">Choose Plan</button>
+              </div>
+            </div>
+          </FadeIn>
           <FadeIn>
             <div className='items-center'>
               <h1 className="text-custom-purple text-center text-3xl my-20">
