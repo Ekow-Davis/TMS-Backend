@@ -2,9 +2,10 @@
   {
     "id": 1,
     "Tittle": "Lorem Impsum",
-    "Content": "Lorem Impsum Site ",
+    "Content": "So I am testing to see if the notification system here is splendid or not ",
     "Source": "TMSServices",
     "Type": "Broadcast",
+    "Status": "Read",
     "Date": "24 Nov 2024 9:30am"
   },
   {
@@ -13,6 +14,7 @@
     "Content": "Lorem Impsum Site ",
     "Source": "TMSServices",
     "Type": "Broadcast",
+    "Status": "Unread",
     "Date": "24 Nov 2024 9:30am"
   },
   {
@@ -21,6 +23,7 @@
     "Content": "Lorem Impsum Site ",
     "Source": "TMSServices",
     "Type": "Broadcast",
+    "Status": "Unread",
     "Date": "24 Nov 2024 9:30am"
   },
   {
@@ -29,6 +32,7 @@
     "Content": "Lorem Impsum Site ",
     "Source": "TMSServices",
     "Type": "Broadcast",
+    "Status": "Unread",
     "Date": "24 Nov 2024 9:30am"
   },
   {
@@ -37,6 +41,7 @@
     "Content": "Lorem Impsum Site ",
     "Source": "TMSServices",
     "Type": "Broadcast",
+    "Status": "Unread",
     "Date": "24 Nov 2024 9:30am"
   },
   {
@@ -45,6 +50,7 @@
     "Content": "Lorem Impsum Site ",
     "Source": "TMSServices",
     "Type": "Broadcast",
+    "Status": "Unread",
     "Date": "24 Nov 2024 9:30am"
   },
   {
@@ -53,6 +59,7 @@
     "Content": "Lorem Impsum Site ",
     "Source": "TMSServices",
     "Type": "Broadcast",
+    "Status": "Unread",
     "Date": "24 Nov 2024 9:30am"
   },
   {
@@ -61,6 +68,7 @@
     "Content": "Lorem Impsum Site ",
     "Source": "TMSServices",
     "Type": "Broadcast",
+    "Status": "Unread",
     "Date": "24 Nov 2024 9:30am"
   },
   {
@@ -69,6 +77,7 @@
     "Content": "Lorem Impsum Site ",
     "Source": "TMSServices",
     "Type": "Broadcast",
+    "Status": "Unread",
     "Date": "24 Nov 2024 9:30am"
   },
   {
@@ -77,6 +86,7 @@
     "Content": "Lorem Impsum Site ",
     "Source": "TMSServices",
     "Type": "Broadcast",
+    "Status": "Unread",
     "Date": "24 Nov 2024 9:30am"
   }
 
