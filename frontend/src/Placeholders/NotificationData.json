@@ -74,7 +74,7 @@
   {
     "id": 10,
     "Tittle": "Lorem Impsum",
-    "Content": "Lorem Impsum Site ",
+    "Content": "Lorem Impsum Site sent you a message",
     "Source": "TMSServices",
     "Type": "Broadcast",
     "Status": "Unread",

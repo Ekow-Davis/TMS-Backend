@@ -47,7 +47,7 @@ function App() {
       <Route path="/Message" element={<MessagePage />} />
         <Route path="/MDetail" element={<MDetailPage />} />
       <Route path="/Notification" element={<NotificationPage />} />
-        <Route path="/NDetail" element={<NDetailPage />} />
+        <Route path="/NDetail/:id" element={<NDetailPage />} />
       <Route path="/PaymentHistory" element={<PaymentHistoryPage />} />
         <Route path="/Payment" element={<PaymentPage />} />
       <Route path="/Profile" element={<ProfilePage />} />
