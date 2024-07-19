@@ -51,7 +51,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <aside className={` min-h-screen border-r  ${expanded ? 'w-72' : 'w-24'}`}>
+      <aside className={` min-h-screen border-r ${expanded ? 'w-72' : 'w-24'}`}>
         <h1 className={`text-white text-3xl py-2 px-4 ${expanded ? 'w-96' : 'w-20'}`}>
         <button onClick={() => setExpanded (!expanded)} >
           {expanded? <img src="../Images/main-logo-black-transparent.png" alt="Logo" className='h-32 ml-12 items-center justify-center'/>:<FontAwesomeIcon icon={faBookOpenReader} className="ml-6 h-6 w-6 my-16" />} </button>
@@ -143,8 +143,7 @@ const Sidebar = () => {
                             <button className='text-red-400' onClick={() => setIsOpen(false)}>
                               Sign Out
                             </button>
-                            </Link>
-                            
+                            </Link>                            
                             </div>
                         </DialogPanel>
                         </div>

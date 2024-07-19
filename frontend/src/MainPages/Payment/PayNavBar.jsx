@@ -21,7 +21,7 @@ const PayNavbar = () => {
               Sessions
             </Link>
             <Link 
-              to="/Payment-History" 
+              to="/PaymentHistory" 
               className="text-black hover:bg-custom-blue hover:text-white rounded-lg p-2"
             >
               Payment
