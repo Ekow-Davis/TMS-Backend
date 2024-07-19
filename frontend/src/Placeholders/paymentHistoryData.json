@@ -1,0 +1,23 @@
+[
+  {
+    "ID": 1,
+    "status": "accepted",
+    "amount": 100,
+    "date": "2022-09-01T09:00:00",
+    "description": "Payment for services rendered"
+  },
+  {
+    "ID": 2,
+    "status": "pending",
+    "amount": 50,
+    "date": "2022-09-05T14:30:00",
+    "description": "Partial payment for project"
+  },
+  {
+    "ID": 3,
+    "status": "cancelled",
+    "amount": 75,
+    "date": "2022-09-10T18:45:00",
+    "description": "Payment for completed milestone"
+  }
+]
