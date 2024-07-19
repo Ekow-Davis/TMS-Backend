@@ -3,21 +3,119 @@
     "ID": 1,
     "status": "accepted",
     "amount": 100,
-    "date": "2022-09-01T09:00:00",
+    "date": "2022-09-11T09:00:00",
     "description": "Payment for services rendered"
   },
   {
     "ID": 2,
     "status": "pending",
     "amount": 50,
-    "date": "2022-09-05T14:30:00",
+    "date": "2019-06-05T14:30:00",
     "description": "Partial payment for project"
   },
   {
     "ID": 3,
     "status": "cancelled",
+    "amount": 200,
+    "date": "2026-09-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 4,
+    "status": "pending",
     "amount": 75,
     "date": "2022-09-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 5,
+    "status": "cancelled",
+    "amount": 175,
+    "date": "2022-09-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 6,
+    "status": "accepted",
+    "amount": 33,
+    "date": "2024-09-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 7,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 8,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 9,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 10,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 11,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 12,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 13,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 14,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 15,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 16,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
+    "description": "Payment for completed milestone"
+  },
+  {
+    "ID": 17,
+    "status": "cancelled",
+    "amount": 67,
+    "date": "2023-08-10T18:45:00",
     "description": "Payment for completed milestone"
   }
 ]
