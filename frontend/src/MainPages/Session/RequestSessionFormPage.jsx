@@ -244,7 +244,7 @@ const RequestSessionFormPage = ({addForm}) => {
 
       
       <div className='flex justify-center items-center'>
-        <button className=' text-white text-xl hover:cursor-pointer hover:text-gray-700 hover:bg-blue-200 bg-custom-blue w-96 rounded-xl font-bold px-16 py-4 my-3 mx-10' type='submit'>
+        <button className=' text-white text-xl hover:cursor-pointer hover:bg-custom-blue bg-custom-purple w-96 rounded-xl font-bold px-16 py-4 my-3 mx-10' type='submit'>
           Submit
         </button>
       </div>
