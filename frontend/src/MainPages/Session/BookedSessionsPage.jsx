@@ -24,6 +24,10 @@ const colors = {
   Kongo: '#33FF57',
   Joshua: '#3357FF',
   Ella: '#FF33A1',
+  Caleb: '#FF6600',
+  Ewurafua: '#0099FF',
+  Elikem: '#CC66FF',
+  Adwoa: '#66FF66',
 };
 
 const getNextDayOfWeek = (startDate, dayOfWeek) => {
@@ -31,6 +35,12 @@ const getNextDayOfWeek = (startDate, dayOfWeek) => {
   const resultDate = new Date(date);
   resultDate.setDate(date.getDate() + ((7 + dayOfWeek - date.getDay()) % 7));
   return resultDate;
+};
+
+const parseTime = (timeString) => {
+  const [time, period] = timeString.split(' ');
+  const [hours, minutes] = time.split(':').map(Number);
+  return new Date(0, 0, 0, period === 'pm' ? hours + 12 : hours, minutes);
 };
 
 const ScheduledSessionsPage = () => {
@@ -46,27 +56,30 @@ const ScheduledSessionsPage = () => {
     setIsOpen(false);
   };
 
-  const events = sessionData
-    .filter((session) => session.SessionStatus === 'Accepted')
-    .flatMap((session) =>
-      session.Days.map((day, index) => {
-        const [dayOfWeekName, time] = session.Time[index].split(' at ');
-        const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].indexOf(dayOfWeekName);
+  const events = Array.isArray(sessionData)
+    ? sessionData
+        .filter((session) => session.SessionStatus === 'Accepted')
+        .flatMap((session) =>
+          session.Days.map((day, index) => {
+            const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].indexOf(day);
 
-        const startDate = getNextDayOfWeek(session.StartDate, dayOfWeek);
-        const startTime = parse(`${format(startDate, 'yyyy-MM-dd')} ${time}`, 'yyyy-MM-dd h:mma', new Date());
-        const endTime = new Date(startTime.getTime() + session.DurationOfMeeting * 60000);
+            const startDate = getNextDayOfWeek(session.StartDate, dayOfWeek);
+            const startTime = parse(`${format(startDate, 'yyyy-MM-dd')} ${session.Time[index]}`, 'yyyy-MM-dd HH:mm', new Date());
+            const endTime = new Date(startTime.getTime() + session.DurationOfMeeting * 60000);
 
-        return {
-          title: `${session.Topic} - ${session.Tutor}`,
-          start: startTime,
-          end: endTime,
-          allDay: false,
-          resource: session,
-          backgroundColor: colors[session.Tutor] || '#000',
-        };
-      })
-    );
+            return {
+              title: `${session.Topic} - ${session.Tutor}`,
+              start: startTime,
+              end: endTime,
+              allDay: false,
+              resource: session,
+              backgroundColor: colors[session.Tutor] || '#000',
+            };
+          })
+        )
+    : [];
+
+  console.log('Events:', events);
 
   return (
     <div className="flex h-screen">
@@ -80,11 +93,14 @@ const ScheduledSessionsPage = () => {
             startAccessor="start"
             endAccessor="end"
             style={{ height: '100%' }}
-            eventPropGetter={(event) => ({
-              style: {
-                backgroundColor: event.backgroundColor,
-              },
-            })}
+            eventPropGetter={(event) => {
+              console.log('Event:', event);
+              return {
+                style: {
+                  backgroundColor: event.backgroundColor,
+                },
+              };
+            }}
             onSelectEvent={openModal}
           />
         </div>

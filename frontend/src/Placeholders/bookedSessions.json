@@ -13,7 +13,7 @@
     "SessionCompleted": "Upcoming",
     "Location": "Online",
     "Days": ["Monday", "Wednesday", "Friday"],
-    "Time": ["Monday at 2pm", "Wednesday at 4pm", "Friday at 1pm"],
+    "Time": ["Monday at 14:00", "Wednesday at 16:00", "Friday at 13:00"],
     "Charge": 2000,
     "Notes": "Prepare by reviewing the latest lecture notes on hash tables.",
     "MeetingLink": "https://example.com/meeting-link",
@@ -67,7 +67,7 @@
     "MeetingLink": "https://example.com/meeting-link",
     "InstructorContact": "nobleson@example.com",
     "AdditionalMaterials": ["Lecture notes", "Exercise sheets"],
-    "SessionID": "DS-12345",
+    "SessionID": "CN-12345",
     "CreatedDate": "2024-06-01",
     "UpdatedDate": "2024-06-10"
   },
@@ -91,7 +91,7 @@
     "MeetingLink": "https://example.com/meeting-link",
     "InstructorContact": "nobleson@example.com",
     "AdditionalMaterials": ["Lecture notes", "Exercise sheets"],
-    "SessionID": "DS-12345",
+    "SessionID": "DBA-12345",
     "CreatedDate": "2024-06-01",
     "UpdatedDate": "2024-06-10"
   },
@@ -122,7 +122,7 @@
   {
     "ID": 6,
     "Tutor": "Caleb",
-    "Topic": "Networking",
+    "Topic": "Computing Networking",
     "Subject": "IRM",
     "Level": "University",
     "StartDate": "2024-06-11",
@@ -139,7 +139,7 @@
     "MeetingLink": "https://example.com/meeting-link",
     "InstructorContact": "nobleson@example.com",
     "AdditionalMaterials": ["Lecture notes", "Exercise sheets"],
-    "SessionID": "DS-12345",
+    "SessionID": "CN-12345",
     "CreatedDate": "2024-06-01",
     "UpdatedDate": "2024-06-10"
   },
@@ -163,7 +163,7 @@
     "MeetingLink": "https://example.com/meeting-link",
     "InstructorContact": "nobleson@example.com",
     "AdditionalMaterials": ["Lecture notes", "Exercise sheets"],
-    "SessionID": "DS-12345",
+    "SessionID": "UX-12345",
     "CreatedDate": "2024-06-01",
     "UpdatedDate": "2024-06-10"
   },
@@ -187,7 +187,7 @@
     "MeetingLink": "https://example.com/meeting-link",
     "InstructorContact": "nobleson@example.com",
     "AdditionalMaterials": ["Lecture notes", "Exercise sheets"],
-    "SessionID": "DS-12345",
+    "SessionID": "PI-12345",
     "CreatedDate": "2024-06-01",
     "UpdatedDate": "2024-06-10"
   },
@@ -235,7 +235,7 @@
     "MeetingLink": "https://example.com/meeting-link",
     "InstructorContact": "nobleson@example.com",
     "AdditionalMaterials": ["Lecture notes", "Exercise sheets"],
-    "SessionID": "DS-12345",
+    "SessionID": "PI-12345",
     "CreatedDate": "2024-06-01",
     "UpdatedDate": "2024-06-10"
   },
@@ -277,7 +277,7 @@
     "SessionCompleted": "Upcoming",
     "Location": "Online",
     "Days": ["Monday", "Wednesday", "Friday"],
-    "Time": ["Monday at 2pm", "Wednesday at 4pm", "Friday at 1pm"],
+    "Time": ["Monday at 14:00", "Wednesday at 16:00", "Friday at 13:00"],
     "Charge": 2000,
     "Notes": "Prepare by reviewing the latest lecture notes on hash tables.",
     "MeetingLink": "https://example.com/meeting-link",
@@ -286,6 +286,30 @@
     "SessionID": "DS-12345",
     "CreatedDate": "2024-06-01",
     "UpdatedDate": "2024-06-10"
-  }
+  },
+  {
+  "ID": 14,
+  "Tutor": "Ella",
+  "Topic": "Database Administration",
+  "Subject": "SQL Queries",
+  "Level": "University",
+  "StartDate": "2024-07-21",
+  "EndDate": "2024-07-22",
+  "DurationOfMeeting": 140,
+  "PaymentMethod": "Credit Card",
+  "SessionStatus": "Accepted",
+  "SessionCompleted": "Upcoming",
+  "Location": "Online",
+  "Days": ["Monday"],
+  "Time": ["Monday at 14:00"],
+  "Charge": 2000,
+  "Notes": "Prepare by reviewing the latest lecture notes on SQL queries.",
+  "MeetingLink": "https://example.com/meeting-link",
+  "InstructorContact": "ella@example.com",
+  "AdditionalMaterials": ["Lecture notes", "Exercise sheets"],
+  "SessionID": "DB-12346",
+  "CreatedDate": "2024-07-20",
+  "UpdatedDate": "2024-07-20"
+}
   
 ]
