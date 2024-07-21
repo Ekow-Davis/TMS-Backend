@@ -1,0 +1,55 @@
+{
+  "pendingPayments": [
+    {
+      "id": 1,
+      "tutor": "Ella",
+      "amount": 100,
+      "status": "Pending"
+    },
+    {
+      "id": 2,
+      "tutor": "Joshua",
+      "amount": 150,
+      "status": "Pending"
+    }
+  ],
+  "upcomingSessions": [
+    {
+      "id": 1,
+      "tutor": "Ella",
+      "date": "2024-07-27",
+      "time": "13:00 - 15:00",
+      "topic": "Math"
+    },
+    {
+      "id": 2,
+      "tutor": "Joshua",
+      "date": "2024-07-30",
+      "time": "11:00 - 15:00",
+      "topic": "Science"
+    }
+  ],
+  "completedSessions": {
+    "total": 20,
+    "completed": 15
+  },
+  "sessionCounts": {
+    "weekly": [
+      { "day": "Monday", "count": 2 },
+      { "day": "Tuesday", "count": 3 },
+      { "day": "Wednesday", "count": 1 },
+      { "day": "Thursday", "count": 4 },
+      { "day": "Friday", "count": 5 },
+      { "day": "Saturday", "count": 0 },
+      { "day": "Sunday", "count": 1 }
+    ],
+    "monthly": [
+      { "month": "January", "count": 10 },
+      { "month": "February", "count": 12 },
+      { "month": "March", "count": 8 },
+      { "month": "April", "count": 15 },
+      { "month": "May", "count": 9 },
+      { "month": "June", "count": 14 }
+    ]
+  }
+}

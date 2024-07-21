@@ -7,9 +7,7 @@ import sessionData from '../../Placeholders/bookedSessions.json';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { Dialog, DialogTitle } from '@headlessui/react';
 
-const locales = {
-  'en-US': enUS,
-};
+const locales = { 'en-US': enUS };
 
 const localizer = dateFnsLocalizer({
   format,
@@ -37,13 +35,28 @@ const getNextDayOfWeek = (startDate, dayOfWeek) => {
   return resultDate;
 };
 
-
 const ScheduledSessionsPage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = (event) => {
-    setSelectedEvent(event);
+    console.log('Event:', event);
+    console.log('Resource:', event.resource);
+
+    const simplifiedEvent = {
+      title: event.title,
+      Tutor: event.resource.Tutor,
+      Topic: event.resource.Topic,
+      Subject: event.resource.Subject,
+      Level: event.resource.Level,
+      DurationOfMeeting: event.resource.DurationOfMeeting,
+      Location: event.resource.Location,
+      MeetingLink: event.resource.MeetingLink,
+      InstructorContact: event.resource.InstructorContact,
+      AdditionalMaterials: event.resource.AdditionalMaterials,
+      Notes: event.resource.Notes
+    };
+    setSelectedEvent(simplifiedEvent);
     setIsOpen(true);
   };
 
@@ -57,7 +70,6 @@ const ScheduledSessionsPage = () => {
         .flatMap((session) =>
           session.Days.map((day, index) => {
             const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].indexOf(day);
-
             const startDate = getNextDayOfWeek(session.StartDate, dayOfWeek);
             const startTime = parse(`${format(startDate, 'yyyy-MM-dd')} ${session.Time[index]}`, 'yyyy-MM-dd HH:mm', new Date());
             const endTime = new Date(startTime.getTime() + session.DurationOfMeeting * 60000);
@@ -74,8 +86,6 @@ const ScheduledSessionsPage = () => {
         )
     : [];
 
-  console.log('Events:', events);
-
   return (
     <div className="flex h-screen">
       <Sidebar />
@@ -88,14 +98,11 @@ const ScheduledSessionsPage = () => {
             startAccessor="start"
             endAccessor="end"
             style={{ height: '100%' }}
-            eventPropGetter={(event) => {
-              console.log('Event:', event);
-              return {
-                style: {
-                  backgroundColor: event.backgroundColor,
-                },
-              };
-            }}
+            eventPropGetter={(event) => ({
+              style: {
+                backgroundColor: event.backgroundColor,
+              },
+            })}
             onSelectEvent={openModal}
           />
         </div>
@@ -103,7 +110,7 @@ const ScheduledSessionsPage = () => {
 
       <Dialog open={isOpen} onClose={closeModal} className="fixed z-10 inset-0 overflow-y-auto">
         <div className="flex items-center justify-center min-h-screen px-4 text-center">
-          <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+          
           <span className="inline-block h-screen align-middle" aria-hidden="true">&#8203;</span>
           <div className="inline-block bg-white rounded-lg p-6 shadow-xl transform transition-all align-middle">
             {selectedEvent && (
@@ -112,40 +119,20 @@ const ScheduledSessionsPage = () => {
                   {selectedEvent.title}
                 </DialogTitle>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    <strong>Tutor:</strong> {selectedEvent.resource.Tutor}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    <strong>Topic:</strong> {selectedEvent.resource.Topic}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    <strong>Subject:</strong> {selectedEvent.resource.Subject}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    <strong>Level:</strong> {selectedEvent.resource.Level}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    <strong>Duration:</strong> {selectedEvent.resource.DurationOfMeeting} minutes
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    <strong>Location:</strong> {selectedEvent.resource.Location}
-                  </p>
-                  {selectedEvent.resource.Location === 'Online' && (
+                  <p className="text-sm text-gray-500"><strong>Tutor:</strong> {selectedEvent.Tutor}</p>
+                  <p className="text-sm text-gray-500"><strong>Topic:</strong> {selectedEvent.Topic}</p>
+                  <p className="text-sm text-gray-500"><strong>Subject:</strong> {selectedEvent.Subject}</p>
+                  <p className="text-sm text-gray-500"><strong>Level:</strong> {selectedEvent.Level}</p>
+                  <p className="text-sm text-gray-500"><strong>Duration:</strong> {selectedEvent.DurationOfMeeting} minutes</p>
+                  <p className="text-sm text-gray-500"><strong>Location:</strong> {selectedEvent.Location}</p>
+                  {selectedEvent.Location === 'Online' && (
                     <>
-                      <p className="text-sm text-gray-500">
-                        <strong>Meeting Link:</strong> <a href={selectedEvent.resource.MeetingLink} target="_blank" rel="noopener noreferrer">{selectedEvent.resource.MeetingLink}</a>
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        <strong>Instructor Contact:</strong> {selectedEvent.resource.InstructorContact}
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        <strong>Additional Materials:</strong> {selectedEvent.resource.AdditionalMaterials.join(', ')}
-                      </p>
+                      <p className="text-sm text-gray-500"><strong>Meeting Link:</strong> <a href={selectedEvent.MeetingLink} target="_blank" rel="noopener noreferrer">{selectedEvent.MeetingLink}</a></p>
+                      <p className="text-sm text-gray-500"><strong>Instructor Contact:</strong> {selectedEvent.InstructorContact}</p>
+                      <p className="text-sm text-gray-500"><strong>Additional Materials:</strong> {selectedEvent.AdditionalMaterials.join(', ')}</p>
                     </>
                   )}
-                  <p className="text-sm text-gray-500">
-                    <strong>Notes:</strong> {selectedEvent.resource.Notes}
-                  </p>
+                  <p className="text-sm text-gray-500"><strong>Notes:</strong> {selectedEvent.Notes}</p>
                 </div>
                 <div className="mt-4">
                   <button
