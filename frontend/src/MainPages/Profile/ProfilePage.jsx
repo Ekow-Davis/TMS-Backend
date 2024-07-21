@@ -42,8 +42,8 @@ const MessagePage = () => {
       <PSidebar />
       <div className="flex-grow p-8">
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h1 className="text-2xl font-semibold mb-4">My Profile</h1>
-          <div className="flex items-center mb-6">
+          <h1 className="text-2xl text-center font-semibold mb-4">My Profile</h1>
+          <div className="flex text-center justify-center items-center mb-6">
             <div className="relative w-20 h-20 mr-4">
               <img
                 src="https://via.placeholder.com/100"
@@ -61,7 +61,7 @@ const MessagePage = () => {
               <h2 className="text-xl font-semibold">
                 {userInfo.firstName} {userInfo.lastName}
               </h2>
-              <p className="text-gray-500">{userInfo.city}, {userInfo.country}</p>
+              <p className="text-gray-500">{userInfo.email}</p>
             </div>
           </div>
           <div className="mb-4">

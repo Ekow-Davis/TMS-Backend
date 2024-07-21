@@ -5,7 +5,7 @@ import { enUS } from 'date-fns/locale';
 import Sidebar from '../../Components/Layout/Sidebar';
 import sessionData from '../../Placeholders/bookedSessions.json';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { Dialog } from '@headlessui/react';
+import { Dialog, DialogTitle } from '@headlessui/react';
 
 const locales = {
   'en-US': enUS,
@@ -37,11 +37,6 @@ const getNextDayOfWeek = (startDate, dayOfWeek) => {
   return resultDate;
 };
 
-const parseTime = (timeString) => {
-  const [time, period] = timeString.split(' ');
-  const [hours, minutes] = time.split(':').map(Number);
-  return new Date(0, 0, 0, period === 'pm' ? hours + 12 : hours, minutes);
-};
 
 const ScheduledSessionsPage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -113,9 +108,9 @@ const ScheduledSessionsPage = () => {
           <div className="inline-block bg-white rounded-lg p-6 shadow-xl transform transition-all align-middle">
             {selectedEvent && (
               <>
-                <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
+                <DialogTitle as="h3" className="text-lg font-medium leading-6 text-gray-900">
                   {selectedEvent.title}
-                </Dialog.Title>
+                </DialogTitle>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
                     <strong>Tutor:</strong> {selectedEvent.resource.Tutor}

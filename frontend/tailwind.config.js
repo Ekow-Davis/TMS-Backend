@@ -8,6 +8,9 @@ module.exports = {
       colors: {
         'custom-blue': '#ced0f2',
         'custom-purple': '#21266a'
+      },
+      transitionProperty: {
+        'width': 'width',
       }
     },
   },

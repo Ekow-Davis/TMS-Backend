@@ -12,6 +12,10 @@ import NDetailPage from "./MainPages/Notification/NDetailPage"
 import PaymentHistoryPage from "./MainPages/Payment/PaymentHistoryPage"
 import PaymentPage from "./MainPages/Payment/PaymentPage"
 import ProfilePage from "./MainPages/Profile/ProfilePage"
+import SecurityPage from "./MainPages/Profile/SecurityPage"
+import SettingsPage from "./MainPages/Profile/SettingsPage"
+import NSettingsPage from "./MainPages/Profile/NSettingsPage"
+import ExportDataPage from "./MainPages/Profile/ExportDataPage"
 import SessionHistoryPage from "./MainPages/Session/SessionHistoryPage"
 import RequestSessionPage from "./MainPages/Session/RequestSessionPage"
 import RequestSessionFormPage from "./MainPages/Session/RequestSessionFormPage"
@@ -51,6 +55,10 @@ function App() {
       <Route path="/PaymentHistory" element={<PaymentHistoryPage />} />
         <Route path="/Payment" element={<PaymentPage />} />
       <Route path="/Profile" element={<ProfilePage />} />
+        <Route path="/Security" element={<SecurityPage />} />
+        <Route path="/Settings" element={<SettingsPage />} />
+        <Route path="/NSettings" element={<NSettingsPage />} />
+        <Route path="/ExportData" element={<ExportDataPage />} />
       <Route path="/Sessions" element={<SessionHistoryPage />} />
         <Route path="/BookedSessions" element={<BookedSessionsPage />} />
         <Route path="/RequestSessionPage" element={<RequestSessionPage forms={forms} deleteForm={deleteForm} />} />
