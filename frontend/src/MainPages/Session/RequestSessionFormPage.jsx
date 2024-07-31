@@ -84,8 +84,8 @@ const RequestSessionFormPage = ({addForm}) => {
             <FormInputBox 
               width="w-full" 
               type="text" 
-              miniLabel="Name" 
-              label="First Name"
+              miniLabel="First Name" 
+              label="Name"
               value={otherNames}              
               setValue={setOtherNames} 
             />
@@ -165,7 +165,7 @@ const RequestSessionFormPage = ({addForm}) => {
               miniLabel="Date"
               value={dateOfBirth}
               setValue={setDateOfBirth}
-            />
+            />            
             <FormInputBox 
               width="w-full" 
               type="text"           
@@ -176,7 +176,7 @@ const RequestSessionFormPage = ({addForm}) => {
           </CollapsableBox>
 
       <CollapsableBox label="Session Information" icon={<faChevronDown />}>
-        <p>This Form Contains All Details related to Session Request</p>
+        <p className='my-2 '>This Form Contains All Details related to Session Request</p>
 
         <FormInputBox 
           width="w-full" 
