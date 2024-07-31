@@ -18,7 +18,7 @@ const Dashboard = () => {
   }
 
   const pendingPayments = data.pendingPayments.map((payment) => (
-    <div key={payment.id} className="p-4 bg-white rounded-lg shadow-md mb-4 transform transition-transform hover:scale-105">
+    <div key={payment.id} className="p-4 bg-white rounded-lg shadow-md mb-4">
       <p className="font-bold">Tutor: {payment.tutor}</p>
       <p>Amount: ${payment.amount}</p>
       <p>Status: {payment.status}</p>
@@ -26,7 +26,7 @@ const Dashboard = () => {
   ));
 
   const upcomingSessions = data.upcomingSessions.map((session) => (
-    <div key={session.id} className="p-4 bg-white rounded-lg shadow-md mb-4 transform transition-transform hover:scale-105">
+    <div key={session.id} className="p-4 bg-white rounded-lg shadow-md mb-4">
       <p className="font-bold">Tutor: {session.tutor}</p>
       <p>Date: {session.date}</p>
       <p>Time: {session.time}</p>
@@ -74,24 +74,24 @@ const Dashboard = () => {
         <h1 className="text-3xl font-bold mb-6 text-custom-purple">Dashboard</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-          <div className="col-span-1 md:col-span-2 bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+          <div className="col-span-1 md:col-span-2 bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4 text-custom-purple">Pending Payments</h2>
             {pendingPayments}
           </div>
 
-          <div className="col-span-1 bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+          <div className="col-span-1 bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4 text-custom-purple">Upcoming Sessions Today</h2>
             {upcomingSessions}
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4 text-custom-purple">Completed Sessions</h2>
             <Pie data={pieData} />
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4 text-custom-purple">Sessions Overview</h2>
             <div className="flex justify-between mb-4">
               <button onClick={() => setView('weekly')} className="px-4 py-2 bg-custom-purple text-white rounded">

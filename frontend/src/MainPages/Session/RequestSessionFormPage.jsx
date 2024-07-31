@@ -71,7 +71,7 @@ const RequestSessionFormPage = ({addForm}) => {
     <>
     <div className='flex '>
       <Sidebar />
-      <div className='flex-grow'>
+      <div className='flex-grow bg-gray-100 overflow-auto'>
         <div className='text-3xl mx-12 mb-2 mt-6'>
           <p>
           Session Request Form
@@ -79,7 +79,7 @@ const RequestSessionFormPage = ({addForm}) => {
           <img src="" alt=''/>
         </div>
         
-        <form onSubmit={handleSessionSubmit} className="p-4">
+        <form onSubmit={handleSessionSubmit} className="p-4 mx-10">
           <CollapsableBox label="Personal Information" icon={<faChevronDown />}>
             <FormInputBox 
               width="w-full" 

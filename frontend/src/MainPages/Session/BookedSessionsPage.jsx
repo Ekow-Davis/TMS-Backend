@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay } from 'date-fns';
 import { enUS } from 'date-fns/locale';
+import { Link } from 'react-router-dom';
 import Sidebar from '../../Components/Layout/Sidebar';
 import sessionData from '../../Placeholders/bookedSessions.json';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -89,8 +90,15 @@ const ScheduledSessionsPage = () => {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <div className="flex-grow p-8 bg-gray-100 overflow-hidden">
-        <h1 className="text-2xl font-bold mb-6">Scheduled Sessions</h1>
+      <div className="flex-grow p-8 bg-gray-100 overflow-auto">
+        <h1 className="text-3xl font-bold my-4">
+          Scheduled Sessions
+        </h1>
+        <Link to='/RequestSessionPage/RequestSessionFormPage'>
+          <button className='bg-custom-purple hover:bg-custom-purple/80 text-white rounded-lg px-4 py-2 my-4'>
+            Request Session
+          </button>
+        </Link>
         <div className="bg-white p-6 rounded-lg shadow-lg h-full">
           <Calendar
             localizer={localizer}
@@ -104,8 +112,8 @@ const ScheduledSessionsPage = () => {
               },
             })}
             onSelectEvent={openModal}
-          />
-        </div>
+          />          
+        </div>        
       </div>
 
       <Dialog open={isOpen} onClose={closeModal} className="fixed z-10 inset-0 overflow-y-auto">
@@ -144,10 +152,10 @@ const ScheduledSessionsPage = () => {
                   </button>
                 </div>
               </>
-            )}
-          </div>
+            )}            
+          </div>            
         </div>
-      </Dialog>
+      </Dialog>        
     </div>
   );
 };

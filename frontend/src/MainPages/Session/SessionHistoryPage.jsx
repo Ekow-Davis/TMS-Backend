@@ -1,138 +1,108 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../../Components/Layout/Sidebar';  
-
-const sessions = [
-  {
-    id: 1,
-    title: 'React Basics',
-    date: '2024-07-01',
-    time: '10:00 AM',
-    duration: '2 hours',
-    status: 'Completed',
-    outcomes: 'Learned about components and state management in React.',
-    recording: 'https://link-to-recording.com',
-    participants: ['John Doe', 'Jane Smith'],
-    feedback: 'Great session!',
-    rating: 4.5,
-    actionItems: ['Review state management', 'Practice building components'],
-  },
-  {
-    id: 2,
-    title: 'Advanced JavaScript',
-    date: '2024-06-20',
-    time: '02:00 PM',
-    duration: '1.5 hours',
-    status: 'Completed',
-    outcomes: 'Covered closures, promises, and async/await.',
-    recording: 'https://link-to-recording.com',
-    participants: ['John Doe', 'Sam Wilson'],
-    feedback: 'Very informative!',
-    rating: 4.7,
-    actionItems: ['Practice promises', 'Read more on async/await'],
-  },
-  // Add more session data as needed
-];
+import sessionData from '../../Placeholders/bookedSessions.json'; // Import JSON data
 
 const SessionsHistoryPage = () => {
   const [selectedSession, setSelectedSession] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [filter, setFilter] = useState('All');
+  const [filter, setFilter] = useState('Upcoming');
 
-  const handleSessionClick = (session) => {
-    setSelectedSession(session);
-  };
+  // Get the current date to filter out past sessions
+  const currentDate = new Date().toISOString().split('T')[0];
 
-  const filteredSessions = sessions.filter((session) => {
+  // Filter sessions by date and status
+  const filteredSessions = sessionData.filter((session) => {
     return (
-      (filter === 'All' || session.status === filter) &&
-      (session.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        session.date.includes(searchQuery))
+      (filter === 'Upcoming' ? session.StartDate >= currentDate : filter === 'All') &&
+      (session.Topic.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        session.StartDate.includes(searchQuery))
     );
   });
 
   return (
     <div className='flex'>
       <Sidebar />
-      <div className='flex-grow'>
-    <div className="container mx-auto overflow-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Sessions History</h1>
-
-      <div className="mb-4">
-        <input
-          type="text"
-          placeholder="Search sessions..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="p-2 border rounded"
-        />
-        <select
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-          className="p-2 border rounded ml-2"
-        >
-          <option value="All">All</option>
-          <option value="Completed">Completed</option>
-          <option value="Canceled">Canceled</option>
-        </select>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredSessions.map((session) => (
-          <div
-            key={session.id}
-            className="p-4 border rounded hover:shadow-lg cursor-pointer"
-            onClick={() => handleSessionClick(session)}
-          >
-            <h2 className="text-xl font-bold">{session.title}</h2>
-            <p>{session.date}</p>
-            <p>{session.time}</p>
-            <p>{session.duration}</p>
-            <p>Status: {session.status}</p>
+      <div className='flex-grow bg-gray-100 overflow-auto'>
+        <div className="container mx-auto overflow-auto p-4">
+          <div className='flex'>
+            <h1 className="text-2xl font-bold mb-4">Sessions History</h1>            
           </div>
-        ))}
-      </div>
 
-      {selectedSession && (
-        <div className="mt-4 p-4 border rounded">
-          <h2 className="text-xl font-bold mb-2">{selectedSession.title}</h2>
-          <p>Date: {selectedSession.date}</p>
-          <p>Time: {selectedSession.time}</p>
-          <p>Duration: {selectedSession.duration}</p>
-          <p>Status: {selectedSession.status}</p>
-          <h3 className="font-bold mt-2">Outcomes:</h3>
-          <p>{selectedSession.outcomes}</p>
-          <h3 className="font-bold mt-2">Recording:</h3>
-          <a href={selectedSession.recording} className="text-blue-500">
-            View Recording
-          </a>
-          <h3 className="font-bold mt-2">Participants:</h3>
-          <ul>
-            {selectedSession.participants.map((participant, index) => (
-              <li key={index}>{participant}</li>
-            ))}
-          </ul>
-          <h3 className="font-bold mt-2">Feedback:</h3>
-          <p>{selectedSession.feedback}</p>
-          <h3 className="font-bold mt-2">Rating:</h3>
-          <p>{selectedSession.rating} / 5</p>
-          <h3 className="font-bold mt-2">Action Items:</h3>
-          <ul>
-            {selectedSession.actionItems.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+          <div className="mb-4">
+            <input
+              type="text"
+              placeholder="Search sessions..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="p-2 border rounded"
+            />
+
+            <select
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="p-2 border rounded ml-2"
+            >
+              <option value="Upcoming">Upcoming</option>
+              <option value="All">All</option>
+              <option value="Accepted">Accepted</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div className="flex">
+            <div className="w-1/3 pr-4">
+              <h2 className="text-xl font-bold mb-2">Upcoming Sessions</h2>
+              <div className="flex flex-col">
+                {filteredSessions.map((session) => (
+                  <div
+                    key={session.SessionID}
+                    className="p-4 border rounded mb-2 cursor-pointer hover:shadow-lg"
+                    onClick={() => setSelectedSession(session)}
+                  >
+                    <h3 className="text-lg font-semibold">{session.Topic}</h3>
+                    <p>{session.StartDate}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="w-2/3 pl-4">
+              {selectedSession && (
+                <div className="p-4 border rounded">
+                  <h2 className="text-xl font-bold mb-2">{selectedSession.Topic}</h2>
+                  <p>Tutor: {selectedSession.Tutor}</p>
+                  <p>Date: {selectedSession.StartDate}</p>
+                  <p>Time: {selectedSession.Time[0]}</p>
+                  <p>Duration: {Math.floor(selectedSession.DurationOfMeeting / 60)} hours {selectedSession.DurationOfMeeting % 60} minutes</p>
+                  <p>Location: {selectedSession.Location}</p>
+                  <p>Charge: ${selectedSession.Charge.toFixed(2)}</p>
+                  <h3 className="font-bold mt-2">Meeting Link:</h3>
+                  <a href={selectedSession.MeetingLink} className="text-blue-500">
+                    Join Meeting
+                  </a>
+                  <h3 className="font-bold mt-2">Instructor Contact:</h3>
+                  <p>{selectedSession.InstructorContact}</p>
+                  <h3 className="font-bold mt-2">Additional Materials:</h3>
+                  <ul>
+                    {selectedSession.AdditionalMaterials.map((material, index) => (
+                      <li key={index}>{material}</li>
+                    ))}
+                  </ul>
+                  <h3 className="font-bold mt-2">Notes:</h3>
+                  <p>{selectedSession.Notes}</p>
+                  <p>Status: {selectedSession.SessionStatus}</p>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-      )}
-    </div>
-    </div>
-    <div>
-      <Link to="/bookedSessions">
-      <button>
-        Booked Sessions
-      </button>
-      </Link>
-    </div>
+        <Link to="/bookedSessions">
+              <button className='p-2 bg-custom-purple rounded-[10px] mx-3 text-white hover:bg-custom-blue hover:text-black'>
+                Booked Sessions
+              </button>
+            </Link>
+      </div>
     </div>
   );
 };

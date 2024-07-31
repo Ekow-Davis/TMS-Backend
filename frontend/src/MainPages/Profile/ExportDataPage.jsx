@@ -21,7 +21,7 @@ const ExportDataPage = () => {
             <p className="text-gray-700">Click the button below to export all your data:</p>
             <button
               onClick={handleExportData}
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
+              className="mt-4 bg-custom-purple text-white px-4 py-2 rounded-md"
             >
               Export Data
             </button>

@@ -27,8 +27,8 @@ const PSidebar = () => {
         case '/Settings':
           setActiveItem('Settings');
           break;
-        case '/AccountDetails':
-          setActiveItem('AccountDetails');
+        case '/NSettings':
+          setActiveItem('NSettings');
           break;
         case '/Message':
           setActiveItem('Security');
@@ -55,11 +55,11 @@ const PSidebar = () => {
         <li className="mb-4">
           <Link to="/Settings"className={`${activeItem === 'Settings' ? 'text-sky-500' : 'text-custom-purple' }`}>Settings</Link>
         </li>
-        <li className="mb-4">
+        {/* <li className="mb-4">
           <Link to="/AccountDetails" className={`${activeItem === 'AccountDetails' ? 'text-sky-500' : 'text-custom-purple' }`}>Account Details</Link>
-        </li>
+        </li> */}
         <li className="mb-4">
-          <Link to="/NSettings" className={`${activeItem === 'Profile' ? 'text-sky-500' : 'text-custom-purple' }`}>Notifications</Link>
+          <Link to="/NSettings" className={`${activeItem === 'NSettings' ? 'text-sky-500' : 'text-custom-purple' }`}>Notifications</Link>
         </li>
         <li className="mb-4">
           <Link to="/ExportData" className={`${activeItem === 'ExportData' ? 'text-sky-500' : 'text-custom-purple' }`}>Export Data</Link>

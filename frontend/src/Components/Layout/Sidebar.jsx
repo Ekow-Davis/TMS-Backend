@@ -26,6 +26,9 @@ const Sidebar = () => {
       case '/Sessions':
         setActiveItem('SessionsHistory');
         break;
+          case '/bookedSessions':
+            setActiveItem('SessionsHistory');
+            break;
       case '/PaymentHistory':
         setActiveItem('PaymentHistory');
         break;
@@ -38,6 +41,18 @@ const Sidebar = () => {
       case '/Profile':
         setActiveItem('Profile');
         break;
+        case '/Security':
+          setActiveItem('Profile');
+          break;
+        case '/Settings':
+          setActiveItem('Profile');
+          break;
+        case '/ExportData':
+          setActiveItem('Profile');
+          break;
+        case '/NSettings':
+          setActiveItem('Profile');
+          break;
       case '/Help':
         setActiveItem('Help');
         break;

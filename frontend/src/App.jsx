@@ -10,6 +10,7 @@ import MDetailPage from "./MainPages/Message/MDetailPage"
 import NotificationPage from "./MainPages/Notification/NotificationPage"
 import NDetailPage from "./MainPages/Notification/NDetailPage"
 import PaymentHistoryPage from "./MainPages/Payment/PaymentHistoryPage"
+import MakePayment from "./MainPages/Payment/MakePayment"
 import PaymentPage from "./MainPages/Payment/PaymentPage"
 import ProfilePage from "./MainPages/Profile/ProfilePage"
 import SecurityPage from "./MainPages/Profile/SecurityPage"
@@ -43,28 +44,37 @@ function App() {
     <Routes>
       <Route path="/Dashboard" element={<DashboardPage />} />
       <Route path="/Help" element={<HelpPage />} />
+
       <Route path="/" element={<HomePage />} />
         <Route path="/Pricing" element={<PricingPage />} />
         <Route path="/Student" element={<StudentPage />} />
         <Route path="/Tutor" element={<TutorPage />} />        
-        <Route path="/AboutUs" element={<AboutUsPage />} />        
+        <Route path="/AboutUs" element={<AboutUsPage />} />  
+
       <Route path="/Message" element={<MessagePage />} />
         <Route path="/MDetail" element={<MDetailPage />} />
+
       <Route path="/Notification" element={<NotificationPage />} />
         <Route path="/NDetail/:id" element={<NDetailPage />} />
+
       <Route path="/PaymentHistory" element={<PaymentHistoryPage />} />
         <Route path="/Payment" element={<PaymentPage />} />
+        <Route path="/MakePayment" element={<MakePayment />} />
+
       <Route path="/Profile" element={<ProfilePage />} />
         <Route path="/Security" element={<SecurityPage />} />
         <Route path="/Settings" element={<SettingsPage />} />
         <Route path="/NSettings" element={<NSettingsPage />} />
         <Route path="/ExportData" element={<ExportDataPage />} />
+
       <Route path="/Sessions" element={<SessionHistoryPage />} />
         <Route path="/BookedSessions" element={<BookedSessionsPage />} />
         <Route path="/RequestSessionPage" element={<RequestSessionPage forms={forms} deleteForm={deleteForm} />} />
           <Route path="/RequestSessionPage/RequestSessionFormPage" element={<RequestSessionFormPage addForm={addForm} />} />
+
       <Route path="/SignUp" element={<SignUpPage />} />
       <Route path="/SignIn" element={<SignInPage />} />
+
     </Routes>
     </BrowserRouter>
   );
