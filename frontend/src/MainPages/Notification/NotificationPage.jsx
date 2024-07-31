@@ -22,15 +22,15 @@ const NotificationPage = () => {
     <div className="flex">
       <Sidebar />
       <div className="flex-grow p-8 bg-gray-100">
-        <h1 className="text-2xl font-bold mb-6">Notifications</h1>
+        <h1 className="text-2xl mx-8 font-bold mb-6">Notifications</h1>
         <div className="max-w-4xl mx-auto">
           {notifications.map((notification) => (
             <div
               key={notification.id}
               className={`p-4 mb-4 rounded-lg cursor-pointer transition-all ${
                 notification.Status === 'Unread'
-                  ? 'bg-white hover:bg-gray-100 hover:border-r-[15px] hover:text-custom-purple hover:border-custom-blue'
-                  : 'bg-gray-300 text-black'
+                  ? 'bg-white hover:bg-gray-200 hover:border-r-[15px] hover:text-custom-purple hover:border-custom-blue'
+                  : 'bg-gray-400 text-black'
               }`}
               onClick={() => handleReadNotification(notification.id)}
             >

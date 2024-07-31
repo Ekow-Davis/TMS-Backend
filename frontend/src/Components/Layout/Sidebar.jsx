@@ -72,7 +72,7 @@ const Sidebar = () => {
           <Bars3Icon className="h-6 w-6" />
         </button>
       </div>
-      <aside className={`fixed inset-0 z-40 transform ${isMobileOpen ? 'translate-x-0 bg-white' : '-translate-x-full'} md:transform-none md:relative md:translate-x-0 transition-transform duration-200 w- ease-in-out md:w-${expanded ? '96' : '24'}`}>
+      <aside className={`fixed inset-0 z-40 transform ${isMobileOpen ? 'translate-x-0 bg-white' : '-translate-x-full'} md:transform-none md:relative md:translate-x-0 transition-transform duration-200 w- ease-in-out md:w-${expanded ? '72' : '24'}`}>
         <div className="flex items-center justify-between p-4">
           <button onClick={handleDesktopToggle} className="hidden md:block">
             {expanded ? <img src="../Images/main-logo-black-transparent.png" alt="Logo" className="h-32 ml-12 items-center justify-center" /> : <BookOpenIcon className="h-6 w-6 my-10 justify-center items-center text-center" />}
@@ -134,7 +134,6 @@ const Sidebar = () => {
             </li>
           </ul>
         </nav>
-
         <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div className="flex min-h-full items-center justify-center p-4">
@@ -152,7 +151,6 @@ const Sidebar = () => {
             </div>
           </div>
         </Dialog>
-        
       </aside>
     </>
   );
