@@ -14,24 +14,53 @@ const SignInForm = () => {
 
 
   const handleSignIn = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-  const signInData = {
-    username: username,
-    email: email,
-    password: password,
-  };
+    const signInData = {
+        username: username,
+        email: email,
+        password: password,
+    };
 
-  const signInDataString = JSON.stringify(signInData)
+    try {
+        // Send login request to the server
+        const response = await fetch('https://5z95skmt-8000.uks1.devtunnels.ms/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(signInData), // Send the user credentials
+        });
 
-//Saves the data in the local memory and console
-    localStorage.setItem('signInData', signInDataString);
+        // Check if the response is OK (status code 200–299)
+        if (!response.ok) {
+            // Handle error
+            const errorData = await response.json();
+            alert(`Error: ${errorData.message || 'Login failed'}`);
+            return;
+        }
 
-    console.log('User Data:', signInData);
-//Sends a prompt to the user if the formData is properly saved
-    alert("Success")
+        const data = await response.json();
 
-}
+        // Assuming your API returns a token upon successful login
+        const { token, user } = data;
+
+        // Save the token and user info to localStorage
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+
+        console.log('User Data:', user);
+        alert("Login successful");
+
+        // Redirect to the dashboard or another page
+        window.location.href = '/Dashboard'; // Update this to the path you want
+
+    } catch (error) {
+        console.error('Login error:', error);
+        alert("An error occurred during login. Please try again.");
+    }
+};
+
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -88,11 +117,11 @@ const SignInForm = () => {
             </div>
 
             
-            <Link to='/Dashboard'>
-              <button className='text-white text-xl font-bold bg-custom-purple rounded-xl w-full px-10 py-4 my-3' type='submit'>
+            
+              <button type="submit" className='text-white text-xl font-bold bg-custom-purple rounded-xl w-full px-10 py-4 my-3'>
                 Sign In
               </button>
-            </Link>
+            
 
           </form>
         </div>

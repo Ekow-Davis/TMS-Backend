@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCubes, faDoorOpen, faComment, faBell, faCreditCard, faUser, faCalendar, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCubes, faDoorOpen,  faBell, faCreditCard, faUser, faCalendar, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { Bars3Icon, BookOpenIcon } from '@heroicons/react/24/outline';
 
 const Sidebar = () => {
@@ -56,7 +56,7 @@ const Sidebar = () => {
         case '/NSettings':
           setActiveItem('Profile');
           break;
-      case '/Help':
+      case '/ContactUs':
         setActiveItem('Help');
         break;
       default:
@@ -85,45 +85,45 @@ const Sidebar = () => {
           <ul>
             <hr size="2" />
             <li>
-              <Link to="/Dashboard" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Dashboard' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}>
+              <Link to="/Dashboard" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Dashboard' ? 'bg-custom-purple text-white' : 'hover:bg-blue-100'}`}>
                 <FontAwesomeIcon icon={faCubes} className="ml-3 mr-10" />
                 {expanded && "Dashboard"}
               </Link>
             </li>
             <li>
-              <Link to="/Sessions" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'SessionsHistory' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}>
+              <Link to="/Sessions" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'SessionsHistory' ? 'bg-custom-purple text-white' : 'hover:bg-blue-100'}`}>
                 <FontAwesomeIcon icon={faCalendar} className="ml-3 mr-11" />
                 {expanded && "Sessions"}
               </Link>
             </li>
             <li>
-              <Link to="/PaymentHistory" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'PaymentHistory' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}>
+              <Link to="/PaymentHistory" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'PaymentHistory' ? 'bg-custom-purple text-white' : 'hover:bg-blue-100'}`}>
                 <FontAwesomeIcon icon={faCreditCard} className="ml-3 mr-10" />
                 {expanded && "Payment"}
               </Link>
             </li>
             <li>
-              <Link to="/Notification" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Notification' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}>
+              <Link to="/Notification" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Notification' ? 'bg-custom-purple text-white' : 'hover:bg-blue-100'}`}>
                 <FontAwesomeIcon icon={faBell} className="ml-4 mr-10" />
                 {expanded && "Notification"}
               </Link>
             </li>
-            <li>
-              <Link to="/Message" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Message' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}>
+            {/* <li>
+              <Link to="/Message" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Message' ? 'bg-custom-purple text-white' : 'hover:bg-blue-100'}`}>
                 <FontAwesomeIcon icon={faComment} className="ml-4 mr-10" />
                 {expanded && "Message"}
               </Link>
-            </li>
+            </li> */}
             <li>
-              <Link to="/Profile" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Profile' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}>
+              <Link to="/Profile" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Profile' ? 'bg-custom-purple text-white' : 'hover:bg-blue-100'}`}>
                 <FontAwesomeIcon icon={faUser} className="ml-4 mr-10" />
                 {expanded && "Profile"}
               </Link>
             </li>
             <li>
-              <Link to="/Help" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Help' ? 'bg-custom-purple text-white' : 'hover:bg-custom-blue'}`}>
+              <Link to="/ContactUs" className={`block text-xl my-1 py-3 px-5 hover:bg-blue-100 rounded-md ml-2 mr-2 ${activeItem === 'Help' ? 'bg-custom-purple text-white' : 'hover:bg-blue-100'}`}>
                 <FontAwesomeIcon icon={faInfoCircle} className="ml-4 mr-9" />
-                {expanded && "Help"}
+                {expanded && "Feedback"}
               </Link>
             </li>
             <li>
@@ -138,13 +138,16 @@ const Sidebar = () => {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div className="flex min-h-full items-center justify-center p-4">
               <DialogPanel className="w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out transform">
-                <DialogTitle className="font-bold">Deactivate account</DialogTitle>
-                <Description>This will Log you out of the</Description>
-                <p>Are you sure you want to Log Out</p>
-                <div className="flex gap-4">
-                  <button onClick={() => setIsOpen(false)}>Cancel</button>
+                <DialogTitle className="font-bold text-2xl text-center"> Log Out</DialogTitle>
+                <Description className='p-1 text-xl m-2'>
+                  <p>Are you sure you want to sign out?</p>
+                  <p>This will log you out of the System</p>
+                </Description>
+                
+                <div className="flex justify-center gap-4">
+                  <button className='text-lg ' onClick={() => setIsOpen(false)}>Cancel</button>
                   <Link to="/">
-                    <button className="text-red-400" onClick={() => setIsOpen(false)}>Sign Out</button>
+                    <button className=" text-lg text-red-400" onClick={() => setIsOpen(false)}>Sign Out</button>
                   </Link>
                 </div>
               </DialogPanel>

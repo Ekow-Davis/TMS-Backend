@@ -1,10 +1,55 @@
 import React, { useState, useEffect } from 'react';
+import FeatureBox from '../../Components/FeatureBox';
 import HomeNav from '../Home/HomeNav';
 import Footer from '../../Components/Layout/Footer';
 import InfoDropdown from '../../Components/InfoDropdown';
 import FadeIn from '../../Components/FadeIn';
 
 const TutorPage = () => {
+
+  const features = [
+    {
+      imageSrc: './Images/HomePictures/manage.svg',
+      altText: 'Manage Sessions',
+      heading: 'Manage Sessions Effortlessly',
+      listItems: [
+        'Easily set your availability and manage your calendar in real-time.',
+        'Track upcoming sessions, cancellations, and reschedules instantly.',
+        'Stay informed with automated reminders for all your booked sessions.',
+        'Review student profiles and provide personalized teaching plans.',
+        'Update session details, feedback, and assignments directly on the platform.',
+      ],
+      imagePosition: 'left',
+    },
+    {
+      imageSrc: './Images/HomePictures/tutor-payment.svg',
+      altText: 'Efficient Payment Management',
+      heading: 'Efficient Payment Management',
+      listItems: [
+        'Receive payments directly after each session with secure and reliable transactions.',
+        'Manage invoices and payment history for all your students.',
+        'Set your rates and provide flexible pricing options for different sessions.',
+        'Track pending, completed, and future payments with ease.',
+        'Get notifications on upcoming payouts and invoice status.',
+      ],
+      imagePosition: 'right',
+    },
+    {
+      imageSrc: './Images/HomePictures/grow.svg',
+      altText: 'Grow as a Tutor',
+      heading: 'Grow as a Tutor',
+      listItems: [
+        'Receive feedback from students to continuously improve your sessions.',
+        'Track your performance metrics and increase your tutor rating.',
+        'Access resources and tips for becoming a more effective tutor.',
+        'Join a community of tutors for peer support and best practices.',
+        'Expand your client base with positive reviews and recommendations from students.',
+      ],
+      imagePosition: 'left',
+    },
+    
+  ]
+
   const faqItems = [
     { title: "How does scheduling work?", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus." },
     { title: "How do I track student progress?", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus." },
@@ -31,47 +76,27 @@ const TutorPage = () => {
   return (
     <>
       <HomeNav />
-      <header className="bg-custom-blue pt-44 text-white text-center py-20">
+      <header 
+            className="bg-custom-blue pt-44 mt-16 text-white text-center py-20 bg-cover bg-center" 
+            style={{ backgroundImage: `url('./Images/HomePictures/tutor.jpg')` }}
+          >
         <FadeIn>
-          <h1 className="text-5xl font-bold mb-4">Empower Your Teaching with [System Name]</h1>
+          <h1 className="text-5xl font-bold mb-4">Empower Your Teaching with TMServices</h1>
           <p className="text-xl mb-6">Enhance your tutoring experience with our comprehensive management tools.</p>
           <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-[#262ea2]">
             Sign Up Now
           </button>
         </FadeIn>
       </header>
-      <div className="container mx-auto py-20 px-4">
+      <div className="mx-auto py-20 px-4">
         <section className="mb-20">
         <FadeIn>
-        <div className="container mx-auto py-20 px-4">
+        <div className="mx-auto py-20 px-4">
           <section className="mb-20">
-            <h2 className="text-3xl font-bold mb-4 text-center">Key Benefits</h2>
-            <ul className="list-disc list-inside text-lg space-y-4">
-              <li className="flex items-center">
-                <img src="placeholder-image.png" alt="Personalized Learning" className="w-12 h-12 mr-4" />
-                <div className="transition transform hover:scale-105 hover:text-custom-purple">
-                  Personalized Learning
-                </div>
-              </li>
-              <li className="flex items-center">
-                <img src="placeholder-image.png" alt="Accessible Resources" className="w-12 h-12 mr-4" />
-                <div className="transition transform hover:scale-105 hover:text-custom-purple">
-                  Accessible Resources
-                </div>
-              </li>
-              <li className="flex items-center">
-                <img src="./Images/HomePictures/progress_tracking.png" alt="Progress Tracking" className="w-12 h-12 mr-4" />
-                <div className="transition transform hover:scale-105 hover:text-custom-purple">
-                  Progress Tracking
-                </div>
-              </li>
-              <li className="flex items-center">
-                <img src="placeholder-image.png" alt="Support and Communication" className="w-12 h-12 mr-4" />
-                <div className="transition transform hover:scale-105 hover:text-custom-purple">
-                  Support and Communication
-                </div>
-              </li>
-            </ul>
+          <h2 className="text-3xl font-bold text-center mb-12">Features</h2>
+          {features.map((feature, index) => (
+            <FeatureBox key={index} {...feature} />
+          ))}
           </section>
         </div>
       </FadeIn>

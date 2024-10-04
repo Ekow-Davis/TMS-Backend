@@ -69,11 +69,11 @@ const RequestSessionFormPage = ({addForm}) => {
 
   return (
     <>
-    <div className='flex '>
+    <div className='flex h-screen'>
       <Sidebar />
       <div className='flex-grow bg-gray-100 overflow-auto'>
-        <div className='text-3xl mx-12 mb-2 mt-6'>
-          <p>
+        <div className='text-3xl font-bold text-custom-heading mx-12 mb-2 mt-6'>
+          <p className='mt-8'>
           Session Request Form
           </p>
           <img src="" alt=''/>

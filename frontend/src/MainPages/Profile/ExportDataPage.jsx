@@ -1,6 +1,5 @@
 import React from 'react';
-import Sidebar from '../../Components/Layout/Sidebar';
-import PSidebar from './PSidebar';
+
 
 const ExportDataPage = () => {
   const handleExportData = () => {
@@ -9,13 +8,9 @@ const ExportDataPage = () => {
   };
 
   return (
-    <div className="flex h-screen">
-      <Sidebar />
-      <div className="flex-grow p-4 bg-white">
-    <div className="flex h-screen bg-gray-100">
-      <PSidebar />
+      
       <div className="flex-grow p-8">
-        <div className="bg-white p-6 rounded-lg shadow-md">
+        <div className=" p-6 ">
           <h1 className="text-2xl font-semibold mb-4">Export Data</h1>
           <div className="mb-4">
             <p className="text-gray-700">Click the button below to export all your data:</p>
@@ -28,9 +23,7 @@ const ExportDataPage = () => {
           </div>
         </div>
       </div>
-    </div>
-    </div>
-    </div>
+    
   );
 };
 

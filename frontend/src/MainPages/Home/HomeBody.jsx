@@ -1,6 +1,7 @@
 import React from 'react';
 import FadeIn from '../../Components/FadeIn';
 import FeatureBox from '../../Components/FeatureBox';
+import { Link } from 'react-router-dom';
 
 const HomeBody = () => {
   const features = [
@@ -98,15 +99,26 @@ const HomeBody = () => {
 
   return (
     <>
-      <header className="bg-custom-blue pt-44 text-white text-center py-20">
+      <header 
+            className="bg-custom-blue mt-16 pt-44 text-white text-center py-20 bg-cover bg-center" 
+            style={{ backgroundImage: `url('./Images/HomePictures/home.jpg')` }}
+          >
         <FadeIn>
-        <h1 className="text-5xl font-bold mb-4">Welcome to TMSServices</h1>
-        <p className="text-xl mb-6">Efficient management for your teaching business</p>
-        <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-[#262ea2]">
-          Get Started
-        </button>
+          <h1 className="text-5xl font-bold mb-4 fade-in">
+            Welcome to TMSServices
+          </h1>
+          <p className="text-xl mb-6 fade-in">
+            Efficient management for your teaching business
+          </p>
+          <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-custom-blue fade-in">
+            <Link to="/SignIn">
+              Get Started
+            </Link>
+          </button>
         </FadeIn>
       </header>
+
+
       <main className="p-8">
         <FadeIn>
           <h2 className="text-3xl font-bold text-center mb-12">Features</h2>

@@ -7,7 +7,7 @@ const HomeNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white p-6 flex justify-between items-center fixed top-0 w-full z-10">
+    <nav className="bg-white p-4 flex justify-between items-center fixed top-0 w-full z-10">
       <div className="flex items-center">
         <Link to="/" className="text-black font-bold text-2xl">
           TMSServices

@@ -41,10 +41,13 @@ const Pricing = () => {
   return (
     <>
       <HomeNav />
-      <header className="bg-custom-blue pt-44 text-white text-center py-20">
+      <header 
+            className="bg-custom-blue mt-16 pt-44 text-white text-center py-20 bg-cover bg-center" 
+            style={{ backgroundImage: `url('./Images/HomePictures/price.jpg')` }}
+          >
       <FadeIn>
         <h1 className="text-5xl font-bold mb-4">Our Payment Plans</h1>
-        <p className="text-xl mb-6">Cost Effective Payment Deal Bundles</p>
+        <p className="text-xl mb-6">Saving to grow your future</p>
         <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-[#262ea2]">
           Get Started
         </button>

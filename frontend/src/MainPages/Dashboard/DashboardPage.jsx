@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../../Components/Layout/Sidebar';
+import Aside from './LeftAside';
+import RightCards from './RightAside';
 import { Bar, Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 import dashboardData from '../../Placeholders/dashboardData.json';
@@ -70,10 +72,27 @@ const Dashboard = () => {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <div className="flex-grow p-8 bg-gray-100 overflow-auto">
-        <h1 className="text-3xl font-bold mb-6 text-custom-purple">Dashboard</h1>
+      <div className="flex-grow p-8 bg-gray-100 overflow-y-auto">
+        <h1 className="text-4xl text-custom-heading font-bold mb-6">
+          Dashboard
+        </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div className='bg-white p-6 rounded-lg'>
+          {/* Main Body */}
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col lg:flex-row ">
+                            
+              {/* Right Section (Cards) */}
+              <RightCards />
+              
+              {/* Left Section (Aside) */}
+              <Aside />
+            </div>
+          </div>
+
+        </div>
+
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           <div className="col-span-1 md:col-span-2 bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4 text-custom-purple">Pending Payments</h2>
             {pendingPayments}
@@ -107,7 +126,7 @@ const Dashboard = () => {
               <Bar data={barDataMonthly} />
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

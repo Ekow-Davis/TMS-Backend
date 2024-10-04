@@ -1,41 +1,253 @@
-import React from 'react'
-import ImageCarousel from '../../Components/ImageCarousel'
-import SignInForm from '../../Components/SignInForm'
+import React, { useState } from 'react';
+import {
+  Phone as PhoneIcon,
+  Email as EmailIcon,
+  Person as PersonIcon, 
+  Lock as LockIcon, 
+  Facebook as FacebookIcon, 
+  Twitter as TwitterIcon, 
+  Google as GoogleIcon, 
+  LinkedIn as LinkedInIcon, 
+  Visibility as EyeIcon, 
+  VisibilityOff as EyeOffIcon 
+} from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import './signinup.css';
 
 const SignInPage = () => {
+  const [isSignUpMode, setIsSignUpMode] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [registerForm, setRegisterForm] = useState({
+    otherNames: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    password: ''
+  });
 
-  const images = [
-    './Images/Login/LoginPic1.png',
-    './Images/Login/LoginPic2.png',
-    './Images/Login/LoginPic3.png',
-    './Images/Login/LoginPic.png',
-  ];
+  const navigate = useNavigate();
+
+  // Email regex validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handleSignUpClick = () => setIsSignUpMode(true);
+  const handleSignInClick = () => setIsSignUpMode(false);
+
+  // Toggle password visibility
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
+  // Handle login form submission
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    if (!emailRegex.test(loginEmail)) {
+      alert('Please enter a valid email.');
+      return;
+    }
+
+    const loginData = { email: loginEmail, password: loginPassword };
+
+    try {
+      const response = await fetch('https://tms.ghanaglobalinitiative.com/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(loginData),
+      });
+
+      if (response.ok) {
+        navigate('/Dashboard'); // Redirect to the dashboard after a successful login
+      } else {
+        alert('Login failed. Please check your credentials.');
+      }
+    } catch (error) {
+      console.error('Login Error:', error);
+    }
+  };
+
+  // Handle registration form submission
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    if (!emailRegex.test(registerForm.email)) {
+      alert('Please enter a valid email.');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://tms.ghanaglobalinitiative.com/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(registerForm),
+      });
+
+      if (response.ok) {
+        // After successful registration, move the email to login form
+        setLoginEmail(registerForm.email);
+        setIsSignUpMode(false); // Switch back to login mode
+      } else {
+        alert('Registration failed.');
+      }
+    } catch (error) {
+      console.error('Registration Error:', error);
+    }
+  };
+
+  // Update form state for registration
+  const handleRegisterChange = (e) => {
+    setRegisterForm({
+      ...registerForm,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
-    <>
-    <div className='flex w-full h-screen'>
+    <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''}`}>
+      <div className="forms-container">
+        <div className="signin-signup">
+          {/* Sign In Form */}
+          <form onSubmit={handleLogin} className="sign-in-form">
+            <h2 className="title">Login</h2>
+            <div className="input-field">
+              <EmailIcon className="text-[#acacac] h-[1.1rem] mt-4 ml-3 text-center" />
+              <input
+                type="email"
+                placeholder="Email"
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-field relative">
+              <LockIcon className="text-[#acacac] h-[1.1rem] mt-4 ml-3 text-center" />
+              <input
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+                required
+              />
+              <span
+                className="absolute right-4 top-[10px] cursor-pointer"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+              </span>
+            </div>
+            <button className="btn" type="submit">
+              Login
+            </button>
+            {/* <p className="social-text">Or Sign In with</p>
+            {/* <div className="social-media">
+              <FacebookIcon className="social-icon" />
+              <TwitterIcon className="social-icon" />
+              <GoogleIcon className="social-icon" />
+              <LinkedInIcon className="social-icon" />
+            </div> */}
+          </form>
 
-        <div className='hidden bg-custom-blue relative lg:flex h-full items-center w-1/2 justify-center'>
-          <div className='flex absolute flex-col items-center justify-center'>
-          
+          {/* Register Form */}
+          <form onSubmit={handleRegister} className="sign-up-form">
+            <h2 className="title">Register</h2>
+            <div className="input-field">
+              <PersonIcon className="text-[#acacac] h-[1.1rem] mt-4 ml-3 text-center" />
+              <input
+                type="text"
+                name="otherNames"
+                placeholder="Other Names"
+                value={registerForm.otherNames}
+                onChange={handleRegisterChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+              <PersonIcon className="text-[#acacac] h-[1.1rem] mt-4 ml-3 text-center" />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={registerForm.lastName}
+                onChange={handleRegisterChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+              <PhoneIcon className="text-[#acacac] h-[1.1rem] mt-4 ml-3 text-center" />
+              <input
+                type="text"
+                name="phoneNumber"
+                placeholder="Phone Number"
+                value={registerForm.phoneNumber}
+                onChange={handleRegisterChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+              <EmailIcon className="text-[#acacac] h-[1.1rem] mt-4 ml-3 text-center" />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={registerForm.email}
+                onChange={handleRegisterChange}
+                required
+              />
+            </div>
+            <div className="input-field relative">
+              <LockIcon className="text-[#acacac] h-[1.1rem] mt-4 ml-3 text-center" />
+              <input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Password"
+                value={registerForm.password}
+                onChange={handleRegisterChange}
+                required
+              />
+              <span
+                className="absolute right-4 top-[10px] cursor-pointer"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+              </span>
+            </div>
+            <button className="btn" type="submit">
+              Register
+            </button>
+            {/* <p className="social-text">Or Register with</p>
+            <div className="social-media">
+              <FacebookIcon className="social-icon" />
+              <TwitterIcon className="social-icon" />
+              <GoogleIcon className="social-icon" />
+              <LinkedInIcon className="social-icon" />
+            </div> */}
+          </form>
         </div>
-        <div className='w-full h-[80%]'>
-          <ImageCarousel images={images}/>
-        </div>
-        
-      {/* <div className='w-60 h-60 bg-gradient-to-tr to-custom-purple from-custom-blue animate-bounce rounded-full cursor-pointer' />
-          <div className='w-full h-1/2 absolute bottom-0 bg-white/10 backdrop-blur-lg'/> */}
-        </div>
+      </div>
 
-        <div className='w-full flex items-center justify-center border-2 border-x-custom-purple lg:w-1/2'>
-            <SignInForm/>
+      {/* Panels for switching between forms */}
+      <div className="panels-container">
+        <div className="panel left-panel">
+          <div className="content">
+            <h3>New here?</h3>
+            <p>Register now to start booking your tutoring sessions and enhance your learning experience.</p>
+            <button className="btn transparent" onClick={handleSignUpClick}>
+              Sign Up
+            </button>
+          </div>
+          <img src="./Images/Login/education-blue.svg" className="image" alt="education-img" />
         </div>
-
-        
-        
+        <div className="panel right-panel">
+          <div className="content">
+            <h3>Already a member?</h3>
+            <p>Sign in to access your tutoring dashboard and manage your sessions.</p>
+            <button className="btn transparent" onClick={handleSignInClick}>
+              Sign In
+            </button>
+          </div>
+          <img src="./Images/Login/reading-blue.svg" className="image" alt="reading-img" />
+        </div>
+      </div>
     </div>
-    </>
-  )
-}
+  );
+};
 
-export default SignInPage
+export default SignInPage;

@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Sidebar from '../../Components/Layout/Sidebar';
-import PSidebar from './PSidebar';
 
 const SecurityPage = () => {
   const [is2FAEnabled, setIs2FAEnabled] = useState(false);
@@ -12,13 +10,9 @@ const SecurityPage = () => {
   const handleRecoveryEmailChange = (e) => setRecoveryEmail(e.target.value);
 
   return (
-    <div className="flex h-screen">
-      <Sidebar />
-      <div className="flex-grow p-4 bg-white">
-    <div className="flex h-screen bg-gray-100">
-      <PSidebar />
+          
       <div className="flex-grow p-8">
-        <div className="bg-white p-6 rounded-lg shadow-md">
+        <div className="p-6">
           <h1 className="text-2xl font-semibold mb-4">Security</h1>
           <div className="mb-4">
             <h3 className="font-semibold text-lg">Two-Factor Authentication (2FA)</h3>
@@ -58,9 +52,7 @@ const SecurityPage = () => {
           </div>
         </div>
       </div>
-    </div>
-    </div>
-    </div>
+    
   );
 };
 

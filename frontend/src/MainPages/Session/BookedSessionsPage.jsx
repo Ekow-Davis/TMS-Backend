@@ -91,10 +91,10 @@ const ScheduledSessionsPage = () => {
     <div className="flex h-screen">
       <Sidebar />
       <div className="flex-grow p-8 bg-gray-100 overflow-auto">
-        <h1 className="text-3xl font-bold my-4">
+        <h1 className="text-3xl text-custom-heading font-bold my-4">
           Scheduled Sessions
         </h1>
-        <Link to='/RequestSessionPage/RequestSessionFormPage'>
+        <Link to='/RequestSessionFormPage'>
           <button className='bg-custom-purple hover:bg-custom-purple/80 text-white rounded-lg px-4 py-2 my-4'>
             Request Session
           </button>

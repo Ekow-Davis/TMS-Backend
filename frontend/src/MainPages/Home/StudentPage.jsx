@@ -1,10 +1,54 @@
 import React, { useState, useEffect } from 'react';
+import FeatureBox from '../../Components/FeatureBox';
 import HomeNav from '../Home/HomeNav';
 import Footer from '../../Components/Layout/Footer';
 import InfoDropdown from '../../Components/InfoDropdown';
 import FadeIn from '../../Components/FadeIn';
 
 const StudentPage = () => {
+  const features = [
+    {
+      imageSrc: './Images/HomePictures/scheduling.svg',
+      altText: 'Easy Scheduling',
+      heading: 'Easy Scheduling',
+      listItems: [
+        'Schedule tutoring sessions with just a few clicks, based on your availability.',
+        'View tutor profiles, their expertise, and reviews before booking.',
+        'Receive reminders for upcoming sessions so you never miss a class.',
+        'Easily reschedule or cancel your sessions without any hassle.',
+        'Book recurring sessions to ensure continuous learning progress.',
+      ],
+      imagePosition: 'left',
+    },
+    {
+      imageSrc: './Images/HomePictures/student-payment.svg',
+      altText: 'Secure Payments',
+      heading: 'Secure Payments',
+      listItems: [
+        'Choose from flexible payment options, including one-time and recurring payments.',
+        'Keep track of all your invoices and payment history in one place.',
+        'Receive payment reminders to avoid missing any sessions due to payment delays.',
+        'Pay online via credit card, PayPal, or other convenient methods.',
+        'Enjoy a secure and smooth checkout experience, with receipts sent automatically.',
+      ],
+      imagePosition: 'right',
+    },
+    {
+      imageSrc: './Images/HomePictures/tracking.svg',
+      altText: 'Track Progress',
+      heading: 'Track Your Progress',
+      listItems: [
+        'Monitor your learning progress with detailed reports from tutors.',
+        'Access session notes, feedback, and assignments at any time.',
+        'Set personal learning goals and track your progress toward them.',
+        'Receive performance updates and insights on areas that need improvement.',
+        'Ensure your academic growth with personalized progress tracking.',
+      ],
+      imagePosition: 'left',
+    },
+    
+  ];
+
   const faqItems = [
     { title: "What is personalized learning?", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus." },
     { title: "How do I access resources?", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus." },
@@ -31,25 +75,25 @@ const StudentPage = () => {
   return (
     <>
       <HomeNav />
-      <header className="bg-custom-blue pt-44 text-white text-center py-20">
+      <header 
+            className="bg-custom-blue mt-16 pt-44 text-white text-center py-20 bg-cover bg-center" 
+            style={{ backgroundImage: `url('./Images/HomePictures/student.jpg')` }}
+          >
         <FadeIn>
-          <h1 className="text-5xl font-bold mb-4">Elevate Your Learning with [System Name]</h1>
+          <h1 className="text-5xl font-bold mb-4">Elevate Your Learning with TMSerives</h1>
           <p className="text-xl mb-6">Access top-notch resources and support to excel in your studies.</p>
           <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-[#262ea2]">
             Get Started
           </button>
         </FadeIn>
       </header>
-      <div className="container mx-auto py-20 px-4">
+      <div className="mx-auto py-20 px-4">
         <section className="mb-20">
           <FadeIn>
-            <h2 className="text-3xl font-bold mb-4">Key Benefits</h2>
-            <ul className="list-disc list-inside text-lg">
-              <li>Personalized Learning</li>
-              <li>Accessible Resources</li>
-              <li>Progress Tracking</li>
-              <li>Support and Communication</li>
-            </ul>
+          <h2 className="text-3xl font-bold text-center mb-12">Features</h2>
+          {features.map((feature, index) => (
+            <FeatureBox key={index} {...feature} />
+          ))}
           </FadeIn>
         </section>
         <section className="mb-20">

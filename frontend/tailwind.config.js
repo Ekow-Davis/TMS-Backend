@@ -6,8 +6,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-blue': '#ced0f2',
-        'custom-purple': '#21266a'
+        'custom-blue': '#8a90e5',
+        'custom-purple': '#30cfcf',
+        'custom-heading': '#21266A',
+        "custom-hover-teal": "#aeefef"
       },
       transitionProperty: {
         'width': 'width',

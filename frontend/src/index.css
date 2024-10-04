@@ -13,6 +13,15 @@
   transform: none;
 }
 
+* {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
 .react-big-calendar {
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;

@@ -68,7 +68,7 @@
     "InstructorContact": "caleb@example.com",
     "AdditionalMaterials": ["Data Sturctures and Algorithms.pdf", "Data Structures.zip"],
     "Notes": "Ensure you have a working code editor.",
-    "SessionStatus": "Accepted",
+    "SessionStatus": "Pending",
     "Charge": 50.00
   },
   {
@@ -105,6 +105,42 @@
     "AdditionalMaterials": ["Data Sturctures and Algorithms.pdf", "Data Structures.zip"],
     "Notes": "Ensure you have a working code editor.",
     "SessionStatus": "Cancelled",
+    "Charge": 50.00
+  },
+  {
+    "SessionID": "7",
+    "Tutor": "Kwame",
+    "Topic": "Economics",
+    "Subject": "Economy of Ghana",
+    "Level": "Basic",
+    "StartDate": "2024-08-13",
+    "Days": ["Tuesday"],
+    "Time": ["19:00"],
+    "DurationOfMeeting": 120,
+    "Location": "Online",
+    "MeetingLink": "https://example.com/meeting-link-joshua",
+    "InstructorContact": "adwoa@example.com",
+    "AdditionalMaterials": ["Data Sturctures and Algorithms.pdf", "Data Structures.zip"],
+    "Notes": "Ensure you have a working code editor.",
+    "SessionStatus": "Cancelled",
+    "Charge": 50.00
+  },
+  {
+    "SessionID": "8",
+    "Tutor": "Stephanie",
+    "Topic": "Programing",
+    "Subject": "Typescript Basics",
+    "Level": "Senior High",
+    "StartDate": "2024-08-13",
+    "Days": ["Tuesday"],
+    "Time": ["9:00"],
+    "DurationOfMeeting": 120,
+    "Location": "Online",
+    "MeetingLink": "https://example.com/meeting-link-joshua",
+    "InstructorContact": "stephanie@example.com",
+    "AdditionalMaterials": ["Data Sturctures and Algorithms.pdf", "Data Structures.zip"],
+    "Notes": "Ensure you have a working code editor.",
+    "SessionStatus": "Pending",
     "Charge": 50.00
   }
 ]

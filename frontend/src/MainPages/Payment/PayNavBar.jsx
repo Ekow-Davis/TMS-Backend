@@ -6,7 +6,7 @@ const PayNavbar = () => {
   return (
     <div>
       <nav className="bg-transparent p-4">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="mx-auto flex justify-between items-center">
           <div className="space-x-6">
             <Link 
               to="/Dashboard" 

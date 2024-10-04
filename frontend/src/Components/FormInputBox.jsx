@@ -39,7 +39,7 @@ const FormInputBox = ({ width, validationRegex, type, miniLabel, label, placehol
         onChange={handleChange}
         onBlur={handleBlur}
         placeholder={placeholder}
-        className={`border p-2 mb-1 ${showError ? 'border-red-500' : ''}`}
+        className={`border rounded-lg outline-none p-2 mb-1 ${showError ? 'border-red-500' : ''}`}
       />
       <small className="text-gray-500">{miniLabel}</small>
       {showError && <p className="text-red-500 text-sm mt-1">Invalid input</p>}

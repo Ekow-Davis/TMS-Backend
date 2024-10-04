@@ -19,26 +19,32 @@ const NotificationPage = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       <Sidebar />
-      <div className="flex-grow p-8 bg-gray-100">
-        <h1 className="text-2xl mx-8 font-bold mb-6">Notifications</h1>
-        <div className="max-w-4xl mx-auto">
-          {notifications.map((notification) => (
-            <div
-              key={notification.id}
-              className={`p-4 mb-4 rounded-lg cursor-pointer transition-all ${
-                notification.Status === 'Unread'
-                  ? 'bg-white hover:bg-gray-200 hover:border-r-[15px] hover:text-custom-purple hover:border-custom-blue'
-                  : 'bg-gray-400 text-black'
-              }`}
-              onClick={() => handleReadNotification(notification.id)}
-            >
+      <div className="flex-grow p-8 overflow-y-auto bg-gray-100">
+        <h1 className="text-3xl text-custom-heading font-bold mt-2 mb-4">
+          Notifications
+        </h1>
+
+        {/* Main body */}
+        <div className='rounded-lg mt-3 overflow-auto p-6 bg-white'>
+
+          <div className="max-w-4xl mx-auto">
+            {notifications.map((notification) => (
+              <div
+                key={notification.id}
+                className={`p-4 mb-4 border rounded-lg cursor-pointer transition-all ${
+                  notification.Status === 'Unread'
+                    ? 'bg-white hover:bg-gray-200 hover:border-r-[15px] hover:text-custom-purple hover:border-custom-blue'
+                    : 'bg-gray-400 text-black'
+                }`}
+                onClick={() => handleReadNotification(notification.id)}
+              >
               <div className="flex justify-between">
                 <div>
                   <h2 className="font-bold">{notification.Title}</h2>
                   <p className='px-2'>{notification.Content.substring(0, 30)}...</p>
-                  <p className={`p-1 ${notification.Status === 'Unread' ? 'text-red-500' : 'text-white'}`}>{notification.Source}</p>
+                  <p className={`p-1 ${notification.Status === 'Unread' ? 'text-custom-purple' : 'text-white'}`}>{notification.Source}</p>
                 </div>
                 <div>
                   <p className={` ${notification.Status === 'Unread' ? 'text-custom-purple' : 'text-white'}`}>{notification.Date}</p>
@@ -46,7 +52,10 @@ const NotificationPage = () => {
               </div>
             </div>
           ))}
+          
         </div>
+        </div>
+        
       </div>
     </div>
   );

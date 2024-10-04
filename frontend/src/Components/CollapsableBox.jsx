@@ -11,11 +11,11 @@ const CollapsableBox = ({ label, children }) => {
 
   return (
     <div className="my-4 px-8">
-      <div className="border shadow-md text-white px-8 rounded-md flex hover:bg-custom-blue hover:text-gray-700 p-4 bg-custom-purple items-center justify-between cursor-pointer" onClick={toggleExpansion}>
+      <div className="border shadow-md text-white px-8 rounded-md flex hover:bg-custom-hover-teal hover:text-gray-700 p-4 bg-custom-purple items-center justify-between cursor-pointer" onClick={toggleExpansion}>
         <span className="text-lg font-bold my-2 ">{label}</span>
         {isOpen ? <FontAwesomeIcon icon={faChevronUp} className="h-5 w-5" /> : <FontAwesomeIcon icon={faChevronDown} className="h-5 w-5" />}
       </div>
-      {isOpen && <div className="mt-2">{children}</div>}
+      {isOpen && <div className="mt-2 text-custom-heading p-2 rounded-md bg-white">{children}</div>}
     </div>
   );
 };
