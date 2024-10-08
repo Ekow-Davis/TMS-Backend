@@ -67,13 +67,13 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="md:hidden flex items-center p-4" onClick={handleMobileToggle}>
+      <div className="md:hidden flex absolute p-4" onClick={handleMobileToggle}>
         <button>
           <Bars3Icon className="h-6 w-6" />
         </button>
       </div>
       <aside className={`fixed inset-0 z-40 transform ${isMobileOpen ? 'translate-x-0 bg-white' : '-translate-x-full'} md:transform-none md:relative md:translate-x-0 transition-transform duration-200 w- ease-in-out md:w-${expanded ? '72' : '24'}`}>
-        <div className="flex items-center justify-between p-4">
+        <div className="flex justify-between p-4">
           <button onClick={handleDesktopToggle} className="hidden md:block">
             {expanded ? <img src="../Images/main-logo-black-transparent.png" alt="Logo" className="h-32 ml-12 items-center justify-center" /> : <BookOpenIcon className="h-6 w-6 my-10 justify-center items-center text-center" />}
           </button>

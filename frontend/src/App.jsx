@@ -1,3 +1,4 @@
+// Student Parts
 import DashboardPage from "./MainPages/Dashboard/DashboardPage"
 import HelpPage from "./MainPages/Help/HelpPage"
 import ContactUsPage from "./MainPages/Help/ContactUsPage"
@@ -23,6 +24,14 @@ import RequestSessionPage from "./MainPages/Session/RequestSessionPage"
 import RequestSessionFormPage from "./MainPages/Session/RequestSessionFormPage"
 import BookedSessionsPage from "./MainPages/Session/BookedSessionsPage"
 import SignInPage from "./MainPages/SignUpIn/SignInPage"
+
+//Admin Parts
+import AdminDashboard from './Admin/Dashboard/AdDashboard'
+import AdminSession from './Admin/Sessions/AdSessions'
+import AdminJobs from './Admin/Jobs/AdJobs'
+import AdminStudents from './Admin/Students/AdStudents'
+import AdminTutors from './Admin/Tutors/AdTutors'
+
 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -70,6 +79,11 @@ function App() {
         <Route path="/RequestSessionPage" element={<RequestSessionPage />} />
           <Route path="/RequestSessionFormPage" element={<RequestSessionFormPage />} />
 
+      <Route path="/Admin/Session" element={<AdminSession />} />
+      <Route path="/Admin/Dashboard" element={<AdminDashboard />} />
+      <Route path="/Admin/Jobs" element={<AdminJobs />} />
+      <Route path="/Admin/Students" element={<AdminStudents />} />
+      <Route path="/Admin/Tutors" element={<AdminTutors />} />
       
     </Routes>
     </BrowserRouter>

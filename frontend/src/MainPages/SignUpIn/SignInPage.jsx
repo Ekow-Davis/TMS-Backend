@@ -4,10 +4,10 @@ import {
   Email as EmailIcon,
   Person as PersonIcon, 
   Lock as LockIcon, 
-  Facebook as FacebookIcon, 
-  Twitter as TwitterIcon, 
-  Google as GoogleIcon, 
-  LinkedIn as LinkedInIcon, 
+  // Facebook as FacebookIcon, 
+  // Twitter as TwitterIcon, 
+  // Google as GoogleIcon, 
+  // LinkedIn as LinkedInIcon, 
   Visibility as EyeIcon, 
   VisibilityOff as EyeOffIcon 
 } from '@mui/icons-material';

@@ -6,14 +6,14 @@ import FormInputBox from '../../Components/FormInputBox'
 import CollapsableBox from '../../Components/CollapsableBox'
 import CheckboxInputBox from '../../Components/CheckboxInputBox'
 
-const RequestSessionFormPage = ({addForm}) => {
+const RequestSessionFormPage = () => {
 
   const [address, setAddress] = useState('')
   const [address2, setAddress2] = useState('')
   const [email, setEmail] = useState('')
   const [city, setCity] = useState('')
   const [providence, setProvidence] = useState('')
-  const [zipCode, setZipCode] = useState('')
+  // const [zipCode, setZipCode] = useState('')
   const [lastName, setLastName] = useState('')
   const [otherNames, setOtherNames] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -40,7 +40,7 @@ const RequestSessionFormPage = ({addForm}) => {
       address2,
       city,
       providence,
-      zipCode,
+      // zipCode,
       email,
       phoneNumber,
       dateOfBirth,
@@ -60,9 +60,9 @@ const RequestSessionFormPage = ({addForm}) => {
     console.log("User Information Data:",userInfoFormData)
     console.log("Session Information Data:",sessionInfoFormData)
 
-    addForm({ userInfoFormData, sessionInfoFormData });
+    // addForm({ userInfoFormData, sessionInfoFormData }); add {addForm} to the function if
 
-    navigate('/RequestSessionPage');
+    navigate('/Sessions');
 
   }
 
@@ -72,46 +72,55 @@ const RequestSessionFormPage = ({addForm}) => {
     <div className='flex h-screen'>
       <Sidebar />
       <div className='flex-grow bg-gray-100 overflow-auto'>
-        <div className='text-3xl font-bold text-custom-heading mx-12 mb-2 mt-6'>
+        <div className='text-3xl font-bold text-custom-heading lg:mx-12 m-3 mb-2 mt-6'>
           <p className='mt-8'>
           Session Request Form
           </p>
           <img src="" alt=''/>
         </div>
         
-        <form onSubmit={handleSessionSubmit} className="p-4 mx-10">
+        <form onSubmit={handleSessionSubmit} className="p-4">
           <CollapsableBox label="Personal Information" icon={<faChevronDown />}>
+            <label className='font-bold text-custom-heading'>
+              Name
+            </label>
+            <div className='md:flex md:gap-4'>
             <FormInputBox 
+              required
               width="w-full" 
               type="text" 
-              miniLabel="First Name" 
-              label="Name"
+              miniLabel="First Name"               
               value={otherNames}              
               setValue={setOtherNames} 
             />
             <FormInputBox 
+              required
               width="w-full" 
               type="text" 
               miniLabel="Last Name"
               value={lastName}
               setValue={setLastName}            
             />
+            </div>
+            <label className='font-bold text-custom-heading'>
+              Address
+            </label>
             <FormInputBox 
+              required
               width="w-full" 
               type="text" 
-              miniLabel="Street Address" 
-              label="Address"
+              miniLabel="Street Address"               
               value={address}
               setValue={setAddress}
             />
-            <FormInputBox
-              required 
+            <FormInputBox               
               width="w-full" 
               type="text" 
               miniLabel="Street Address 2"
               value={address2}
               setValue={setAddress2}
             />
+            <div className='md:flex md:gap-4'>
             <FormInputBox
               required 
               width="w-full" 
@@ -124,18 +133,20 @@ const RequestSessionFormPage = ({addForm}) => {
               required 
               width="w-full" 
               type="text" 
-              miniLabel="State/Province"
+              miniLabel="Country"
               value={providence}
               setValue={setProvidence}
             />
-            <FormInputBox
+            </div>
+            
+            {/* <FormInputBox
               required 
               width="w-full" 
               type="text" 
               miniLabel="Postal / Zip Code"
               value={zipCode}
               setValue={setZipCode}  
-            />
+            /> */}
 
             {/*Change the form input type into one that can take phone numbers*/}
             
@@ -149,7 +160,8 @@ const RequestSessionFormPage = ({addForm}) => {
               value={phoneNumber} 
               required
             />
-            <FormInputBox 
+            <FormInputBox
+              required  
               width="w-full" 
               type="text"
               placeholder="example@gmail.com"

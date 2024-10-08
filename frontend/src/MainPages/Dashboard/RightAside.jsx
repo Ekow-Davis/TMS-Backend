@@ -3,11 +3,11 @@ import PendingIcon from '@mui/icons-material/AccessTime';
 import OngoingIcon from '@mui/icons-material/Autorenew';
 import PaidIcon from '@mui/icons-material/Paid';
 import CompletedIcon from '@mui/icons-material/CheckCircle';
-import MenuIcon from '@mui/icons-material/List';
+import { MoreVert as MenuIcon } from '@mui/icons-material';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import {
   ArchiveBoxXMarkIcon,
-  ChevronDownIcon,
+  
   PencilIcon,
   Square2StackIcon,
   TrashIcon,

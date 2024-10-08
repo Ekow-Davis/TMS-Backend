@@ -48,7 +48,7 @@ const Pricing = () => {
       <FadeIn>
         <h1 className="text-5xl font-bold mb-4">Our Payment Plans</h1>
         <p className="text-xl mb-6">Saving to grow your future</p>
-        <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-[#262ea2]">
+        <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-custom-blue">
           Get Started
         </button>
         </FadeIn>
@@ -138,7 +138,7 @@ const Pricing = () => {
               </div>
               {/* Established Plan */}
               <div className="bg-white shadow-lg border-t-8 border-custom-purple rounded-lg p-6 text-center transform transition-transform duration-300 hover:shadow-2xl hover:scale-110 hover:bg-gray-50">
-                <h2 className="text-2xl font-bold mb-4">Established</h2>
+                <h2 className="text-2xl  font-bold mb-4">Established</h2>
                 <p className="text-gray-600 mb-4">$150 / month</p>
                 <ul className="text-center mb-6">
                   {establishedPlanBenefits.map((benefit, index) => (
@@ -153,7 +153,7 @@ const Pricing = () => {
           </FadeIn>
           <FadeIn>
             <div className='items-center'>
-              <h1 className="text-custom-purple text-center text-3xl my-20">
+              <h1 className="text-custom-heading text-center text-3xl my-20">
                 Frequesntly Asked Questions (FAQ)
               </h1>
               <div className='my-10 flex flex-col justify-center items-center'>

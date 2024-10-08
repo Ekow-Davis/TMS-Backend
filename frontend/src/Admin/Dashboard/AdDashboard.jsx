@@ -1,0 +1,319 @@
+import React, { useState, useEffect } from 'react';
+import { Notifications as NotificationIcon, Search as SearchIcon, MoreVert as MenuIcon } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
+import { Line } from 'react-chartjs-2';
+import 'chart.js/auto'; 
+import './style.css';
+
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import {
+  ArchiveBoxXMarkIcon,  
+  PencilIcon,
+  Square2StackIcon,
+  TrashIcon,
+} from '@heroicons/react/16/solid'
+
+const AdminDashboard = () => {
+  const [weekDates, setWeekDates] = useState([]);
+  const [chartData, setChartData] = useState([]);
+  const [chartRange, setChartRange] = useState('1Y'); // Options: '1Y', '6M', '3M'
+  const [currentMonth, setCurrentMonth] = useState('');
+
+  useEffect(() => {
+    const currentWeekDates = getWeekDates();
+    setWeekDates(currentWeekDates);
+    setCurrentMonth(new Date().toLocaleDateString('en-US', { month: 'long' }));
+    updateChartData(chartRange);
+  }, [chartRange]);
+
+  const getWeekDates = () => {
+    const currentDate = new Date();
+    const startOfWeek = currentDate.getDate() - currentDate.getDay() + 1;
+    let tempDate = new Date(currentDate.setDate(startOfWeek));
+    let weekArray = [];
+
+    for (let i = 0; i < 7; i++) {
+      const day = tempDate.getDate();
+      const dayOfWeek = tempDate.toLocaleDateString('en-US', { weekday: 'short' });
+      weekArray.push({ dayOfWeek, day });
+      tempDate.setDate(tempDate.getDate() + 1);
+    }
+    return weekArray;
+  };
+
+  const updateChartData = (range) => {
+    let newData;
+    if (range === '1Y') {
+      newData = [6, 10, 8, 14, 6, 7, 4]; 
+    } else if (range === '6M') {
+      newData = [7, 9, 5, 10, 8, 6, 5];
+    } else if (range === '3M') {
+      newData = [5, 6, 4, 9, 7, 5, 3];
+    }
+    setChartData(newData);
+  };
+
+  return (
+    <>
+    <div className="top-container">
+      {/* Navbar */}
+      <nav className="nav">
+        <div className="logo">
+          <i className="bx bxl-codepen"></i>
+          <Link to="/" className='text-white' >TMSServices</Link>
+        </div>
+
+        <div className="nav-links">
+        <Link to="/Admin/Dashboard">Dashboard</Link>
+          <Link to="/Admin/Session">Sessions</Link>
+          <Link to="/Admin/Jobs">Jobs</Link>
+          <Link to="/Admin/Students">Student</Link>
+          <Link to="/Admin/Tutors">Tutor</Link>
+          <Link to="/Admin/Employee">Employee</Link>
+          <Link to="/Admin/Settings">Settings</Link>
+        </div>
+
+        <div className="right-section">
+          <i className="bx bx-bell">
+            <NotificationIcon />
+          </i>
+          <i className="bx bx-search">
+            <SearchIcon />
+          </i>
+          <div className="profile">
+            <div className="info">
+              <img src="assets/profile.png" alt="Profile" />
+              <div>
+                <p className='font-semibold'>User's Name</p>
+                <p>1st Rank Admin</p>
+              </div>
+            </div>
+            <i className="bx bx-chevron-down"></i>
+          </div>
+        </div>
+      </nav>
+
+      {/* Status */}
+      <section className="status">
+        <div className="header">          
+          <h4>Weekly Activity</h4>
+        </div>
+        <div className="items-list">
+          <div className="item">
+            <div className="info">
+              <div>
+                <h5>Sessions Remailing This Week</h5>
+                <p>- 3 lessons left</p>
+                <p>- 1 project left</p>
+              </div>
+              <i className="bx bx-data"></i>
+            </div>
+            <div className="progress">
+              <div className="bar"></div>
+            </div>
+          </div>
+          {/* Duplicate for Machine Learning */}
+          <div className="item">
+            <div className="info">
+              <div>
+                <h5>Unpaid Sessions Remaining</h5>
+                <p>- 2  sessions awaiting review left</p>
+                <p>- 5  left</p>
+              </div>
+              <i className="bx bx-terminal"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    {/* Main Content */}
+          {/* Bottom Container */}
+          <div className="bottom-container">
+        {/* Week days */}
+        <div className="upcoming">
+          <div className="header">
+            <h4>Session Requests <br/> This Week</h4>
+            <p className='bg-slate-300 p-1 rounded-full'>{currentMonth} <i className="bx bx-chevron-down"></i></p>
+          </div>
+          <div className="dates">
+            {weekDates.map(({ dayOfWeek, day }) => (
+              <div 
+                className={`item `} 
+                key={`${dayOfWeek}-${day}`}
+              >
+                <h5>{dayOfWeek}</h5>
+                <p className={`item ${new Date().getDate() === day ? 'bg-custom-blue px-2 rounded-full text-white' : ''}`}>{day}</p>
+              </div>
+            ))}
+          </div>
+          
+          {/* Events */}
+          <div className="events">
+            <div className="item">
+              <div>
+                <i className='bx bx-time'></i>
+                <div className="event-info">
+                  <p className='text-black'>Data Science</p>
+                  <p>10:00-11:30</p>                  
+                </div>
+                  <div className='absolute left-80'>
+                  <Menu>
+                      <MenuButton >          
+                        <MenuIcon />
+                      </MenuButton>
+
+                      <MenuItems
+                        transition
+                        anchor="bottom end"
+                        className="w-52 origin-top-right rounded-xl border bg-white p-1 text-sm/6 text-custom-heading transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+                      >
+                        <MenuItem>
+                          <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+                            <PencilIcon className="size-4 fill-custom-blue" />
+                            Reschedule            
+                          </button>
+                        </MenuItem>
+                        <MenuItem>
+                          <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+                            <Square2StackIcon className="size-4 fill-custom-blue" />
+                            Copy Details             
+                          </button>
+                        </MenuItem>
+                        <div className="my-1 h-px bg-white/5" />
+                        <MenuItem>
+                          <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+                            <ArchiveBoxXMarkIcon className="size-4 fill-custom-blue" />
+                            Details              
+                          </button>
+                        </MenuItem>
+                        <MenuItem>
+                          <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+                            <TrashIcon className="size-4 fill-custom-blue" />
+                            Cancel              
+                          </button>
+                        </MenuItem>
+                      </MenuItems>
+                    </Menu>
+                  </div>
+              </div>
+              <i className='bx bx-dots-horizontal-rounded'></i>
+            </div>
+            <div className="item">
+              <div>
+                <i className='bx bx-time'></i>
+                <div className="event-info">
+                  <p>Machine Learning</p>
+                  <p>13:30-15:00</p>
+                </div>
+                <div className='absolute left-80'>
+                  <Menu>
+                      <MenuButton >          
+                        <MenuIcon />
+                      </MenuButton>
+
+                      <MenuItems
+                        transition
+                        anchor="bottom end"
+                        className="w-52 origin-top-right rounded-xl border bg-white p-1 text-sm/6 text-custom-heading transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+                      >
+                        <MenuItem>
+                          <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+                            <PencilIcon className="size-4 fill-custom-blue" />
+                            Reschedule            
+                          </button>
+                        </MenuItem>
+                        <MenuItem>
+                          <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+                            <Square2StackIcon className="size-4 fill-custom-blue" />
+                            Copy Details             
+                          </button>
+                        </MenuItem>
+                        <div className="my-1 h-px bg-white/5" />
+                        <MenuItem>
+                          <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+                            <ArchiveBoxXMarkIcon className="size-4 fill-custom-blue" />
+                            Details              
+                          </button>
+                        </MenuItem>
+                        <MenuItem>
+                          <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+                            <TrashIcon className="size-4 fill-custom-blue" />
+                            Cancel              
+                          </button>
+                        </MenuItem>
+                      </MenuItems>
+                    </Menu>
+                  </div>
+              </div>
+              <i className='bx bx-dots-horizontal-rounded'></i>
+            </div>
+          </div>
+        </div>
+
+        {/* Chart section */}
+        <div className="prog-status">
+          <div className="header">
+            <h4>Learning Progress</h4>
+            <div className="tabs">
+              <p className={chartRange === '1Y' ? 'active' : ''} onClick={() => setChartRange('1Y')}>1Y</p>
+              <p className={chartRange === '6M' ? 'active' : ''} onClick={() => setChartRange('6M')}>6M</p>
+              <p className={chartRange === '3M' ? 'active' : ''} onClick={() => setChartRange('3M')}>3M</p>
+            </div>
+          </div>
+          <div className="details">
+            <div className="item">
+              <h2>3.45</h2>
+              <p>Current GPA</p>
+            </div>
+            <div className="separator"></div>
+            <div className="item">
+              <h2>4.78</h2>
+              <p>Class Average GPA</p>
+            </div>
+          </div>
+          {/* Chart */}
+          <Line 
+            data={{
+              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+              datasets: [{
+                label: 'Class GPA',
+                data: chartData,
+                borderColor: '#0891b2',
+                tension: 0.4
+              }]
+            }}
+          />
+        </div>
+
+        {/* Popular section */}
+        <div className="popular">
+          <div className="header">
+            <h4>Popular</h4>
+            <p># Course</p>
+          </div>
+          <img src="assets/podcast.jpg" alt="Podcast" />
+          <div className="audio">
+            <i className="bx bx-podcast"></i>
+            <p>Tutor Topic Most Taught</p>
+          </div>
+          <p>Name of said Topic</p>
+          <div className="listen">
+            <div className="author">
+              <img src="assets/profile.png" alt="Tutor" />
+              <div>
+                <p>Tutor Name</p>
+                <p>Tutor Subject</p>
+              </div>
+            </div>
+            <button>More<i className="bx bx-right-arrow-alt"></i></button>
+          </div>
+        </div>
+        
+      </div>
+    </>
+    
+  );
+};
+
+export default AdminDashboard;

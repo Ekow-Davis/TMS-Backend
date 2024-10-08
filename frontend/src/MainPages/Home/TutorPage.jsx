@@ -83,7 +83,7 @@ const TutorPage = () => {
         <FadeIn>
           <h1 className="text-5xl font-bold mb-4">Empower Your Teaching with TMServices</h1>
           <p className="text-xl mb-6">Enhance your tutoring experience with our comprehensive management tools.</p>
-          <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-[#262ea2]">
+          <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-custom-blue">
             Sign Up Now
           </button>
         </FadeIn>

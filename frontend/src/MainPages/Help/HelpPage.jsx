@@ -22,13 +22,13 @@ const HelpPage = () => {
     <>
       <HomeNav />
       <header 
-            className="bg-custom-blue mt-24 pt-44 text-white text-center py-20 bg-cover bg-center" 
+            className="bg-custom-blue mt-16 pt-44 text-white text-center py-20 bg-cover bg-center" 
             style={{ backgroundImage: `url('./Images/HomePictures/support.jpg')` }}
           >
         <FadeIn>
           <h1 className="text-5xl font-bold mb-4">Frequently Asked Questions</h1>
           <p className="text-xl mb-6">Find answers to your questions</p>
-          <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-[#262ea2]">
+          <button className="bg-custom-purple text-white px-6 py-3 rounded-lg transition duration-300 hover:bg-custom-blue">
             Get Started
           </button>
         </FadeIn>

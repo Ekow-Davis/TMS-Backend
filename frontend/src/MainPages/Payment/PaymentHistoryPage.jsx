@@ -24,9 +24,9 @@ const cardsData = [
     cvv: '456',
   },
   {
-    cardType: 'Amazon Pay',
+    cardType: 'Pay Pal',
     cardNumber: '5678123498762345',
-    scheme: 'Orange', // Scheme for Amazon Pay
+    scheme: 'Teal', // Scheme for Amazon Pay
     holderName: 'John Smith',
     expiry: '01/26',
     cvv: '789',

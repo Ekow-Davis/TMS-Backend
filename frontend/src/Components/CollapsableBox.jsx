@@ -15,7 +15,7 @@ const CollapsableBox = ({ label, children }) => {
         <span className="text-lg font-bold my-2 ">{label}</span>
         {isOpen ? <FontAwesomeIcon icon={faChevronUp} className="h-5 w-5" /> : <FontAwesomeIcon icon={faChevronDown} className="h-5 w-5" />}
       </div>
-      {isOpen && <div className="mt-2 text-custom-heading p-2 rounded-md bg-white">{children}</div>}
+      {isOpen && <div className="mt-2 text-custom-heading p-8 rounded-md bg-white">{children}</div>}
     </div>
   );
 };
