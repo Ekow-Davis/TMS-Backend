@@ -35,7 +35,7 @@ const AdEmployee = () => {
           </i>
           <div className="profile">
             <div className="info">
-              <img src="assets/profile.png" alt="Profile" />
+              <img src="../Images/Admin/profileAd.jpg" alt="Profile" />
               <div>
                 <p className='font-semibold'>User's Name</p>
                 <p>1st Rank Admin</p>

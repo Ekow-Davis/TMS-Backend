@@ -1,3 +1,6 @@
+// Extra Utils
+import ProtectedRoute from "./Components/Utils/ProtectedRoute"
+
 // Student Parts
 import DashboardPage from "./MainPages/Dashboard/DashboardPage"
 import HelpPage from "./MainPages/Help/HelpPage"
@@ -33,6 +36,7 @@ import AdminStudents from './Admin/Students/AdStudents'
 import AdminTutors from './Admin/Tutors/AdTutors'
 import AdminSettings from './Admin/Settings/AdSettings'
 import AdminEmployee from './Admin/Employee/AdEmployee'
+import AdminNotification from './Admin/Notifications/AdNotification'
 
 
 
@@ -58,28 +62,29 @@ function App() {
         <Route path="/Tutor" element={<TutorPage />} />        
         <Route path="/AboutUs" element={<AboutUsPage />} />  
 
-      <Route path="/Dashboard" element={<DashboardPage />} />
+      
+      <Route path="/Dashboard" element={<ProtectedRoute> <DashboardPage /> </ProtectedRoute>} />
 
       <Route path="/Message" element={<MessagePage />} />
         <Route path="/MDetail" element={<MDetailPage />} />
 
-      <Route path="/Notification" element={<NotificationPage />} />
-        <Route path="/NDetail/:id" element={<NDetailPage />} />
+      <Route path="/Notification" element={<ProtectedRoute> <NotificationPage /> </ProtectedRoute>} />
+        <Route path="/NDetail/:id" element={<ProtectedRoute> <NDetailPage /></ProtectedRoute>} />
 
-      <Route path="/PaymentHistory" element={<PaymentHistoryPage />} />
-        <Route path="/Payment" element={<PaymentPage />} />
-        <Route path="/MakePayment" element={<MakePayment />} />
+      <Route path="/PaymentHistory" element={<ProtectedRoute><PaymentHistoryPage /></ProtectedRoute>} />
+        <Route path="/Payment" element={<ProtectedRoute> <PaymentPage /> </ProtectedRoute>} />
+        <Route path="/MakePayment" element={<ProtectedRoute> <MakePayment /></ProtectedRoute>} />
 
-      <Route path="/Profile" element={<ProfilePage />} />
-        <Route path="/Security" element={<SecurityPage />} />
-        <Route path="/Settings" element={<SettingsPage />} />
-        <Route path="/NSettings" element={<NSettingsPage />} />
-        <Route path="/ExportData" element={<ExportDataPage />} />
+      <Route path="/Profile" element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
+        <Route path="/Security" element={<ProtectedRoute> <SecurityPage /> </ProtectedRoute>} />
+        <Route path="/Settings" element={<ProtectedRoute> <SettingsPage /> </ProtectedRoute>} />
+        <Route path="/NSettings" element={<ProtectedRoute> <NSettingsPage /></ProtectedRoute>} />
+        <Route path="/ExportData" element={<ProtectedRoute> <ExportDataPage /> </ProtectedRoute>} />
 
-      <Route path="/Sessions" element={<SessionHistoryPage />} />
-        <Route path="/BookedSessions" element={<BookedSessionsPage />} />
-        <Route path="/RequestSessionPage" element={<RequestSessionPage />} />
-          <Route path="/RequestSessionFormPage" element={<RequestSessionFormPage />} />
+      <Route path="/Sessions" element={<ProtectedRoute> <SessionHistoryPage /> </ProtectedRoute>} />
+        <Route path="/BookedSessions" element={<ProtectedRoute> <BookedSessionsPage /> </ProtectedRoute>} />
+        <Route path="/RequestSessionPage" element={<ProtectedRoute> <RequestSessionPage /> </ProtectedRoute>} />
+          <Route path="/RequestSessionFormPage" element={<ProtectedRoute> <RequestSessionFormPage /> </ProtectedRoute>} />
 
       <Route path="/Admin/Session" element={<AdminSession />} />
       <Route path="/Admin/Dashboard" element={<AdminDashboard />} />
@@ -88,6 +93,7 @@ function App() {
       <Route path="/Admin/Tutors" element={<AdminTutors />} />
       <Route path="/Admin/Employee" element={<AdminEmployee />} />
       <Route path="/Admin/Settings" element={<AdminSettings />} />
+      <Route path="/Admin/Notification" element={<AdminNotification />} />
       
     </Routes>
     </BrowserRouter>

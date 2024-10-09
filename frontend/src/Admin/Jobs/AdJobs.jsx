@@ -27,15 +27,15 @@ const AdJobs = () => {
         </div>
 
         <div className="right-section">
-          <i className="bx bx-bell">
-            <NotificationIcon />
+        <i className="bx bx-bell">
+            <Link to="/Admin/Notification"> <NotificationIcon /> </Link>
           </i>
           <i className="bx bx-search">
             <SearchIcon />
           </i>
           <div className="profile">
             <div className="info">
-              <img src="assets/profile.png" alt="Profile" />
+              <img src="../Images/Admin/profileAd.jpg" alt="Profile" />
               <div>
                 <p className='font-semibold'>User's Name</p>
                 <p>1st Rank Admin</p>

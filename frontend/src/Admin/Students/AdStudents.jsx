@@ -65,15 +65,15 @@ const AdStudents = () => {
         </div>
 
         <div className="right-section">
-          <i className="bx bx-bell">
-            <NotificationIcon />
+        <i className="bx bx-bell">
+            <Link to="/Admin/Notification"> <NotificationIcon /> </Link>
           </i>
           <i className="bx bx-search">
             <SearchIcon />
           </i>
           <div className="profile">
             <div className="info">
-              <img src="assets/profile.png" alt="Profile" />
+              <img src="../Images/Admin/profileAd.jpg" alt="Profile" />
               <div>
                 <p className='font-semibold'>User's Name</p>
                 <p>1st Rank Admin</p>
@@ -90,7 +90,9 @@ const AdStudents = () => {
           <h4>Weekly Activity</h4>
         </div>
         <div className="items-list">
-          <div className="item">
+          
+          {/* 1st Card */}
+          <div className="item">            
             <div className="info">
               <div>
                 <h5>Sessions Remailing This Week</h5>
@@ -103,7 +105,8 @@ const AdStudents = () => {
               <div className="bar"></div>
             </div>
           </div>
-          {/* Duplicate for Machine Learning */}
+
+          {/* 2nd Card */}
           <div className="item">
             <div className="info">
               <div>
@@ -113,7 +116,41 @@ const AdStudents = () => {
               </div>
               <i className="bx bx-terminal"></i>
             </div>
+            <div className="progress">
+              <div className="bar"></div>
+            </div>
           </div>
+
+          {/* 3rd Card */}
+          <div className="item">            
+            <div className="info">
+              <div>
+                <h5>Sessions Remailing This Week</h5>
+                <p>- 3 lessons left</p>
+                <p>- 1 project left</p>
+              </div>
+              <i className="bx bx-data"></i>
+            </div>
+            <div className="progress">
+              <div className="bar"></div>
+            </div>
+          </div>
+
+          {/* 4th Card */}
+          <div className="item">
+            <div className="info">
+              <div>
+                <h5>Unpaid Sessions Remaining</h5>
+                <p>- 2  sessions awaiting review left</p>
+                <p>- 5  left</p>
+              </div>
+              <i className="bx bx-terminal"></i>
+            </div>
+            <div className="progress">
+              <div className="bar"></div>
+            </div>
+          </div>
+          
         </div>
       </section>
     </div>
@@ -122,6 +159,13 @@ const AdStudents = () => {
       <div className="p-6 bg-gray-100">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-semibold">Student List</h3>
+          
+        </div>
+
+        <div className="flex justify-between items-center mb-4">
+          {/* <p>
+            Showing {indexOfFirstEntry + 1} to {Math.min(indexOfLastEntry, totalEntries)} of {totalEntries} entries
+          </p> */}
           <input
             type="text"
             placeholder="Search students..."
@@ -129,12 +173,6 @@ const AdStudents = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="p-2 border rounded-md"
           />
-        </div>
-
-        <div className="flex justify-between items-center mb-4">
-          <p>
-            Showing {indexOfFirstEntry + 1} to {Math.min(indexOfLastEntry, totalEntries)} of {totalEntries} entries
-          </p>
           <select
             value={entriesPerPage}
             onChange={(e) => setEntriesPerPage(Number(e.target.value))}

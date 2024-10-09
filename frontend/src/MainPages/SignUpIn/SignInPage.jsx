@@ -39,31 +39,40 @@ const SignInPage = () => {
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   // Handle login form submission
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    if (!emailRegex.test(loginEmail)) {
-      alert('Please enter a valid email.');
-      return;
-    }
+  // Handle login form submission
+const handleLogin = async (e) => {
+  e.preventDefault();
+  if (!emailRegex.test(loginEmail)) {
+    alert('Please enter a valid email.');
+    return;
+  }
 
-    const loginData = { email: loginEmail, password: loginPassword };
+  const loginData = { email: loginEmail, password: loginPassword };
 
-    try {
-      const response = await fetch('https://tms.ghanaglobalinitiative.com/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(loginData),
-      });
+  try {
+    const response = await fetch('https://tms.ghanaglobalinitiative.com/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(loginData),
+    });
 
-      if (response.ok) {
-        navigate('/Dashboard'); // Redirect to the dashboard after a successful login
+    if (response.ok) {
+      const data = await response.json(); // Extract the response data
+
+      if (data.token) {  // Assuming the token is returned as `token`
+        localStorage.setItem('token', data.token); // Store the token in localStorage
+        navigate('/Dashboard'); // Redirect to the dashboard after successful login
       } else {
-        alert('Login failed. Please check your credentials.');
+        alert('Login successful, but no token received.');
       }
-    } catch (error) {
-      console.error('Login Error:', error);
+    } else {
+      alert('Login failed. Please check your credentials.');
     }
-  };
+  } catch (error) {
+    console.error('Login Error:', error);
+  }
+};
+
 
   // Handle registration form submission
   const handleRegister = async (e) => {

@@ -28,7 +28,7 @@ const AdTutors = () => {
 
         <div className="right-section">
           <i className="bx bx-bell">
-            <NotificationIcon />
+            <Link to="/Admin/Notification"> <NotificationIcon /> </Link>
           </i>
           <i className="bx bx-search">
             <SearchIcon />
