@@ -26,13 +26,6 @@ body{
     padding-bottom: 10px;
 }
 
-.top-container .nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 20px 14px;
-    border-bottom: 2px solid #1e293b;
-}
 
 .top-container .nav .logo{
     display: flex;
@@ -49,20 +42,63 @@ body{
     font-size: 16px;
 }
 
-.top-container .nav .nav-links{
+/* Ensures navigation container adapts for smaller screens */
+.top-container .nav {
     display: flex;
-		text-align: center;
-    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 14px;
+    border-bottom: 2px solid #1e293b;
+    flex-wrap: nowrap; /* Prevents wrapping of elements */
 }
 
-.top-container .nav .nav-links a{
+/* Makes nav-links scrollable horizontally on small screens */
+.top-container .nav .nav-links {
+    display: flex;
+    text-align: center;
+    gap: 20px;
+    white-space: nowrap; /* Prevent line breaks */
+    overflow-x: auto;     /* Enable horizontal scrolling */
+    flex-shrink: 0;
+    max-width: 100%;      /* Prevents overflow on smaller screens */
+}
+
+/* Ensure the scroll bar appears smoothly */
+.top-container .nav .nav-links::-webkit-scrollbar {
+    height: 5px;
+}
+
+.top-container .nav .nav-links::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+/* Style the navigation links */
+.top-container .nav .nav-links a {
     color: #ccc;
     transition: all 0.3s ease;
+    padding: 10px 15px;
+    display: inline-block; /* Ensures the link respects padding */
 }
 
-.top-container .nav .nav-links a:hover{
+.top-container .nav .nav-links a:hover {
     color: #fff;
 }
+
+/* Add a media query to make the navigation responsive on mobile */
+@media (max-width: 768px) {
+    .top-container .nav .nav-links {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    /* Add some visual indicators for scrollable areas on mobile */
+    .top-container .nav .nav-links::-webkit-scrollbar {
+        display: none; /* Hides scrollbar in mobile view */
+    }
+}
+
+
 
 .top-container .nav .right-section{
     display: flex;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MoreVert, Search, Notifications } from '@mui/icons-material';
+import { MoreVert, Search as SearchIcon, Notifications as  NotificationIcon } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react';
 import '../Dashboard/style.css'; // Contains styles for Admin Dashboard
@@ -54,25 +54,31 @@ const AdminSession = () => {
         <nav className="nav">
           <div className="logo">
             <i className="bx bxl-codepen"></i>
-            <Link to="/" className="text-white">TMSServices</Link>
+            <Link to="/" className='text-white' >TMSServices</Link>
           </div>
+
           <div className="nav-links">
-            <Link to="/Admin/Dashboard">Dashboard</Link>
+          <Link to="/Admin/Dashboard">Dashboard</Link>
             <Link to="/Admin/Session">Sessions</Link>
             <Link to="/Admin/Jobs">Jobs</Link>
-            <Link to="/Admin/Students">Students</Link>
-            <Link to="/Admin/Tutors">Tutors</Link>
-            <Link to="/Admin/Employee">Employees</Link>
+            <Link to="/Admin/Students">Student</Link>
+            <Link to="/Admin/Tutors">Tutor</Link>
+            <Link to="/Admin/Employee">Employee</Link>
             <Link to="/Admin/Settings">Settings</Link>
           </div>
+
           <div className="right-section">
-            <Notifications className="text-white" />
-            <Search className="text-white" />
+            <i className="bx bx-bell">
+              <NotificationIcon />
+            </i>
+            <i className="bx bx-search">
+              <SearchIcon />
+            </i>
             <div className="profile">
               <div className="info">
                 <img src="assets/profile.png" alt="Profile" />
                 <div>
-                  <p className="font-semibold">User's Name</p>
+                  <p className='font-semibold'>User's Name</p>
                   <p>1st Rank Admin</p>
                 </div>
               </div>
@@ -80,6 +86,43 @@ const AdminSession = () => {
             </div>
           </div>
         </nav>
+
+        {/* Status */}
+        <section className="status">
+          <div className="header">          
+            <h4>Weekly Activity</h4>
+          </div>
+          <div className="items-list">
+            <div className="item">
+              <div className="info">
+                <div>
+                  <h5>Session By Venue</h5>
+                  <p>- 3 Online</p>
+                  <p>- 1 In-Person</p>
+                </div>
+                <i className="bx bx-data"></i>
+              </div>
+              <div className="progress">
+                <div className="bar"></div>
+              </div>
+            </div>
+            {/* Duplicate for Machine Learning */}
+            <div className="item">
+              <div className="info">
+                <div>
+                  <h5>Sessions Status</h5>
+                  <p>- 2  Pending</p>
+                  <p>- 5  Awaiting Payment</p>
+                </div>
+                <i className="bx bx-terminal"></i>
+              </div>
+              <div className="progress">
+                <div className="bar"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
         {/* Session Main Body */}
         <div className="p-8 bg-gray-100 min-h-screen">
@@ -123,7 +166,7 @@ const AdminSession = () => {
                     <th className="p-4 text-center">Subject</th>
                     <th className="p-4 text-center">Venue</th>
                     <th className="p-4 text-center">Status</th>
-                    <th className="p-4 text-center">Days/Week</th>
+                    <th className="p-4 text-center">Days</th>
                     <th className="p-4 text-center">Actions</th>
                   </tr>
                 </thead>
@@ -238,7 +281,7 @@ const AdminSession = () => {
               </Dialog>
             </Transition>
           </div>
-        </div>
+        
         </>
       )
     };

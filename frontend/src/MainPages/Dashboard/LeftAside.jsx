@@ -1,4 +1,5 @@
 import React from 'react';
+import DonutChart from '../../Components/DonutChart';
 
 const Aside = () => {
   return (
@@ -14,17 +15,23 @@ const Aside = () => {
         <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
           <CourseCard title="Sessions In Progress" numData="35" />
           <CourseCard title="Sessions Completed" numData="30"  />
-          <CourseCard title="Sessions Remaining(Monthly)" numData="45"  />
+          <CourseCard title="Sessions Remaining" numData="45"  />
           <CourseCard title="Sessions Awaiting" numData="20" />
         </div>
       </section>
     
       {/* Weekly Work */}
       <section className="mt-6">
-        <h3 className="font-bold mb-2">Weekly Work</h3>
-        <div className="flex items-center">
-          <div className="relative w-16 h-16">
+        <h3 className="font-bold mb-2">Weekly Progress</h3>
+        <div className="flex items-center justify-center">
+          <div className="relative ">
             {/* Circle Progress */}
+            <div className='bg-[#EBF6FF] p-3 lg:gap-4 flex rounded-lg'>
+              <div className='items-center content-center'>
+                <p>Currently Completed Sessions:</p>
+              </div>
+              <DonutChart percentage={70} color={'#aeefef'}/>
+            </div>
             
           </div>
         </div>

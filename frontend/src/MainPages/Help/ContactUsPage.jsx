@@ -121,8 +121,8 @@ const ContactUsPage = () => {
                 value={formData.name}
                 onChange={handleChange}
               />
-              <label>Username</label>
-              <span>Username</span>
+              <label>Full Name</label>
+              <span>Full Name</span>
             </div>
             <div className={styles['input-container']}>
               <input 

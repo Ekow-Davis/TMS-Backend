@@ -31,6 +31,8 @@ import AdminSession from './Admin/Sessions/AdSessions'
 import AdminJobs from './Admin/Jobs/AdJobs'
 import AdminStudents from './Admin/Students/AdStudents'
 import AdminTutors from './Admin/Tutors/AdTutors'
+import AdminSettings from './Admin/Settings/AdSettings'
+import AdminEmployee from './Admin/Employee/AdEmployee'
 
 
 
@@ -84,6 +86,8 @@ function App() {
       <Route path="/Admin/Jobs" element={<AdminJobs />} />
       <Route path="/Admin/Students" element={<AdminStudents />} />
       <Route path="/Admin/Tutors" element={<AdminTutors />} />
+      <Route path="/Admin/Employee" element={<AdminEmployee />} />
+      <Route path="/Admin/Settings" element={<AdminSettings />} />
       
     </Routes>
     </BrowserRouter>

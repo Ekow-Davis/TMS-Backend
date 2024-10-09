@@ -76,25 +76,25 @@ const PSidebar = () => {
               className="w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out transform"
               // className="max-w-lg space-y-4 border bg-[#D4ECD4] p-12"
             >
-            <DialogTitle className="font-bold">
-              Deactivate account
-            </DialogTitle>
-            <Description>
-              This will permanently deactivate your account
-            </Description>
-            <p>Are you sure you want to deactivate your account? All of your data will be permanently removed.</p>
-            <div className="flex gap-4">
-            <button onClick={() => setIsOpen(false)}>Cancel</button>
-            <Link to="/">
-            <button className='text-red-400' onClick={() => setIsOpen(false)}>
-              Sign Out
-            </button>
-            </Link>            
+              <DialogTitle className="font-bold">
+                Deactivate account
+              </DialogTitle>
+                <Description>
+                  This will permanently deactivate your account
+                </Description>
+                  <p>Are you sure you want to deactivate your account? All of your data will be permanently removed.</p>
+                  <div className="flex gap-4">
+                  <button onClick={() => setIsOpen(false)}>Cancel</button>
+                <Link to="/">
+                  <button className='text-red-400' onClick={() => setIsOpen(false)}>
+                    Sign Out
+                  </button>
+                </Link>            
+                </div>
+            </DialogPanel>
             </div>
-                </DialogPanel>
-                        </div>
-                    </div>
-              </Dialog>
+          </div>
+        </Dialog>
 
     </div>
   );

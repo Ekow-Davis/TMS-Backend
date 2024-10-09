@@ -122,6 +122,9 @@ const AdminDashboard = () => {
               </div>
               <i className="bx bx-terminal"></i>
             </div>
+            <div className="progress">
+              <div className="bar"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -177,20 +180,20 @@ const AdminDashboard = () => {
                         <MenuItem>
                           <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
                             <Square2StackIcon className="size-4 fill-custom-blue" />
-                            Copy Details             
+                            View Details             
                           </button>
                         </MenuItem>
-                        <div className="my-1 h-px bg-white/5" />
+                        
                         <MenuItem>
                           <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
                             <ArchiveBoxXMarkIcon className="size-4 fill-custom-blue" />
-                            Details              
+                            Cancel              
                           </button>
                         </MenuItem>
                         <MenuItem>
                           <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
                             <TrashIcon className="size-4 fill-custom-blue" />
-                            Cancel              
+                            Reject              
                           </button>
                         </MenuItem>
                       </MenuItems>
@@ -254,7 +257,7 @@ const AdminDashboard = () => {
         {/* Chart section */}
         <div className="prog-status">
           <div className="header">
-            <h4>Learning Progress</h4>
+            <h4>Viewership Progress</h4>
             <div className="tabs">
               <p className={chartRange === '1Y' ? 'active' : ''} onClick={() => setChartRange('1Y')}>1Y</p>
               <p className={chartRange === '6M' ? 'active' : ''} onClick={() => setChartRange('6M')}>6M</p>
@@ -262,14 +265,14 @@ const AdminDashboard = () => {
             </div>
           </div>
           <div className="details">
-            <div className="item">
+            {/* <div className="item">
               <h2>3.45</h2>
               <p>Current GPA</p>
-            </div>
+            </div> */}
             <div className="separator"></div>
             <div className="item">
               <h2>4.78</h2>
-              <p>Class Average GPA</p>
+              <p>Visits on Average(/min)</p>
             </div>
           </div>
           {/* Chart */}
@@ -292,18 +295,20 @@ const AdminDashboard = () => {
             <h4>Popular</h4>
             <p># Course</p>
           </div>
-          <img src="assets/podcast.jpg" alt="Podcast" />
+          <img src="../Images/Admin/Science-Image.jpg" alt="Science" />
           <div className="audio">
             <i className="bx bx-podcast"></i>
-            <p>Tutor Topic Most Taught</p>
+            <p>Tutor Topic Most Taught</p>          
           </div>
-          <p>Name of said Topic</p>
-          <div className="listen">
+          Cellular Biology <br />
+          <br />
+          <p>Tutor With the Most Related Sessions</p>
+          <div className="listen">         
             <div className="author">
               <img src="assets/profile.png" alt="Tutor" />
               <div>
-                <p>Tutor Name</p>
-                <p>Tutor Subject</p>
+                <p>Ella Kumah</p>
+                <p>Biology</p>
               </div>
             </div>
             <button>More<i className="bx bx-right-arrow-alt"></i></button>

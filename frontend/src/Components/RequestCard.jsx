@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
-import matchInput  from './MatchInput'; // import your MatchInput component
+
 
 const RequestCard = ({ session }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +42,7 @@ const RequestCard = ({ session }) => {
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium">Time</label>
-                <matchInput defaultDay={session.dayTime.day} defaultTime={session.dayTime.time} />
+                
               </div>
               <button type="submit" className="bg-blue-600 text-white p-2 rounded-lg">Save</button>
             </form>
