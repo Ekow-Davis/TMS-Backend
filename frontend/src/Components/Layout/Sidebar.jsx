@@ -101,7 +101,7 @@ const Sidebar = () => {
       </div>
       
       {/* Sidebar */}
-      <aside className={`fixed inset-0 z-40 transform ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:relative transition-transform duration-200 ease-in-out bg-white shadow-lg md:w-${expanded ? '72' : '24'}`}>
+      <aside className={`fixed inset-0 z-40 transform ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:relative transition-transform duration-200 ease-in-out bg-[#F3F4F6] shadow-md md:w-${expanded ? '72' : '24'}`}>
         {/* Sidebar Header */}
         <div className="flex justify-between p-4">
           <button onClick={handleDesktopToggle} className="hidden md:block">

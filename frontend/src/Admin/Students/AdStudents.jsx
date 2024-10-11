@@ -81,7 +81,7 @@ const AdStudents = () => {
           </div>
 
           {/* 3rd Card */}
-          <div className="item">            
+          {/* <div className="item">            
             <div className="info">
               <div>
                 <h5>Sessions Remailing This Week</h5>
@@ -91,14 +91,14 @@ const AdStudents = () => {
               <i className="bx bx-data"></i>
             </div>
             
-          </div>
+          </div> */}
 
           {/* 4th Card */}
           <div className="item">
             <div className="info">
               <div>
-                <h5>Unpaid Sessions Remaining</h5>
-                <p>- 2  sessions awaiting review left</p>
+                <h5>Students With Unpaid Sessions</h5>
+                <p>- 2  Students </p>
                 
               </div>
               <i className="bx bx-terminal"></i>

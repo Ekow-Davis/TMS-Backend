@@ -70,8 +70,8 @@ const AdminDashboard = () => {
           <div className="item">            
             <div className="info">
               <div>
-                <h5>Session Requests This Week</h5>
-                <p>- 3 sessions unrevised</p>
+                <h5>New Users This Week</h5>
+                <p>- 13 New Accounts Made</p>
                 
               </div>
               <i className="bx bx-data"></i>
