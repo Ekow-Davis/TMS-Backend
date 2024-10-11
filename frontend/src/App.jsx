@@ -35,7 +35,7 @@ import AdminJobs from './Admin/Jobs/AdJobs'
 import AdminStudents from './Admin/Students/AdStudents'
 import AdminTutors from './Admin/Tutors/AdTutors'
 import AdminSettings from './Admin/Settings/AdSettings'
-import AdminEmployee from './Admin/Employee/AdEmployee'
+import AdminFeedback from './Admin/Feedback/AdFeedback'
 import AdminNotification from './Admin/Notifications/AdNotification'
 
 
@@ -91,7 +91,7 @@ function App() {
       <Route path="/Admin/Jobs" element={<AdminJobs />} />
       <Route path="/Admin/Students" element={<AdminStudents />} />
       <Route path="/Admin/Tutors" element={<AdminTutors />} />
-      <Route path="/Admin/Employee" element={<AdminEmployee />} />
+      <Route path="/Admin/Feedback" element={<AdminFeedback />} />
       <Route path="/Admin/Settings" element={<AdminSettings />} />
       <Route path="/Admin/Notification" element={<AdminNotification />} />
       

@@ -39,7 +39,6 @@ const SignInPage = () => {
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   // Handle login form submission
-  // Handle login form submission
 const handleLogin = async (e) => {
   e.preventDefault();
   if (!emailRegex.test(loginEmail)) {
@@ -63,7 +62,7 @@ const handleLogin = async (e) => {
         localStorage.setItem('token', data.token); // Store the token in localStorage
         navigate('/Dashboard'); // Redirect to the dashboard after successful login
       } else {
-        alert('Login successful, but no token received.');
+        alert('Login successful');
       }
     } else {
       alert('Login failed. Please check your credentials.');
@@ -242,7 +241,7 @@ const handleLogin = async (e) => {
               Sign Up
             </button>
           </div>
-          <img src="./Images/Login/education-blue.svg" className="image" alt="education-img" />
+          <img src="../Images/Login/education-blue.svg" className="image" alt="education-img" />
         </div>
         <div className="panel right-panel">
           <div className="content">

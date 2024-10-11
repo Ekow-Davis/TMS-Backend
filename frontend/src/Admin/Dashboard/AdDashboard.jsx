@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Notifications as NotificationIcon, Search as SearchIcon, MoreVert as MenuIcon } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { MoreVert as MenuIcon } from '@mui/icons-material';
+import NavBar from '../AdComponent/Layout/NavBar';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto'; 
 import './style.css';
@@ -57,46 +57,12 @@ const AdminDashboard = () => {
     <>
     <div className="top-container">
       {/* Navbar */}
-      <nav className="nav">
-        <div className="logo">
-          <i className="bx bxl-codepen"></i>
-          <Link to="/" className='text-white' >TMSServices</Link>
-        </div>
-
-        <div className="nav-links">
-        <Link to="/Admin/Dashboard">Dashboard</Link>
-          <Link to="/Admin/Session">Sessions</Link>
-          <Link to="/Admin/Jobs">Jobs</Link>
-          <Link to="/Admin/Students">Student</Link>
-          <Link to="/Admin/Tutors">Tutor</Link>
-          <Link to="/Admin/Employee">Employee</Link>
-          <Link to="/Admin/Settings">Settings</Link>
-        </div>
-
-        <div className="right-section">
-          <i className="bx bx-bell">
-            <Link to="/Admin/Notification"> <NotificationIcon /> </Link>
-          </i>
-          <i className="bx bx-search">
-            <SearchIcon />
-          </i>
-          <div className="profile">
-            <div className="info">
-              <img src="../Images/Admin/profileAd.jpg" alt="Profile" />
-              <div>
-                <p className='font-semibold'>User's Name</p>
-                <p>1st Rank Admin</p>
-              </div>
-            </div>
-            <i className="bx bx-chevron-down"></i>
-          </div>
-        </div>
-      </nav>
+      <NavBar />
 
       {/* Status */}
       <section className="status">
         <div className="header">          
-          <h4>Weekly Activity</h4>
+          <h4>Dashboard: Weekly Activity</h4>
         </div>
         <div className="items-list">
           
@@ -104,15 +70,13 @@ const AdminDashboard = () => {
           <div className="item">            
             <div className="info">
               <div>
-                <h5>Sessions Remailing This Week</h5>
-                <p>- 3 lessons left</p>
-                <p>- 1 project left</p>
+                <h5>Session Requests This Week</h5>
+                <p>- 3 sessions unrevised</p>
+                
               </div>
               <i className="bx bx-data"></i>
             </div>
-            <div className="progress">
-              <div className="bar"></div>
-            </div>
+            
           </div>
 
           {/* 2nd Card */}
@@ -120,44 +84,38 @@ const AdminDashboard = () => {
             <div className="info">
               <div>
                 <h5>Unpaid Sessions Remaining</h5>
-                <p>- 2  sessions awaiting review left</p>
-                <p>- 5  left</p>
+                <p>- 5  sessions payment remaining</p>
+                
               </div>
               <i className="bx bx-terminal"></i>
             </div>
-            <div className="progress">
-              <div className="bar"></div>
-            </div>
+            
           </div>
 
           {/* 3rd Card */}
           <div className="item">            
             <div className="info">
               <div>
-                <h5>Sessions Remailing This Week</h5>
-                <p>- 3 lessons left</p>
-                <p>- 1 project left</p>
+                <h5>Top Requested Subject</h5>
+                <p>- French</p>
+                
               </div>
               <i className="bx bx-data"></i>
             </div>
-            <div className="progress">
-              <div className="bar"></div>
-            </div>
+            
           </div>
 
           {/* 4th Card */}
           <div className="item">
             <div className="info">
               <div>
-                <h5>Unpaid Sessions Remaining</h5>
-                <p>- 2  sessions awaiting review left</p>
-                <p>- 5  left</p>
+                <h5>Average Session Request</h5>
+                <p>- 8 requests daily</p>
+                
               </div>
               <i className="bx bx-terminal"></i>
             </div>
-            <div className="progress">
-              <div className="bar"></div>
-            </div>
+            
           </div>
 
         </div>

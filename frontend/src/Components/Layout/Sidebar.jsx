@@ -23,31 +23,47 @@ const Sidebar = () => {
 
   const handleLogout = async () => {
     const token = localStorage.getItem('token');
+
     if (!token) {
       alert('No token found. Please login first.');
       return;
     }
+  
+    // Remove the token from localStorage
+    localStorage.removeItem('token');
+    
+    // Alert the user that they are logged out
+    alert('Successfully logged out');
+    
+    // Navigate the user to the homepage or login page
+    navigate('/');
 
-    try {
-      const response = await fetch('https://tms.ghanaglobalinitiative.com/api/logout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-      });
 
-      if (response.ok) {
-        localStorage.removeItem('token');
-        alert('Successfully logged out');
-        navigate('/');
-      } else {
-        alert('Logout failed. Please try again.');
-      }
-    } catch (error) {
-      console.error('Logout Error:', error);
-      alert('An error occurred. Please try again later.');
-    }
+  //   if (!token) {
+  //     alert('No token found. Please login first.');
+  //     return;
+  //   }
+
+  //   try {
+  //     const response = await fetch('https://tms.ghanaglobalinitiative.com/api/logout', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': `Bearer ${token}`,
+  //       },
+  //     });
+
+  //     if (response.ok) {
+  //       localStorage.removeItem('token');
+  //       alert('Successfully logged out');
+  //       navigate('/');
+  //     } else {
+  //       alert('Logout failed. Please try again.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Logout Error:', error);
+  //     alert('An error occurred. Please try again later.');
+  //   }
   };
 
   useEffect(() => {

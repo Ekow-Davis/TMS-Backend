@@ -1,8 +1,7 @@
 import React, { useState, useMemo, useEffect, Fragment } from 'react';
 import { MoreVert as MenuIcon } from '@mui/icons-material';
 import { Dialog, Transition } from '@headlessui/react';
-import { Notifications as NotificationIcon, Search as SearchIcon } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import NavBar from '../AdComponent/Layout/NavBar';
 import '../Dashboard/style.css';
 
 const AdStudents = () => {
@@ -48,41 +47,7 @@ const AdStudents = () => {
     <>
           <div className="top-container">
       {/* Navbar */}
-      <nav className="nav">
-        <div className="logo">
-          <i className="bx bxl-codepen"></i>
-          <Link to="/" className='text-white' >TMSServices</Link>
-        </div>
-
-        <div className="nav-links">
-        <Link to="/Admin/Dashboard">Dashboard</Link>
-          <Link to="/Admin/Session">Sessions</Link>
-          <Link to="/Admin/Jobs">Jobs</Link>
-          <Link to="/Admin/Students">Student</Link>
-          <Link to="/Admin/Tutors">Tutor</Link>
-          <Link to="/Admin/Employee">Employee</Link>
-          <Link to="/Admin/Settings">Settings</Link>
-        </div>
-
-        <div className="right-section">
-        <i className="bx bx-bell">
-            <Link to="/Admin/Notification"> <NotificationIcon /> </Link>
-          </i>
-          <i className="bx bx-search">
-            <SearchIcon />
-          </i>
-          <div className="profile">
-            <div className="info">
-              <img src="../Images/Admin/profileAd.jpg" alt="Profile" />
-              <div>
-                <p className='font-semibold'>User's Name</p>
-                <p>1st Rank Admin</p>
-              </div>
-            </div>
-            <i className="bx bx-chevron-down"></i>
-          </div>
-        </div>
-      </nav>
+      <NavBar />
 
       {/* Status */}
       <section className="status">
@@ -95,30 +60,24 @@ const AdStudents = () => {
           <div className="item">            
             <div className="info">
               <div>
-                <h5>Sessions Remailing This Week</h5>
-                <p>- 3 lessons left</p>
-                <p>- 1 project left</p>
+                <h5>New Students This Week</h5>
+                <p>- 3 New Students</p>                
               </div>
               <i className="bx bx-data"></i>
             </div>
-            <div className="progress">
-              <div className="bar"></div>
-            </div>
+            
           </div>
 
           {/* 2nd Card */}
           <div className="item">
             <div className="info">
               <div>
-                <h5>Unpaid Sessions Remaining</h5>
-                <p>- 2  sessions awaiting review left</p>
-                <p>- 5  left</p>
+                <h5>Students with 0 Sessions</h5>
+                <p>- 8  students with no session requests</p>               
               </div>
               <i className="bx bx-terminal"></i>
             </div>
-            <div className="progress">
-              <div className="bar"></div>
-            </div>
+            
           </div>
 
           {/* 3rd Card */}
@@ -127,13 +86,11 @@ const AdStudents = () => {
               <div>
                 <h5>Sessions Remailing This Week</h5>
                 <p>- 3 lessons left</p>
-                <p>- 1 project left</p>
+                
               </div>
               <i className="bx bx-data"></i>
             </div>
-            <div className="progress">
-              <div className="bar"></div>
-            </div>
+            
           </div>
 
           {/* 4th Card */}
@@ -142,13 +99,11 @@ const AdStudents = () => {
               <div>
                 <h5>Unpaid Sessions Remaining</h5>
                 <p>- 2  sessions awaiting review left</p>
-                <p>- 5  left</p>
+                
               </div>
               <i className="bx bx-terminal"></i>
             </div>
-            <div className="progress">
-              <div className="bar"></div>
-            </div>
+            
           </div>
           
         </div>
