@@ -32,7 +32,7 @@ const SessionsHistoryPage = () => {
   useEffect(() => {
     const fetchSessions = async () => {
       try {
-        const response = await fetch('https://tms.ghanaglobalinitiative.com/api/session-requests/student', {
+        const response = await fetch('https://localhost:8000/api/session-requests/student', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -52,7 +52,7 @@ const SessionsHistoryPage = () => {
 
   const handleUpdateSession = async (id, updatedData) => {
     try {
-      const response = await fetch(`https://tms.ghanaglobalinitiative.com/api/session-requests/${id}`, {
+      const response = await fetch(`https://localhost:8000/api/session-requests/${id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -76,7 +76,7 @@ const SessionsHistoryPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`https://tms.ghanaglobalinitiative.com/api/session-requests/${id}`, {
+      const response = await fetch(`https://localhost:8000/api/session-requests/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -243,45 +243,160 @@ const SessionsHistoryPage = () => {
               </div>
 
 
-              {/* Selected Session Details */}
-        <div className="w-2/3 pl-4">
-          {selectedSession && (
-            <div className="p-4 border rounded">
-              <h2 className="text-xl font-bold mb-2">{selectedSession.subject}</h2>
-              <p>Course: {selectedSession.course}</p>
-              <p>Date(s): {selectedSession.day.join(', ')}</p>
-              <p>Time(s): {selectedSession.time.join(', ')}</p>
-              <p>Duration: {Math.floor(selectedSession.duration / 60)} hours {selectedSession.duration % 60} minutes</p>
-              <p>Venue: {selectedSession.venue}</p>
-              <p>Additional Info: {selectedSession.additional_information}</p>
-              <p>Status: {selectedSession.SessionStatus}</p>
+              {selectedSession && (
+          <div className="p-4 border rounded">
+            <h2 className="text-xl font-bold mb-2">{selectedSession.subject}</h2>
+            <p>Course: {selectedSession.course}</p>
+            <p>Date(s): {selectedSession.day.join(', ')}</p>
+            <p>Time(s): {selectedSession.time.join(', ')}</p>
+            <p>Duration: {Math.floor(selectedSession.duration / 60)} hours {selectedSession.duration % 60} minutes</p>
+            <p>Venue: {selectedSession.venue}</p>
+            <p>Status: {selectedSession.SessionStatus}</p>
 
-              {/* Action Buttons */}
-              <div className="mt-4">
-        
-
-              <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-                onClick={() => handleUpdateSession(selectedSession.id)}
-              >
-                Edit
-              </button>
-
-              <button
-                className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
-                onClick={() => handleDelete(selectedSession.id)}
-              >
-                Delete
-              </button>
-            </div>
+            {/* Edit Button */}
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+              onClick={() => openEditDialog(selectedSession)}
+            >
+              Edit
+            </button>
+            {/* Delete Button */}
+            <button
+              className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+              onClick={() => handleDelete(selectedSession.id)}
+            >
+              Delete
+            </button>
           </div>
         )}
+
+        {/* Edit Dialog */}
+        <Transition appear show={isEditOpen} as={Fragment}>
+          <Dialog as="div" className="relative z-10" onClose={closeEditDialog}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className="fixed inset-0 bg-black bg-opacity-50" />
+            </Transition.Child>
+
+            <div className="fixed inset-0 overflow-y-auto">
+              <div className="flex items-center justify-center min-h-full p-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-lg bg-white p-6 text-left align-middle shadow-xl transition-all">
+                    <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
+                      Edit Session
+                    </Dialog.Title>
+
+                    {selectedSession && (
+                      <form
+                        className="mt-4"
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          handleUpdateSession({
+                            subject: e.target.subject.value,
+                            course: e.target.course.value,
+                            day: e.target.day.value.split(','),
+                            time: e.target.time.value.split(','),
+                            duration: parseInt(e.target.duration.value) * 60,
+                            venue: e.target.venue.value,
+                          });
+                        }}
+                      >
+                        <div className="mb-4">
+                          <label className="block text-sm">Subject</label>
+                          <input
+                            type="text"
+                            name="subject"
+                            defaultValue={selectedSession.subject}
+                            className="w-full border rounded p-2"
+                          />
+                        </div>
+
+                        <div className="mb-4">
+                          <label className="block text-sm">Course</label>
+                          <input
+                            type="text"
+                            name="course"
+                            defaultValue={selectedSession.course}
+                            className="w-full border rounded p-2"
+                          />
+                        </div>
+
+                        <div className="mb-4">
+                          <label className="block text-sm">Date(s)</label>
+                          <input
+                            type="text"
+                            name="day"
+                            defaultValue={selectedSession.day.join(', ')}
+                            className="w-full border rounded p-2"
+                          />
+                        </div>
+
+                        <div className="mb-4">
+                          <label className="block text-sm">Time(s)</label>
+                          <input
+                            type="text"
+                            name="time"
+                            defaultValue={selectedSession.time.join(', ')}
+                            className="w-full border rounded p-2"
+                          />
+                        </div>
+
+                        <div className="mb-4">
+                          <label className="block text-sm">Duration (hours)</label>
+                          <input
+                            type="number"
+                            name="duration"
+                            defaultValue={Math.floor(selectedSession.duration / 60)}
+                            className="w-full border rounded p-2"
+                          />
+                        </div>
+
+                        <div className="mb-4">
+                          <label className="block text-sm">Venue</label>
+                          <input
+                            type="text"
+                            name="venue"
+                            defaultValue={selectedSession.venue}
+                            className="w-full border rounded p-2"
+                          />
+                        </div>
+
+                        <div className="flex justify-end">
+                          <button
+                            type="submit"
+                            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                          >
+                            Save Changes
+                          </button>
+                        </div>
+                      </form>
+                    )}
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
+          </Dialog>
+        </Transition>
         </div>
       </div>
     </div>
     </div>
   </div>
-</div>
 
   )
 }

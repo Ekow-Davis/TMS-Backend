@@ -63,7 +63,7 @@ const ContactUsPage = () => {
     }
   
     try {
-      const response = await fetch('https://tms.ghanaglobalinitiative.com/api/reports', {
+      const response = await fetch('https://localhost:8000/api/reports', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

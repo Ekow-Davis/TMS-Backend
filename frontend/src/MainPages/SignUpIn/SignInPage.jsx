@@ -49,7 +49,7 @@ const handleLogin = async (e) => {
   const loginData = { email: loginEmail, password: loginPassword };
 
   try {
-    const response = await fetch('https://tms.ghanaglobalinitiative.com/api/login', {
+    const response = await fetch('https://localhost:8000/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(loginData),
@@ -82,7 +82,7 @@ const handleLogin = async (e) => {
     }
 
     try {
-      const response = await fetch('https://tms.ghanaglobalinitiative.com/api/register', {
+      const response = await fetch('https://localhost:8000/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(registerForm),
