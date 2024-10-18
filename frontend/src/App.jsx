@@ -75,7 +75,7 @@ function App() {
         <Route path="/Payment" element={ <PaymentPage /> } />
         <Route path="/MakePayment" element={ <MakePayment />} />
 
-      <Route path="/Profile" element={ <ProfilePage /> } />
+      <Route path="/Profile" element={ <ProtectedRoute roleRequired="Student"> <ProfilePage /> </ProtectedRoute> } />
         <Route path="/Security" element={ <SecurityPage /> } />
         <Route path="/Settings" element={ <SettingsPage /> } />
         <Route path="/NSettings" element={ <NSettingsPage />} />
@@ -91,7 +91,7 @@ function App() {
       <Route path="/Admin/Jobs" element={<AdminJobs />} />
       <Route path="/Admin/Students" element={<AdminStudents />} />
       <Route path="/Admin/Tutors" element={<AdminTutors />} />
-      <Route path="/Admin/Feedback" element={<AdminFeedback />} />
+      <Route path="/Admin/Feedback" element={<ProtectedRoute roleRequired="Admin"> <AdminFeedback /> </ProtectedRoute> } />
       <Route path="/Admin/Settings" element={<AdminSettings />} />
       <Route path="/Admin/Notification" element={<AdminNotification />} />
       

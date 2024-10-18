@@ -77,7 +77,7 @@ const RequestSessionFormPage = () => {
     console.log("Session Information Data:",sessionInfoFormData)
 
     try {
-      const response = await fetch('https://localhost:8000/api/session-requests', {
+      const response = await fetch('http://localhost:8000/api/session-requests', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

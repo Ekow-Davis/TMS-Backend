@@ -32,7 +32,7 @@ const SessionsHistoryPage = () => {
   useEffect(() => {
     const fetchSessions = async () => {
       try {
-        const response = await fetch('https://localhost:8000/api/session-requests/student', {
+        const response = await fetch('http://localhost:8000/api/session-requests/student', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -52,7 +52,7 @@ const SessionsHistoryPage = () => {
 
   const handleUpdateSession = async (id, updatedData) => {
     try {
-      const response = await fetch(`https://localhost:8000/api/session-requests/${id}`, {
+      const response = await fetch(`http://localhost:8000/api/session-requests/${id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -76,7 +76,7 @@ const SessionsHistoryPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`https://localhost:8000/api/session-requests/${id}`, {
+      const response = await fetch(`http://localhost:8000/api/session-requests/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,

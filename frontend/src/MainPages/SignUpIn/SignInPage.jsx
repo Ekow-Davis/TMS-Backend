@@ -39,38 +39,41 @@ const SignInPage = () => {
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   // Handle login form submission
-const handleLogin = async (e) => {
-  e.preventDefault();
-  if (!emailRegex.test(loginEmail)) {
-    alert('Please enter a valid email.');
-    return;
-  }
-
-  const loginData = { email: loginEmail, password: loginPassword };
-
-  try {
-    const response = await fetch('https://localhost:8000/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(loginData),
-    });
-
-    if (response.ok) {
-      const data = await response.json(); // Extract the response data
-
-      if (data.token) {  // Assuming the token is returned as `token`
-        localStorage.setItem('token', data.token); // Store the token in localStorage
-        navigate('/Dashboard'); // Redirect to the dashboard after successful login
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const loginData = { email: loginEmail, password: loginPassword };
+  
+    try {
+      const response = await fetch('http://localhost:8000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(loginData),
+      });
+  
+      if (response.ok) {
+        const data = await response.json(); 
+        if (data.token && data.message) {
+          localStorage.setItem('token', data.token);
+  
+          // Store the user role based on the message
+          if (data.message === 'Student login successfully') {
+            localStorage.setItem('role', 'Student');
+            alert('Student logged in successfully');
+            navigate('/Dashboard'); 
+          } else if (data.message === 'Admin login successfully') {
+            localStorage.setItem('role', 'Admin');
+            alert('Admin logged in successfully');
+            navigate('/Admin/Dashboard');
+          }
+        }
       } else {
-        alert('Login successful');
+        alert('Login failed. Please check your credentials.');
       }
-    } else {
-      alert('Login failed. Please check your credentials.');
+    } catch (error) {
+      console.error('Login Error:', error);
     }
-  } catch (error) {
-    console.error('Login Error:', error);
-  }
-};
+  };
+    
 
 
   // Handle registration form submission
@@ -82,7 +85,7 @@ const handleLogin = async (e) => {
     }
 
     try {
-      const response = await fetch('https://localhost:8000/api/register', {
+      const response = await fetch('http://localhost:8000/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(registerForm),

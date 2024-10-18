@@ -21,7 +21,7 @@ const AdFeedback = () => {
       }
 
       try {
-        const response = await fetch('https://localhost:8000/api/reports', {
+        const response = await fetch('http://localhost:8000/api/reports', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

@@ -1,17 +1,22 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-// ProtectedRoute component
-const ProtectedRoute = ({ children }) => {
-  // Check if token exists
-  const token = localStorage.getItem('token'); // Token is stored in localStorage
+// Higher-order component for route protection based on role
+const ProtectedRoute = ({ children, roleRequired }) => {
+  const token = localStorage.getItem('token');
+  const userRole = localStorage.getItem('role');
 
-  // If token does not exist, redirect to the login page
   if (!token) {
-    return <Navigate to="/SignIn" replace />;
+    // If no token, redirect to login
+    return <Navigate to="/SignIn" />;
   }
 
-  // If token exists, render the children components (i.e., the protected page)
+  if (userRole !== roleRequired) {
+    // If the user's role doesn't match the required role, redirect to an appropriate page
+    return <Navigate to={userRole === 'Admin' ? '/Admin/Dashboard' : '/Dashboard'} />;
+  }
+
+  // If role matches, render the children (the page content)
   return children;
 };
 
