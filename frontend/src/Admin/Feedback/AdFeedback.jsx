@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Dashboard/style.css';
 import NavBar from '../AdComponent/Layout/NavBar';
 import { Menu as MoreVertIcon } from '@mui/icons-material';
@@ -11,34 +11,39 @@ const AdFeedback = () => {
   const [selectedFeedback, setSelectedFeedback] = useState(null);
 
   // Example feedback data (you will fetch from backend in actual app)
-  const exampleData = useMemo (() => [
-    {
-      id: 1,
-      student: {
-        id: 'fd768b66-94f4-4142-b9f6-7d9e577fdd82',
-        email: 'jeff@example.com',
-        phoneNumber: '0005500000',
-      },
-      message: 'sdfghjkljhgcxvb',
-      created_at: '2024-10-10T22:19:00.000000Z',
-    },
-    {
-      id: 2,
-      student: {
-        id: 'fd768b66-94f4-4142-b9f6-7d9e577fdd82',
-        email: 'kat@example.com',
-        phoneNumber: '0005500000',
-      },
-      message: 'sdfghjkljhgcxvb',
-      created_at: '2024-10-10T22:19:00.000000Z',
-    },
-    // Additional feedback data can go here
-  ], []);
-
   useEffect(() => {
-    // Fetch feedback data from API (for now using example data)
-    setFeedbackData(exampleData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)));
-  }, [exampleData]);
+    const fetchReports = async () => {
+      const token = localStorage.getItem('token'); // Retrieve token from localStorage
+
+      if (!token) {
+        alert('No token found. Please login first.');
+        return;
+      }
+
+      try {
+        const response = await fetch('https://tms.ghanaglobalinitiative.com/api/reports', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Pass the authorization token
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Sort feedback data by the created date (latest first)
+          const sortedData = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+          setFeedbackData(sortedData);
+        } else {
+          console.error('Failed to fetch reports.');
+        }
+      } catch (error) {
+        console.error('Error fetching reports:', error);
+      }
+    };
+
+    fetchReports();
+  }, []);
 
   const openModal = (feedback) => {
     setSelectedFeedback(feedback);

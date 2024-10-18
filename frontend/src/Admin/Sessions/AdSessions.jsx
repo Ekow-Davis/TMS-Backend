@@ -70,12 +70,65 @@ const AdminSession = () => {
     setSelectedSession(null);
   };
 
-  const handleApprove = (id) => {
-    alert(`Approved Session with ID ${id}`);
+  const handleApprove = async (id) => {
+    const token = localStorage.getItem('token');
+  
+    if (!token) {
+      console.error('No token found. Please login first.');
+      return;
+    }
+  
+    try {
+      const response = await fetch(`https://tms.ghanaglobalinitiative.com/api/session-requests/${id}/approve`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, 
+        },
+      });
+  
+      if (response.ok) {
+        alert(`Session with ID ${id} has been approved successfully.`);
+      } else {
+        const errorData = await response.json();
+        console.error('Approval failed:', errorData);
+        alert('Failed to approve session. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error approving session:', error);
+      alert('An error occurred while approving the session. Please try again later.');
+    }
   };
-
-  const handleReject = (id) => {
-    alert(`Rejected Session with ID ${id}`);
+  
+  // Handle session rejection
+  const handleReject = async (id) => {
+    const token = localStorage.getItem('token');
+  
+    if (!token) {
+      console.error('No token found. Please login first.');
+      return;
+    }
+  
+    try {
+      const response = await fetch(`https://tms.ghanaglobalinitiative.com/api/session-requests/${id}/reject`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+  
+      if (response.ok) {
+        alert(`Session with ID ${id} has been rejected successfully.`);
+      } else {
+        const errorData = await response.json();
+        console.error('Rejection failed:', errorData);
+        alert('Failed to reject session. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error rejecting session:', error);
+      alert('An error occurred while rejecting the session. Please try again later.');
+    }
   };
 
   // Function to convert duration to hours and minutes
@@ -217,6 +270,7 @@ const AdminSession = () => {
                       <td className="p-4 text-center">{session.id}</td>
                       <td className="p-4 text-center">{session.student?.id || 'N/A'}</td>
                       <td className="p-4 text-center">{session.subject}</td>
+                      <td className="p-4 text-center">{session.course}</td>
                       <td className="p-4 text-center">{session.venue}</td>
                       <td className="p-4 text-center">{session.session_status}</td>
                       <td className="p-4 text-center">{session.day}</td>

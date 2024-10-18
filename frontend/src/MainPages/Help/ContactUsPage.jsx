@@ -12,9 +12,9 @@ const ContactUsPage = () => {
   const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
+    // name: '',
+    // email: '',
+    // phone: '',
     message: ''
   });
 
@@ -52,22 +52,42 @@ const ContactUsPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    const token = localStorage.getItem('token');
     
-    // Log the form data
-    console.log(formData);
-    
-    // Simulate successful submission
-    const isSuccess = true; // Replace with actual submission logic
-
-    if (isSuccess) {
-      alert("Form submitted successfully!");
-      navigate('/Help'); // Redirect to Help page
-    } else {
-      alert("Error submitting the form. Please try again.");
+    if (!token) {
+      alert("No token found. Please login first.");
+      return;
+    }
+  
+    try {
+      const response = await fetch('https://tms.ghanaglobalinitiative.com/api/reports', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Include token in headers
+        },
+        body: JSON.stringify(formData), // Assuming formData is an object containing the form details
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result); // Log the server response
+        alert("Form submitted successfully!");
+        navigate('/Help'); // Redirect on successful form submission
+      } else {
+        const errorData = await response.json();
+        console.error("Submission error:", errorData);
+        alert("Error submitting the form. Please try again.");
+      }
+    } catch (error) {
+      console.error('Submission Error:', error);
+      alert("An error occurred. Please try again later.");
     }
   };
+  
 
   return (
     <div className={styles.container}>      
@@ -113,7 +133,7 @@ const ContactUsPage = () => {
 
           <form onSubmit={handleSubmit} autoComplete="off">
             <h3 className={styles.title}>Contact us</h3>
-            <div className={styles['input-container']}>
+            {/* <div className={styles['input-container']}>
               <input 
                 type="text" 
                 name="name" 
@@ -123,7 +143,7 @@ const ContactUsPage = () => {
               />
               <label>Full Name</label>
               <span>Full Name</span>
-            </div>
+            </div> */}
             <div className={styles['input-container']}>
               <input 
                 type="email" 
@@ -135,7 +155,7 @@ const ContactUsPage = () => {
               <label>Email</label>
               <span>Email</span>
             </div>
-            <div className={styles['input-container']}>
+            {/* <div className={styles['input-container']}>
               <input 
                 type="tel" 
                 name="phone" 
@@ -145,7 +165,7 @@ const ContactUsPage = () => {
               />
               <label>Phone</label>
               <span>Phone</span>
-            </div>
+            </div> */}
             <div className={`${styles['input-container']} ${styles.textarea}`}>
               <textarea 
                 name="message" 

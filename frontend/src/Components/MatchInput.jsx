@@ -10,38 +10,59 @@ const MatchInput = ({ label, options, onDataChange }) => {
 
   // Handle checkbox toggle
   const handleCheckboxChange = (day) => {
-    setSelectedDays((prevState) => ({
-      ...prevState,
-      [day]: {
-        ...prevState[day],
-        checked: !prevState[day].checked,
-      },
-    }));
+    setSelectedDays((prevState) => {
+      const updatedState = {
+        ...prevState,
+        [day]: {
+          ...prevState[day],
+          checked: !prevState[day].checked,
+        },
+      };
+
+      // Update the parent with the selected days and times
+      updateParentData(updatedState);
+      return updatedState;
+    });
   };
 
   // Handle time change
   const handleTimeChange = (day, time) => {
-    setSelectedDays((prevState) => ({
-      ...prevState,
-      [day]: {
-        ...prevState[day],
-        time,
-      },
-    }));
+    setSelectedDays((prevState) => {
+      const updatedState = {
+        ...prevState,
+        [day]: {
+          ...prevState[day],
+          time,
+        },
+      };
 
-    // Pass data back to parent
-    onDataChange(
-      Object.keys(selectedDays).reduce((acc, currentDay) => {
-        if (selectedDays[currentDay].checked) {
-          acc[currentDay] = selectedDays[currentDay].time;
-        }
-        return acc;
-      }, {})
-    );
+      // Update the parent with the selected days and times
+      updateParentData(updatedState);
+      return updatedState;
+    });
+  };
+
+  // Function to update parent with days and corresponding times as arrays
+  const updateParentData = (updatedDays) => {
+    const selectedDaysArray = [];
+    const selectedTimesArray = [];
+
+    Object.keys(updatedDays).forEach((day) => {
+      if (updatedDays[day].checked) {
+        selectedDaysArray.push(day);
+        selectedTimesArray.push(updatedDays[day].time);
+      }
+    });
+
+    // Pass data back to parent as arrays for both days and times
+    onDataChange({
+      days: selectedDaysArray,
+      times: selectedTimesArray,
+    });
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 my-1">
       <label className="text-lg font-semibold">{label}</label>
       {options.map((day) => (
         <div key={day} className="flex items-center space-x-4">

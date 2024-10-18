@@ -12,14 +12,15 @@ const RequestCard = ({ session }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md relative">
+    <div className="bg-[#D5D7F5] p-6 rounded-lg shadow-md relative">
       <div className="absolute top-2 right-4 text-gray-400">{session.newCount}</div>
       <h4 className="text-lg font-bold">{session.topic}</h4>
-      <p>{session.date}</p>
+      <p>{session.day}</p>
+      <p>{session.time}</p>
       
       <div className="mt-4 flex space-x-4">
-        <button className="text-red-600" onClick={() => session.onCancel(session.id)}>Cancel</button>
-        <button className="text-blue-600" onClick={handleEdit}>Edit</button>
+        <button className="text-custom-blue" onClick={() => session.onCancel(session.id)}>Cancel</button>
+        <button className="text-custom-purple" onClick={handleEdit}>Edit</button>
       </div>
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">

@@ -68,23 +68,23 @@ function App() {
       <Route path="/Message" element={<MessagePage />} />
         <Route path="/MDetail" element={<MDetailPage />} />
 
-      <Route path="/Notification" element={<ProtectedRoute> <NotificationPage /> </ProtectedRoute>} />
-        <Route path="/NDetail/:id" element={<ProtectedRoute> <NDetailPage /></ProtectedRoute>} />
+      <Route path="/Notification" element={ <NotificationPage /> } />
+        <Route path="/NDetail/:id" element={ <NDetailPage />} />
 
-      <Route path="/PaymentHistory" element={<ProtectedRoute><PaymentHistoryPage /></ProtectedRoute>} />
-        <Route path="/Payment" element={<ProtectedRoute> <PaymentPage /> </ProtectedRoute>} />
-        <Route path="/MakePayment" element={<ProtectedRoute> <MakePayment /></ProtectedRoute>} />
+      <Route path="/PaymentHistory" element={<PaymentHistoryPage />} />
+        <Route path="/Payment" element={ <PaymentPage /> } />
+        <Route path="/MakePayment" element={ <MakePayment />} />
 
-      <Route path="/Profile" element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
-        <Route path="/Security" element={<ProtectedRoute> <SecurityPage /> </ProtectedRoute>} />
-        <Route path="/Settings" element={<ProtectedRoute> <SettingsPage /> </ProtectedRoute>} />
-        <Route path="/NSettings" element={<ProtectedRoute> <NSettingsPage /></ProtectedRoute>} />
-        <Route path="/ExportData" element={<ProtectedRoute> <ExportDataPage /> </ProtectedRoute>} />
+      <Route path="/Profile" element={ <ProfilePage /> } />
+        <Route path="/Security" element={ <SecurityPage /> } />
+        <Route path="/Settings" element={ <SettingsPage /> } />
+        <Route path="/NSettings" element={ <NSettingsPage />} />
+        <Route path="/ExportData" element={ <ExportDataPage /> } />
 
-      <Route path="/Sessions" element={<ProtectedRoute> <SessionHistoryPage /> </ProtectedRoute>} />
-        <Route path="/BookedSessions" element={<ProtectedRoute> <BookedSessionsPage /> </ProtectedRoute>} />
-        <Route path="/RequestSessionPage" element={<ProtectedRoute> <RequestSessionPage /> </ProtectedRoute>} />
-          <Route path="/RequestSessionFormPage" element={<ProtectedRoute> <RequestSessionFormPage /> </ProtectedRoute>} />
+      <Route path="/Sessions" element={ <SessionHistoryPage /> } />
+        <Route path="/BookedSessions" element={ <BookedSessionsPage /> } />
+        <Route path="/RequestSessionPage" element={ <RequestSessionPage />} />
+          <Route path="/RequestSessionFormPage" element={ <RequestSessionFormPage />} />
 
       <Route path="/Admin/Session" element={<AdminSession />} />
       <Route path="/Admin/Dashboard" element={<AdminDashboard />} />
