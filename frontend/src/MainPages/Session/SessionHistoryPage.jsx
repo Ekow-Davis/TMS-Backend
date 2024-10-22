@@ -175,7 +175,7 @@ const SessionsHistoryPage = () => {
         </div>
 
         {/* Pending Requests (Scrollable Section) */}
-        <div className="rounded-lg my-6 bg-white max-h-[20rem] overflow-y-auto p-4">
+        <div className="rounded-lg my-6 bg-white max-h-[20rem] flex gap-3 overflow-y-auto p-4">
           {filteredSessions.filter(session => session.session_status === 'approved').map(session => (
             <RequestCard
               key={session.id}
