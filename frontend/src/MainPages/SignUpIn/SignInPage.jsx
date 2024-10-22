@@ -40,9 +40,10 @@ const SignInPage = () => {
 
   // Handle login form submission
   const handleLogin = async (e) => {
-    e.preventDefault();
-    const loginData = { email: loginEmail, password: loginPassword };
+    e.preventDefault(); // Prevent the form from refreshing the page
   
+    const loginData = { email: loginEmail, password: loginPassword };
+    
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
         method: 'POST',
@@ -50,20 +51,27 @@ const SignInPage = () => {
         body: JSON.stringify(loginData),
       });
   
+      // Check if the request was successful
       if (response.ok) {
-        const data = await response.json(); 
-        if (data.token && data.message) {
-          localStorage.setItem('token', data.token);
+        const data = await response.json();
+        
+        // Log the entire response data to verify if the token is being returned
+        console.log('Response Data:', data);
+        
+        if (data.access_token) {
+          localStorage.setItem('token', data.access_token); // Store the token in localStorage
+          console.log('Token:', data.access_token);
+          
   
-          // Store the user role based on the message
-          if (data.message === 'Student login successfully') {
+          // Show success message based on the login response message
+          if (data.message === 'Student login successful') {
             localStorage.setItem('role', 'Student');
-            alert('Student logged in successfully');
-            navigate('/Dashboard'); 
-          } else if (data.message === 'Admin login successfully') {
+            alert('Student logged in successful');
+            navigate('/Dashboard'); // Navigate to the student dashboard
+          } else if (data.message === 'Admin login successful') {
             localStorage.setItem('role', 'Admin');
-            alert('Admin logged in successfully');
-            navigate('/Admin/Dashboard');
+            alert('Admin logged in successful');
+            navigate('/Admin/Dashboard'); // Navigate to the admin dashboard
           }
         }
       } else {
@@ -71,9 +79,9 @@ const SignInPage = () => {
       }
     } catch (error) {
       console.error('Login Error:', error);
-      console.log(loginData)
     }
   };
+  
     
 
 
