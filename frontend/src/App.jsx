@@ -63,7 +63,7 @@ function App() {
         <Route path="/AboutUs" element={<AboutUsPage />} />  
 
       
-      <Route path="/Dashboard" element={<ProtectedRoute> <DashboardPage /> </ProtectedRoute>} />
+      <Route path="/Dashboard" element={<ProtectedRoute roleRequired="Student"> <DashboardPage /> </ProtectedRoute>} />
 
       <Route path="/Message" element={<MessagePage />} />
         <Route path="/MDetail" element={<MDetailPage />} />

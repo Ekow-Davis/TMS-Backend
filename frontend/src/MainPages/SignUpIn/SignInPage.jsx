@@ -68,11 +68,13 @@ const SignInPage = () => {
           // Show success message based on the login response message
           if (data.message === 'Student login successful') {
             localStorage.setItem('role', 'Student');
-            alert('Student logged in successful');
+            console.log("Its a student")
+            alert('Student login successful');
             navigate('/Dashboard'); // Navigate to the student dashboard
           } else if (data.message === 'Admin login successful') {
             localStorage.setItem('role', 'Admin');
-            alert('Admin logged in successful');
+            console.log("Its an admin")
+            alert('Administrator login successful');
             navigate('/Admin/Dashboard'); // Navigate to the admin dashboard
           }
         }

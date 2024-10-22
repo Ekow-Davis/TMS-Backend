@@ -4,7 +4,7 @@ import { Dialog } from '@headlessui/react';
 const RequestCard = ({ session, handleUpdateSession }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [updatedTopic, setUpdatedTopic] = useState(session.topic);
+  const [updatedCourse, setUpdatedCourse] = useState(session.course);
   const [updatedSubject, setUpdatedSubject] = useState(session.subject);
   const [updatedLevel, setUpdatedLevel] = useState(session.level_of_education);
   const [updatedTime, setUpdatedTime] = useState(session.time.slice(0, 5)); // time without seconds
@@ -32,7 +32,7 @@ const RequestCard = ({ session, handleUpdateSession }) => {
   return (
     <div className="bg-[#D5D7F5] p-6 rounded-lg shadow-md relative">
       <div className="absolute top-2 right-4 text-gray-400">{session.newCount}</div>
-      <h4 className="text-lg font-bold">{session.topic} - {session.subject}</h4>
+      <h4 className="text-lg font-bold">{session.course} - {session.subject}</h4>
       <div className='flex gap-2'>
         <p>{session.day}</p>
         <p>{session.time.slice(0, 5)}</p> {/* Time without seconds */}
@@ -51,11 +51,11 @@ const RequestCard = ({ session, handleUpdateSession }) => {
             <Dialog.Title>Edit Session</Dialog.Title>
             <form onSubmit={handleSave}>
               <div className="mb-4">
-                <label className="block text-sm font-medium">Topic</label>
+                <label className="block text-sm font-medium">course</label>
                 <input
                   type="text"
-                  value={updatedTopic}
-                  onChange={(e) => setUpdatedTopic(e.target.value)}
+                  value={updatedCourse}
+                  onChange={(e) => setUpdatedCourse(e.target.value)}
                   className="mt-1 block w-full"
                 />
               </div>

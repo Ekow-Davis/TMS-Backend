@@ -11,10 +11,10 @@ const ProtectedRoute = ({ children, roleRequired }) => {
     return <Navigate to="/SignIn" />;
   }
 
-  // if (userRole !== roleRequired) {
-  //   // If the user's role doesn't match the required role, redirect to an appropriate page
-  //   return <Navigate to={userRole === 'Admin' ? '/Admin/Dashboard' : '/Dashboard'} />;
-  // }
+  if (userRole !== roleRequired) {
+    // If the user's role doesn't match the required role, redirect to an appropriate page
+    return <Navigate to={userRole === 'Admin' ? '/Admin/Dashboard' : '/Dashboard'} />;
+  }
 
   // If role matches, render the children (the page content)
   return children;

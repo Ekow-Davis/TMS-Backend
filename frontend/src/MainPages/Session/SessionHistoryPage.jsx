@@ -265,6 +265,8 @@ const SessionsHistoryPage = () => {
             <p>Duration: {Math.floor(selectedSession.duration / 60)} hours {selectedSession.duration % 60} minutes</p>
             <p>Venue: {selectedSession.venue}</p>
             <p>Status: {selectedSession.session_status}</p>
+            <p>Level of Study: {selectedSession.level_of_education}</p>
+            <p>Extra: {selectedSession.additional_information}</p>
 
             {/* Edit Button */}
             <button
@@ -295,11 +297,11 @@ const SessionsHistoryPage = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="fixed inset-0 bg-black bg-opacity-50" />
+              <div className="fixed inset-0 bg-black bg-opacity-30" />
             </Transition.Child>
 
             <div className="fixed inset-0 overflow-y-auto">
-              <div className="flex items-center justify-center min-h-full p-4 text-center">
+              <div className="flex items-center justify-center min-h-[80%] p-4 text-center">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-out duration-300"
@@ -309,7 +311,7 @@ const SessionsHistoryPage = () => {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-lg bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Panel className="w-full max-w-md transform overflow-y-auto rounded-lg bg-white p-3 text-left align-middle shadow-xl transition-all">
                     <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
                       Edit Session
                     </Dialog.Title>
@@ -326,6 +328,9 @@ const SessionsHistoryPage = () => {
                             time: e.target.time.value.split(','),
                             duration: parseInt(e.target.duration.value) * 60,
                             venue: e.target.venue.value,
+                            level_of_education: e.target.venue.value,
+                            repetition_period: e.target.venue.value,
+                            additional_information: e.target.venue.value,
                           });
                         }}
                       >
@@ -385,6 +390,36 @@ const SessionsHistoryPage = () => {
                             type="text"
                             name="venue"
                             defaultValue={selectedSession.venue}
+                            className="w-full border rounded p-2"
+                          />
+                        </div>
+
+                        <div className="mb-4">
+                          <label className="block text-sm">Monthly Duration</label>
+                          <input
+                            type="text"
+                            name="Repetition period"
+                            defaultValue={selectedSession.repetition_period}
+                            className="w-full border rounded p-2"
+                          />
+                        </div>
+
+                        <div className="mb-4">
+                          <label className="block text-sm">Educational Level</label>
+                          <input
+                            type="text"
+                            name="level_of_education"
+                            defaultValue={selectedSession.level_of_education}
+                            className="w-full border rounded p-2"
+                          />
+                        </div>
+
+                        <div className="mb-4">
+                          <label className="block text-sm">Additional Information</label>
+                          <input
+                            type="text"
+                            name="Additional Information"
+                            defaultValue={selectedSession.additional_information}
                             className="w-full border rounded p-2"
                           />
                         </div>
