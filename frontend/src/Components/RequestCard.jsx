@@ -1,26 +1,49 @@
-const RequestCard = ({ session }) => {
+import React, { useState } from 'react';
+import { Dialog } from '@headlessui/react';
+
+const RequestCard = ({ session, handleUpdateSession }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSave = (e) => {
+  const [updatedTopic, setUpdatedTopic] = useState(session.topic);
+  const [updatedSubject, setUpdatedSubject] = useState(session.subject);
+  const [updatedLevel, setUpdatedLevel] = useState(session.level_of_education);
+  const [updatedTime, setUpdatedTime] = useState(session.time.slice(0, 5)); // time without seconds
+
+  const handleEdit = () => setIsOpen(true);
+
+  const handleSave = async (e) => {
     e.preventDefault();
-    // Call an update function here with the updated session data
+
+    // Create updated session data object
+    const updatedData = {
+      topic: updatedTopic,
+      subject: updatedSubject,
+      level_of_education: updatedLevel,
+      time: updatedTime,
+    };
+
+    // Call the update function with session ID and updated data
+    await handleUpdateSession(session.id, updatedData);
+
+    // Close the dialog after saving
     setIsOpen(false);
   };
 
   return (
     <div className="bg-[#D5D7F5] p-6 rounded-lg shadow-md relative">
       <div className="absolute top-2 right-4 text-gray-400">{session.newCount}</div>
-      <h4 className="text-lg font-bold">{session.topic} - {session.subject} </h4>
+      <h4 className="text-lg font-bold">{session.topic} - {session.subject}</h4>
       <div className='flex gap-2'>
         <p>{session.day}</p>
-        <p>{session.time.slice(0, 5)}</p>
-      </div>
-      
-      <div className="mt-4 flex space-x-4">
-        <button className="text-custom-blue" onClick={() => session.onCancel(session.id)}>Cancel</button>
-        <button className="text-custom-purple" onClick={session.onEdit}>Edit</button>
+        <p>{session.time.slice(0, 5)}</p> {/* Time without seconds */}
       </div>
 
+      <div className="mt-4 flex space-x-4">
+        <button className="text-custom-blue" onClick={() => session.onCancel(session.id)}>Cancel</button>
+        <button className="text-custom-purple" onClick={handleEdit}>Edit</button>
+      </div>
+
+      {/* Dialog for editing the session */}
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
         <div className="fixed inset-0 bg-black bg-opacity-25"></div>
         <div className="fixed inset-0 flex items-center justify-center p-4">
@@ -29,21 +52,41 @@ const RequestCard = ({ session }) => {
             <form onSubmit={handleSave}>
               <div className="mb-4">
                 <label className="block text-sm font-medium">Topic</label>
-                <input type="text" defaultValue={session.topic} className="mt-1 block w-full" />
+                <input
+                  type="text"
+                  value={updatedTopic}
+                  onChange={(e) => setUpdatedTopic(e.target.value)}
+                  className="mt-1 block w-full"
+                />
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium">Subject</label>
-                <input type="text" defaultValue={session.subject} className="mt-1 block w-full" />
+                <input
+                  type="text"
+                  value={updatedSubject}
+                  onChange={(e) => setUpdatedSubject(e.target.value)}
+                  className="mt-1 block w-full"
+                />
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium">Level</label>
-                <input type="text" defaultValue={session.level_of_education} className="mt-1 block w-full" />
+                <input
+                  type="text"
+                  value={updatedLevel}
+                  onChange={(e) => setUpdatedLevel(e.target.value)}
+                  className="mt-1 block w-full"
+                />
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium">Time</label>
-                <input type="time" defaultValue={session.time.slice(0, 5)} className="mt-1 block w-full" />
+                <input
+                  type="time"
+                  value={updatedTime}
+                  onChange={(e) => setUpdatedTime(e.target.value)}
+                  className="mt-1 block w-full"
+                />
               </div>
-              <button type="submit" className="bg-red-600 text-white p-2 rounded-lg">Save</button>
+              <button type="submit" className="bg-blue-600 text-white p-2 rounded-lg">Save</button>
             </form>
           </Dialog.Panel>
         </div>
@@ -51,3 +94,5 @@ const RequestCard = ({ session }) => {
     </div>
   );
 };
+
+export default RequestCard;

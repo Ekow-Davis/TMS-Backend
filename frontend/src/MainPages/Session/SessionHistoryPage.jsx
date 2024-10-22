@@ -179,16 +179,8 @@ const SessionsHistoryPage = () => {
           {filteredSessions.filter(session => session.session_status === 'approved').map(session => (
             <RequestCard
               key={session.id}
-              session={{
-                id: session.id,
-                newCount: 1,
-                topic: session.subject,
-                subject: session.course,
-                level: session.level_of_education,
-                time: session.time,
-                onCancel: handleDelete,
-                onEdit: () => openEditDialog(session),
-              }}
+              session={session}
+              handleUpdateSession={handleUpdateSession}
             />
           ))}
         </div>
@@ -211,10 +203,10 @@ const SessionsHistoryPage = () => {
                 onChange={(e) => setFilter(e.target.value)}
                 className="py-2 px-3 border border-custom-blue/40 rounded-md ml-2"
               >
-                <option value="Upcoming">Upcoming</option>
+                <option value="pending">pending</option>
                 <option value="All">All</option>
-                <option value="Accepted">Accepted</option>
-                <option value="Cancelled">Cancelled</option>
+                <option value="approved">Accepted</option>
+                <option value="rejected">Rejected</option>
               </select>
 
               <Link to="/bookedSessions">
