@@ -19,7 +19,7 @@ const SessionsHistoryPage = () => {
   const [selectedSession, setSelectedSession] = useState(null);
   const [isEditOpen, setIsEditOpen] = useState(false); // Edit dialog state
   const [searchQuery, setSearchQuery] = useState('');
-  const [filter, setFilter] = useState('Upcoming');
+  const [filter, setFilter] = useState('approved');
   const [sessionStats, setSessionStats] = useState({
     totalRequests: 0,
     upcomingSessions: 0,
@@ -110,7 +110,7 @@ const SessionsHistoryPage = () => {
   const updateSessionStats = (sessionData) => {
     const totalRequests = sessionData.length;
     const upcomingSessions = sessionData.filter(session => session.StartDate >= new Date().toISOString().split('T')[0]).length;
-    const pendingPayments = sessionData.filter(session => session.SessionStatus === 'Pending Payment').length;
+    const pendingPayments = sessionData.filter(session => session.session_status === 'pending_payment').length;
 
     setSessionStats({ totalRequests, upcomingSessions, pendingPayments });
   };
@@ -120,7 +120,7 @@ const SessionsHistoryPage = () => {
     const filtered = sessions.filter((session) => {
       const matchFilter = filter === 'All' || 
         (filter === 'Upcoming' && session.StartDate >= currentDate) ||
-        session.SessionStatus === filter;
+        session.session_status === filter;
 
       const matchSearch = session.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
         session.StartDate.includes(searchQuery);
@@ -156,16 +156,16 @@ const SessionsHistoryPage = () => {
 
         {/* Pending Requests (Scrollable Section) */}
         <div className="rounded-lg my-6 bg-white max-h-[20rem] overflow-y-auto p-4">
-          {filteredSessions.filter(session => session.SessionStatus === 'Pending').map(session => (
+          {filteredSessions.filter(sessionData => sessionData.session_status === 'approved').map(sessionData => (
             <RequestCard
-              key={session.id}
+              key={sessionData.id}
               session={{
-                id: session.id,
+                id: sessionData.id,
                 newCount: 1,
-                topic: session.subject,
-                subject: session.course,
-                level: session.level_of_education,
-                time: session.time.join(', '),
+                topic: sessionData.subject,
+                subject: sessionData.course,
+                level: sessionData.level_of_education,
+                time: sessionData.time.join(', '),
                 onCancel: (id) => console.log(`Cancel request ${id}`),
               }}
             />
@@ -222,18 +222,18 @@ const SessionsHistoryPage = () => {
                       <h3 className="text-lg font-semibold">{session.subject}</h3>
                       <div className='flex gap-4'>
                         <div className={`rounded-lg p-2 ${
-                            session.SessionStatus === 'Pending'
+                            session.session_status === 'Pending'
                               ? 'bg-yellow-200'
-                              : session.SessionStatus === 'Cancelled'
+                              : session.session_status === 'Cancelled'
                               ? 'bg-red-200'
-                              : session.SessionStatus === 'Accepted'
+                              : session.session_status === 'Accepted'
                               ? 'bg-green-200'
                               : ''
                           }`}>
-                          {session.SessionStatus === 'Pending' && <PendingIcon className="text-yellow-500" />}
-                          {session.SessionStatus === 'Cancelled' && <CancelIcon className="text-red-500" />}
-                          {session.SessionStatus === 'Accepted' && <AcceptedIcon className="text-green-500" />}
-                          <span className="ml-2">{session.SessionStatus}</span>                      
+                          {session.session_status === 'Pending' && <PendingIcon className="text-yellow-500" />}
+                          {session.session_status === 'Cancelled' && <CancelIcon className="text-red-500" />}
+                          {session.session_status === 'Accepted' && <AcceptedIcon className="text-green-500" />}
+                          <span className="ml-2">{session.session_status}</span>                      
                         </div>
                         <p className='items-center justify-center flex'>{session.StartDate}</p>
                       </div>
@@ -251,7 +251,7 @@ const SessionsHistoryPage = () => {
             <p>Time(s): {selectedSession.time.join(', ')}</p>
             <p>Duration: {Math.floor(selectedSession.duration / 60)} hours {selectedSession.duration % 60} minutes</p>
             <p>Venue: {selectedSession.venue}</p>
-            <p>Status: {selectedSession.SessionStatus}</p>
+            <p>Status: {selectedSession.session_status}</p>
 
             {/* Edit Button */}
             <button
