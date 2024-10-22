@@ -185,7 +185,7 @@ const SessionsHistoryPage = () => {
                 topic: session.subject,
                 subject: session.course,
                 level: session.level_of_education,
-                time: session.time.join(', '),
+                time: session.time,
                 onCancel: (id) => console.log(`Cancel request ${id}`),
               }}
             />
