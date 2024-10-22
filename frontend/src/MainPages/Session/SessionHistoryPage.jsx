@@ -186,7 +186,8 @@ const SessionsHistoryPage = () => {
                 subject: session.course,
                 level: session.level_of_education,
                 time: session.time,
-                onCancel: (id) => console.log(`Cancel request ${id}`),
+                onCancel: handleDelete,
+                onEdit: () => openEditDialog(session),
               }}
             />
           ))}
@@ -267,8 +268,8 @@ const SessionsHistoryPage = () => {
           <div className="p-4 border rounded">
             <h2 className="text-xl font-bold mb-2">{selectedSession.subject}</h2>
             <p>Course: {selectedSession.course}</p>
-            <p>Date(s): {selectedSession.day.join(', ')}</p>
-            <p>Time(s): {selectedSession.time.join(', ')}</p>
+            <p>Date(s): {selectedSession.day}</p>
+            <p>Time(s): {selectedSession.time}</p>
             <p>Duration: {Math.floor(selectedSession.duration / 60)} hours {selectedSession.duration % 60} minutes</p>
             <p>Venue: {selectedSession.venue}</p>
             <p>Status: {selectedSession.session_status}</p>
@@ -361,7 +362,7 @@ const SessionsHistoryPage = () => {
                           <input
                             type="text"
                             name="day"
-                            defaultValue={selectedSession.day.join(', ')}
+                            defaultValue={selectedSession.day}
                             className="w-full border rounded p-2"
                           />
                         </div>
@@ -371,7 +372,7 @@ const SessionsHistoryPage = () => {
                           <input
                             type="text"
                             name="time"
-                            defaultValue={selectedSession.time.join(', ')}
+                            defaultValue={selectedSession.time}
                             className="w-full border rounded p-2"
                           />
                         </div>
@@ -399,7 +400,7 @@ const SessionsHistoryPage = () => {
                         <div className="flex justify-end">
                           <button
                             type="submit"
-                            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                            className="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
                           >
                             Save Changes
                           </button>
