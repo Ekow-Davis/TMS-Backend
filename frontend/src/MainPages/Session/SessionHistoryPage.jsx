@@ -137,7 +137,7 @@ const SessionsHistoryPage = () => {
       const nowTime = new Date().getTime();  // Get current time in comparable format
   
       const matchFilter = filter === 'All' || 
-        (filter === 'Upcoming' && sessionTime >= nowTime) ||  // Filter by time
+        (sessionTime >= nowTime) ||  // Filter by time
         session.session_status === filter;
   
       const matchSearch = session.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -205,7 +205,7 @@ const SessionsHistoryPage = () => {
               >
                 <option value="pending">pending</option>
                 <option value="All">All</option>
-                <option value="approved">Accepted</option>
+                <option value="approved">Approved</option>
                 <option value="rejected">Rejected</option>
               </select>
 
@@ -383,26 +383,29 @@ const SessionsHistoryPage = () => {
                             className="w-full border rounded p-2"
                           />
                         </div>
+                        
+                        <div className='flex gap-4'>
+                          <div className="mb-4">
+                            <label className="block text-sm">Venue</label>
+                            <input
+                              type="text"
+                              name="venue"
+                              defaultValue={selectedSession.venue}
+                              className="w-full border rounded p-2"
+                            />
+                          </div>
 
-                        <div className="mb-4">
-                          <label className="block text-sm">Venue</label>
-                          <input
-                            type="text"
-                            name="venue"
-                            defaultValue={selectedSession.venue}
-                            className="w-full border rounded p-2"
-                          />
+                          <div className="mb-4">
+                            <label className="block text-sm">Monthly Duration</label>
+                            <input
+                              type="text"
+                              name="Repetition period"
+                              defaultValue={selectedSession.repetition_period}
+                              className="w-full border rounded p-2"
+                            />
+                          </div>
                         </div>
-
-                        <div className="mb-4">
-                          <label className="block text-sm">Monthly Duration</label>
-                          <input
-                            type="text"
-                            name="Repetition period"
-                            defaultValue={selectedSession.repetition_period}
-                            className="w-full border rounded p-2"
-                          />
-                        </div>
+                        
 
                         <div className="mb-4">
                           <label className="block text-sm">Educational Level</label>
