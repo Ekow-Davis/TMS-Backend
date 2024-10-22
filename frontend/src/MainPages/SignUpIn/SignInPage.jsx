@@ -63,17 +63,19 @@ const SignInPage = () => {
         if (data.access_token) {
           localStorage.setItem('token', data.access_token); // Store the token in localStorage
           console.log('Token:', data.access_token);
+          console.log('Login message:', data.message);
+
           
-  
           // Show success message based on the login response message
           if (data.message === 'Student login successful') {
             localStorage.setItem('role', 'Student');
-            console.log("Its a student")
+            console.log("It's a student")
             alert('Student login successful');
             navigate('/Dashboard'); // Navigate to the student dashboard
-          } else if (data.message === 'Admin login successful') {
+          }
+          else if (data.message == 'Administrator login successful') {
             localStorage.setItem('role', 'Admin');
-            console.log("Its an admin")
+            console.log("It's an admin")
             alert('Administrator login successful');
             navigate('/Admin/Dashboard'); // Navigate to the admin dashboard
           }
