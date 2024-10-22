@@ -41,6 +41,8 @@ const SignInPage = () => {
   // Handle login form submission
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent the form from refreshing the page
+
+    console.log("the Login button was clicked")
   
     const loginData = { email: loginEmail, password: loginPassword };
     
