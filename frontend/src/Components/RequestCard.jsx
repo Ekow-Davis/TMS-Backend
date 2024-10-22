@@ -16,7 +16,7 @@ const RequestCard = ({ session }) => {
       <div className="absolute top-2 right-4 text-gray-400">{session.newCount}</div>
       <h4 className="text-lg font-bold">{session.topic}</h4>
       <p>{session.day}</p>
-      <p>{session.time}</p>
+      <p>{session.time.slice(0, 5)}</p>
       
       <div className="mt-4 flex space-x-4">
         <button className="text-custom-blue" onClick={() => session.onCancel(session.id)}>Cancel</button>
@@ -39,7 +39,7 @@ const RequestCard = ({ session }) => {
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium">Level</label>
-                <input type="text" defaultValue={session.level} className="mt-1 block w-full" />
+                <input type="text" defaultValue={session.level_of_education} className="mt-1 block w-full" />
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium">Time</label>

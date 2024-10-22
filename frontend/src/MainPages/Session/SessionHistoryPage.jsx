@@ -116,20 +116,39 @@ const SessionsHistoryPage = () => {
     setSessionStats({ totalRequests, upcomingSessions, pendingPayments });
   };
 
+  // useEffect(() => {
+  //   const filtered = sessions.filter((session) => {
+  //     const matchFilter = filter === 'All' || 
+  //       (filter === 'accepted' && sessionTime >= nowTime) ||  // Filter by time
+  //       session.session_status === filter;
+  
+  //     const matchSearch = session.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //       session.day.toLowerCase().includes(searchQuery.toLowerCase());
+  
+  //     return matchFilter && matchSearch;
+  //   });
+  
+  //   setFilteredSessions(filtered);  // Set the filtered state
+  // }, [filter, searchQuery, sessions]);
+  
   useEffect(() => {
-    const currentDate = new Date().toISOString().split('T')[0];
     const filtered = sessions.filter((session) => {
+      const sessionTime = new Date(`1970-01-01T${session.time}:00`).getTime();  // Convert session time to comparable format
+      const nowTime = new Date().getTime();  // Get current time in comparable format
+  
       const matchFilter = filter === 'All' || 
-        (filter === 'Upcoming' && session.StartDate >= currentDate) ||
+        (filter === 'Upcoming' && sessionTime >= nowTime) ||  // Filter by time
         session.session_status === filter;
-
+  
       const matchSearch = session.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        session.StartDate.includes(searchQuery);
-
+        session.day.toLowerCase().includes(searchQuery.toLowerCase());
+  
       return matchFilter && matchSearch;
     });
-    setFilteredSessions(filtered);
+  
+    setFilteredSessions(filtered);  // Set the filtered state
   }, [filter, searchQuery, sessions]);
+  
 
   return (
     <div className='flex h-screen'>
@@ -157,16 +176,16 @@ const SessionsHistoryPage = () => {
 
         {/* Pending Requests (Scrollable Section) */}
         <div className="rounded-lg my-6 bg-white max-h-[20rem] overflow-y-auto p-4">
-          {filteredSessions.filter(sessionData => sessionData.session_status === 'approved').map(sessionData => (
+          {filteredSessions.filter(session => session.session_status === 'approved').map(session => (
             <RequestCard
-              key={sessionData.id}
+              key={session.id}
               session={{
-                id: sessionData.id,
+                id: session.id,
                 newCount: 1,
-                topic: sessionData.subject,
-                subject: sessionData.course,
-                level: sessionData.level_of_education,
-                time: sessionData.time.join(', '),
+                topic: session.subject,
+                subject: session.course,
+                level: session.level_of_education,
+                time: session.time.join(', '),
                 onCancel: (id) => console.log(`Cancel request ${id}`),
               }}
             />
@@ -214,7 +233,7 @@ const SessionsHistoryPage = () => {
             <div className="flex">
               <div className="w-1/3 pr-4">
                 <div className="flex max-h-[31rem] overflow-y-auto flex-col">
-                  {filteredSessions.map(session => (
+                  {filteredSessions.length > 0 ?filteredSessions.map(session => (
                     <div
                       key={session.id}
                       className="p-4 py-3 my-2 border rounded-lg mb-2 cursor-pointer hover:shadow-lg"
@@ -231,15 +250,15 @@ const SessionsHistoryPage = () => {
                               ? 'bg-green-200'
                               : ''
                           }`}>
-                          {session.session_status === 'Pending' && <PendingIcon className="text-yellow-500" />}
-                          {session.session_status === 'Cancelled' && <CancelIcon className="text-red-500" />}
-                          {session.session_status === 'Accepted' && <AcceptedIcon className="text-green-500" />}
+                          {session.session_status === 'pending' && <PendingIcon className="text-yellow-500" />}
+                          {session.session_status === 'rejected' && <CancelIcon className="text-red-500" />}
+                          {session.session_status === 'approved' && <AcceptedIcon className="text-green-500" />}
                           <span className="ml-2">{session.session_status}</span>                      
                         </div>
-                        <p className='items-center justify-center flex'>{session.StartDate}</p>
+                        <p className='items-center justify-center flex'>{session.day} at {session.time.slice(0, 5)}</p>
                       </div>
                     </div>
-                  ))}
+                  )) : <p> no sessions found</p>}
                 </div>
               </div>
 
