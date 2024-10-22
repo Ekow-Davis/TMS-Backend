@@ -4,6 +4,11 @@ import { Dialog } from '@headlessui/react';
 const RequestCard = ({ session, handleUpdateSession }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [updatedDuration, setUpdatedDuration] = useState(session.duration);
+  const [updatedExtra, setUpdatedExtra] = useState(session.additional_information);
+  const [updatedDay, setUpdatedDay] = useState(session.day);
+  const [updatedVenue, setUpdatedVenue] = useState(session.venue);
+
   const [updatedCourse, setUpdatedCourse] = useState(session.course);
   const [updatedSubject, setUpdatedSubject] = useState(session.subject);
   const [updatedLevel, setUpdatedLevel] = useState(session.level_of_education);
@@ -16,10 +21,15 @@ const RequestCard = ({ session, handleUpdateSession }) => {
 
     // Create updated session data object
     const updatedData = {
-      topic: updatedTopic,
+      course: updatedCourse,
       subject: updatedSubject,
       level_of_education: updatedLevel,
       time: updatedTime,
+      duration: updatedDuration,
+      additional_information: updatedExtra,
+      day: updatedDay,
+      venue: updatedVenue,
+      session_status: session.session_status
     };
 
     // Call the update function with session ID and updated data
@@ -83,6 +93,42 @@ const RequestCard = ({ session, handleUpdateSession }) => {
                   type="time"
                   value={updatedTime}
                   onChange={(e) => setUpdatedTime(e.target.value)}
+                  className="mt-1 block w-full"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium">Day</label>
+                <input
+                  type="text"
+                  value={updatedDay}
+                  onChange={(e) => setUpdatedDay(e.target.value)}
+                  className="mt-1 block w-full"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium">Duration</label>
+                <input
+                  type="text"
+                  value={updatedDuration}
+                  onChange={(e) => setUpdatedDuration(e.target.value)}
+                  className="mt-1 block w-full"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium">Venue</label>
+                <input
+                  type="text"
+                  value={updatedVenue}
+                  onChange={(e) => setUpdatedVenue(e.target.value)}
+                  className="mt-1 block w-full"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium">Addditional Information</label>
+                <input
+                  type="text"
+                  value={updatedExtra}
+                  onChange={(e) => setUpdatedExtra(e.target.value)}
                   className="mt-1 block w-full"
                 />
               </div>
