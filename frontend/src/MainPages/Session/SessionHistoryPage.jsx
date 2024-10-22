@@ -39,6 +39,7 @@ const SessionsHistoryPage = () => {
           },
         });
         const data = await response.json();
+        console.log("Session Data:", data)
         setSessions(data);
         updateSessionStats(data);
         setFilteredSessions(data); // Default filtered sessions
