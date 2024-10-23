@@ -6,6 +6,8 @@ const ProfileBody = () => {
 
   // const { user, loginUser } = useContext(UserContext);
 
+  const user = localStorage.getItem('user')
+
   const [userInfo, setUserInfo] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [changesMade, setChangesMade] = useState(false);
@@ -108,7 +110,7 @@ const ProfileBody = () => {
                 <input
                   type="text"
                   name="firstName"
-                  defaultValue={user?.otherNames}
+                  defaultValue={user.otherNames}
                   value={editedUserInfo.firstName || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
@@ -120,7 +122,7 @@ const ProfileBody = () => {
                 <input
                   type="text"
                   name="lastName"
-                  defaultValue={user?.lastName}
+                  defaultValue={user.lastName}
                   value={editedUserInfo.lastName || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
@@ -132,7 +134,7 @@ const ProfileBody = () => {
                 <input
                   type="email"
                   name="emailAddress"
-                  defaultValue={user?.email}
+                  defaultValue={user.email}
                   value={editedUserInfo.emailAddress || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
@@ -144,7 +146,7 @@ const ProfileBody = () => {
                 <input
                   type="text"
                   name="phoneNumber"
-                  defaultValue={user?.phoneNumber}
+                  defaultValue={user.phoneNumber}
                   value={editedUserInfo.phoneNumber || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
