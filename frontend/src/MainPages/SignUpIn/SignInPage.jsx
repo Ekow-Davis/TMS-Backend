@@ -62,6 +62,7 @@ const SignInPage = () => {
         
         if (data.access_token) {
           localStorage.setItem('token', data.access_token); // Store the token in localStorage
+          localStorage.setItem('user', data.user)
           console.log('Token:', data.access_token);
           console.log('Login message:', data.message);
 

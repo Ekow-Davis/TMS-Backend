@@ -6,6 +6,7 @@ import SecurityPage from './SecurityPage';
 import SettingsPage from './SettingsPage';
 import Sidebar from '../../Components/Layout/Sidebar';
 
+
 const tabs = [
   { name: 'Profile', component: <ProfileBody /> },
   { name: 'Security', component: <SecurityPage /> },
@@ -16,7 +17,7 @@ const tabs = [
 
 const ProfilePage = () => {
   // Set ProfileBody as the default active tab by initializing with 0 (Profile)
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);  
 
   // Function to handle tab clicks
   const handleTabClick = (index) => {

@@ -31,6 +31,7 @@ const Sidebar = () => {
   
     // Remove the token from localStorage
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     
     // Alert the user that they are logged out
     alert('Successfully logged out');

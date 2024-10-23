@@ -89,8 +89,10 @@ const RequestSessionFormPage = () => {
   
       if (response.ok) {
         console.log("Session request submitted successfully.");
+        alert("Session request submitted successfully.");
         navigate('/Sessions'); // Navigate to Sessions page after successful submission
-      } else {
+      } 
+      else {
         const errorData = await response.json();
         console.error("Error submitting session:", errorData);
         alert("Failed to submit session. Please try again.");

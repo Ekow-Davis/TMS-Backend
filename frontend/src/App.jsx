@@ -1,5 +1,6 @@
 // Extra Utils
 import ProtectedRoute from "./Components/Utils/ProtectedRoute"
+import { UserProvider } from "./Components/Utils/UserContext"
 
 // Student Parts
 import DashboardPage from "./MainPages/Dashboard/DashboardPage"
@@ -47,7 +48,9 @@ function App() {
 
  
 
-  return (
+  return (    
+    <UserProvider>
+    
     <BrowserRouter>
     <Routes>
    
@@ -97,6 +100,7 @@ function App() {
       
     </Routes>
     </BrowserRouter>
+    </UserProvider>
   );
 }
 

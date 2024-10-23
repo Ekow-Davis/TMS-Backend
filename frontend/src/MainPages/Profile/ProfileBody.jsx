@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
+import { UserContext } from '../../Components/Utils/UserContext';
 
 const ProfileBody = () => {
+
+  const { user } = useContext(UserContext);
 
   const [userInfo, setUserInfo] = useState({});
   const [isEditing, setIsEditing] = useState(false);
@@ -27,11 +30,47 @@ const ProfileBody = () => {
     setChangesMade(true);
   };
 
-  const handleSaveChanges = () => {
-    setUserInfo(editedUserInfo);
-    setIsEditing(false);
-    setChangesMade(false);
+  const handleSaveChanges = async () => {
+    try {
+      // Get the token from local storage
+      const token = localStorage.getItem('token');
+      
+      // Create the PUT request to update user info
+      const response = await fetch('https://yourapi.com/user/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` // Pass the token for authorization
+        },
+        body: JSON.stringify(editedUserInfo) // Send the edited user info as request body
+      });
+  
+      // Handle the response from the server
+      if (response.ok) {
+        // Assuming the server returns the updated user data
+        const updatedUserData = await response.json();
+        
+        // Update context with the new user info
+        setUser(updatedUserData);
+  
+        // Update local storage with the new user info
+        localStorage.setItem('user', JSON.stringify(updatedUserData));
+        
+        // Update the state to reflect changes on UI
+        setUserInfo(updatedUserData);
+        setIsEditing(false);
+        setChangesMade(false);
+        
+        alert('User information updated successfully!');
+      } else {
+        alert('Failed to update user information');
+      }
+    } catch (error) {
+      console.error('Error updating user information:', error);
+      alert('An error occurred while updating the information');
+    }
   };
+  
 
   return (
     <>
@@ -68,6 +107,7 @@ const ProfileBody = () => {
                 <input
                   type="text"
                   name="firstName"
+                  defaultValue={user?.otherNames}
                   value={editedUserInfo.firstName || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
@@ -79,6 +119,7 @@ const ProfileBody = () => {
                 <input
                   type="text"
                   name="lastName"
+                  defaultValue={user?.lastName}
                   value={editedUserInfo.lastName || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
@@ -90,6 +131,7 @@ const ProfileBody = () => {
                 <input
                   type="email"
                   name="emailAddress"
+                  defaultValue={user?.email}
                   value={editedUserInfo.emailAddress || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
@@ -101,13 +143,14 @@ const ProfileBody = () => {
                 <input
                   type="text"
                   name="phoneNumber"
+                  defaultValue={user?.phoneNumber}
                   value={editedUserInfo.phoneNumber || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
                   disabled={!isEditing}
                 />
               </div>
-              <div>
+              {/* <div>
                 <label className="block text-gray-700">Country</label>
                 <input
                   type="text"
@@ -150,7 +193,7 @@ const ProfileBody = () => {
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
                   disabled={!isEditing}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           <button
