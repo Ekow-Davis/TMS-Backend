@@ -39,18 +39,23 @@ const SessionsHistoryPage = () => {
           },
         });
         const data = await response.json();
-        console.log("Session Data:", data)
-        setSessions(data);
-        updateSessionStats(data);
-        setFilteredSessions(data); // Default filtered sessions
+        console.log("Session Data:", data);  // Ensure you're receiving the expected data
+        if (Array.isArray(data)) {  // Check if the data is an array
+          setSessions(data);
+          updateSessionStats(data);
+          setFilteredSessions(data);
+        } else {
+          console.error("Expected array but got:", data);
+          setSessions([]);  // Handle cases where data is not an array
+        }
       } catch (error) {
         console.error('Error fetching sessions:', error);
       }
     };
-
+  
     fetchSessions();
   }, [token]);
-
+  
   const handleUpdateSession = async (id, updatedData) => {
     try {
       const response = await fetch(`http://localhost:8000/api/session-requests/${id}`, {
@@ -110,44 +115,32 @@ const SessionsHistoryPage = () => {
 
   const updateSessionStats = (sessionData) => {
     const totalRequests = sessionData.length;
-    const upcomingSessions = sessionData.filter(session => session.StartDate >= new Date().toISOString().split('T')[0]).length;
+    const upcomingSessions = sessionData.filter(session => session.created_at >= new Date().toISOString().split('T')[0]).length;
     const pendingPayments = sessionData.filter(session => session.session_status === 'pending_payment').length;
 
     setSessionStats({ totalRequests, upcomingSessions, pendingPayments });
   };
 
-  // useEffect(() => {
-  //   const filtered = sessions.filter((session) => {
-  //     const matchFilter = filter === 'All' || 
-  //       (filter === 'accepted' && sessionTime >= nowTime) ||  // Filter by time
-  //       session.session_status === filter;
-  
-  //     const matchSearch = session.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  //       session.day.toLowerCase().includes(searchQuery.toLowerCase());
-  
-  //     return matchFilter && matchSearch;
-  //   });
-  
-  //   setFilteredSessions(filtered);  // Set the filtered state
-  // }, [filter, searchQuery, sessions]);
-  
   useEffect(() => {
-    const filtered = sessions.filter((session) => {
-      const sessionTime = new Date(`1970-01-01T${session.time}:00`).getTime();  // Convert session time to comparable format
-      const nowTime = new Date().getTime();  // Get current time in comparable format
+    if (Array.isArray(sessions)) {  // Ensure sessions is an array before filtering
+      const filtered = sessions.filter((session) => {
+        const sessionTime = new Date(`1970-01-01T${session.time}:00`).getTime();
+        const nowTime = new Date().getTime();
   
-      const matchFilter = filter === 'All' || 
-        (sessionTime >= nowTime) ||  // Filter by time
-        session.session_status === filter;
+        const matchFilter = filter === 'All' || 
+          sessionTime >= nowTime || 
+          session.session_status === filter;
   
-      const matchSearch = session.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        session.day.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchSearch = session.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          session.day.toLowerCase().includes(searchQuery.toLowerCase());
   
-      return matchFilter && matchSearch;
-    });
+        return matchFilter && matchSearch;
+      });
   
-    setFilteredSessions(filtered);  // Set the filtered state
+      setFilteredSessions(filtered);
+    }
   }, [filter, searchQuery, sessions]);
+  
   
 
   return (
