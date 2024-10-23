@@ -254,7 +254,7 @@ const AdminSession = () => {
               <thead>
                 <tr className="border-b">
                   <th className="p-4 text-center">ID</th>
-                  <th className="p-4 text-center">Student ID</th>
+                  {/* <th className="p-4 text-center">Student ID</th> */}
                   <th className="p-4 text-center">Subject</th>
                   <th className="p-4 text-center">Venue</th>
                   <th className="p-4 text-center">Status</th>
@@ -268,9 +268,9 @@ const AdminSession = () => {
                   .map((session) => (
                     <tr key={session.id} className="border-b">
                       <td className="p-4 text-center">{session.id}</td>
-                      <td className="p-4 text-center">{session.student?.id || 'N/A'}</td>
+                      {/* <td className="p-4 text-center">{session.student?.id || 'N/A'}</td> */}
                       <td className="p-4 text-center">{session.subject}</td>
-                      <td className="p-4 text-center">{session.course}</td>
+                      
                       <td className="p-4 text-center">{session.venue}</td>
                       <td className="p-4 text-center">{session.session_status}</td>
                       <td className="p-4 text-center">{session.day}</td>
