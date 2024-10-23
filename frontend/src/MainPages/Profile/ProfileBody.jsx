@@ -97,7 +97,7 @@ const ProfileBody = () => {
             </div>
             <div>
               <h2 className="text-xl font-semibold">
-                {userInfo.firstName} {userInfo.lastName}
+                {userInfo.otherNames} {userInfo.lastName}
               </h2>
               <p className="text-gray-500">{userInfo.email}</p>
             </div>
@@ -135,7 +135,7 @@ const ProfileBody = () => {
                   type="email"
                   name="emailAddress"
                   defaultValue={user.email}
-                  value={editedUserInfo.emailAddress || ''}
+                  value={editedUserInfo.email || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
                   disabled={!isEditing}
