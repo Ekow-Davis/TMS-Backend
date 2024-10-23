@@ -111,7 +111,7 @@ const ProfileBody = () => {
                   type="text"
                   name="firstName"
                   defaultValue={user.otherNames}
-                  value={editedUserInfo.firstName || ''}
+                  value={editedUserInfo.otherNames || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
                   disabled={!isEditing}
