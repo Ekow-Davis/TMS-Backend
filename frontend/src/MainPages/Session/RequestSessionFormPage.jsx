@@ -32,7 +32,7 @@ const RequestSessionFormPage = () => {
   // const [tutorDays, setTutorDays] = useState([])
   // const [tutorTime, setTutorTime] = useState('')
   const [level_of_education, setLevelOfEducation] = useState('')
-  const [venue, setVenue] = useState([])
+  const [venue, setVenue] = useState()
 
   const navigate = useNavigate();
 
@@ -327,7 +327,8 @@ const RequestSessionFormPage = () => {
         <FormInputBox
           type="text"
           width='w-full'
-          placeholder="I have a pencil allergy"          
+          required
+          placeholder=""          
           miniLabel="Extra Information to take note of"
           value={additional_information}
           setValue={setAdditional_information}
