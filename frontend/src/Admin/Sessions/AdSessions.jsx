@@ -24,7 +24,7 @@ const AdminSession = () => {
       }
   
       // Fetch the sessions with the authorization token
-      const response = await fetch('https://localhost:8000/api/session-requests', {
+      const response = await fetch('http://localhost:8000/api/session-requests', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const AdminSession = () => {
     }
   
     try {
-      const response = await fetch(`https://localhost:8000/api/session-requests/${id}/approve`, {
+      const response = await fetch(`http://localhost:8000/api/session-requests/${id}/approve`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ const AdminSession = () => {
     }
   
     try {
-      const response = await fetch(`https://localhost:8000/api/session-requests/${id}/reject`, {
+      const response = await fetch(`http://localhost:8000/api/session-requests/${id}/reject`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

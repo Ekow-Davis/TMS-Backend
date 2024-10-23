@@ -27,7 +27,8 @@ const AdStudents = () => {
         const data = await response.json();
         setStudents(data);
         setFilteredData(data); // Initially, show all students
-      } catch (error) {
+      } 
+      catch (error) {
         console.error('Error fetching students:', error);
       }
     };
@@ -36,7 +37,7 @@ const AdStudents = () => {
   }, []);
 
   const closeModal = () => setIsOpen(false);
-  
+
   const openModal = (student) => {
     setSelectedStudent(student);
     setIsOpen(true);
