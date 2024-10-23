@@ -5,36 +5,54 @@ import NavBar from '../AdComponent/Layout/NavBar';
 import '../Dashboard/style.css';
 
 const AdStudents = () => {
-  const studentData = useMemo (() => [
-    { id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com', sessionsBooked: 5, country: 'USA', language: 'English', studentID: 'ST001' },
-    { id: 2, firstName: 'Jane', lastName: 'Smith', email: 'jane@example.com', sessionsBooked: 8, country: 'Canada', language: 'French', studentID: 'ST002' },
-    { id: 3, firstName: 'Sara', lastName: 'Lee', email: 'sara@example.com', sessionsBooked: 3, country: 'Australia', language: 'English', studentID: 'ST003' },
-    { id: 4, firstName: 'Mark', lastName: 'Brown', email: 'mark@example.com', sessionsBooked: 10, country: 'UK', language: 'English', studentID: 'ST004' },
-    { id: 5, firstName: 'Lucy', lastName: 'White', email: 'lucy@example.com', sessionsBooked: 2, country: 'Germany', language: 'German', studentID: 'ST005' },
-    // Add more student data as needed
-  ], []);
-
+  const [students, setStudents] = useState([]); // Fetching data
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredData, setFilteredData] = useState(studentData);
+  const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [entriesPerPage, setEntriesPerPage] = useState(3);
 
+  // Fetch student data from backend API
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/admin/students', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        const data = await response.json();
+        setStudents(data);
+        setFilteredData(data); // Initially, show all students
+      } catch (error) {
+        console.error('Error fetching students:', error);
+      }
+    };
+
+    fetchStudents();
+  }, []);
+
   const closeModal = () => setIsOpen(false);
+  
   const openModal = (student) => {
     setSelectedStudent(student);
     setIsOpen(true);
   };
 
+  // Handle search and filter logic
   useEffect(() => {
-    // Filter data based on search query
-    const filtered = studentData.filter((student) =>
-      `${student.firstName} ${student.lastName}`.toLowerCase().includes(searchQuery.toLowerCase())
+    const filtered = students.filter((student) =>
+      student.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      student.otherNames.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      student.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      student.id.includes(searchQuery)
     );
     setFilteredData(filtered);
     setCurrentPage(1); // Reset to first page when search query changes
-  }, [searchQuery, studentData]) ;
+  }, [searchQuery, students]);
 
   // Pagination variables
   const totalEntries = filteredData.length;
@@ -45,82 +63,48 @@ const AdStudents = () => {
 
   return (
     <>
-          <div className="top-container">
-      {/* Navbar */}
-      <NavBar />
-
-      {/* Status */}
-      <section className="status">
-        <div className="header">          
-          <h4>Weekly Activity</h4>
-        </div>
-        <div className="items-list">
-          
-          {/* 1st Card */}
-          <div className="item">            
-            <div className="info">
-              <div>
-                <h5>New Students This Week</h5>
-                <p>- 3 New Students</p>                
-              </div>
-              <i className="bx bx-data"></i>
-            </div>
-            
+      <div className="top-container">
+        <NavBar />
+        <section className="status">
+          <div className="header">
+            <h4>Weekly Activity</h4>
           </div>
-
-          {/* 2nd Card */}
-          <div className="item">
-            <div className="info">
-              <div>
-                <h5>Students with 0 Sessions</h5>
-                <p>- 8  students with no session requests</p>               
+          <div className="items-list">
+            <div className="item">
+              <div className="info">
+                <div>
+                  <h5>New Students This Week</h5>
+                  <p>- 3 New Students</p>
+                </div>
               </div>
-              <i className="bx bx-terminal"></i>
             </div>
-            
+            <div className="item">
+              <div className="info">
+                <div>
+                  <h5>Students with 0 Sessions</h5>
+                  <p>- 8 students with no session requests</p>
+                </div>
+              </div>
+            </div>
+            <div className="item">
+              <div className="info">
+                <div>
+                  <h5>Students With Unpaid Sessions</h5>
+                  <p>- 2 Students</p>
+                </div>
+              </div>
+            </div>
           </div>
-
-          {/* 3rd Card */}
-          {/* <div className="item">            
-            <div className="info">
-              <div>
-                <h5>Sessions Remailing This Week</h5>
-                <p>- 3 lessons left</p>
-                
-              </div>
-              <i className="bx bx-data"></i>
-            </div>
-            
-          </div> */}
-
-          {/* 4th Card */}
-          <div className="item">
-            <div className="info">
-              <div>
-                <h5>Students With Unpaid Sessions</h5>
-                <p>- 2  Students </p>
-                
-              </div>
-              <i className="bx bx-terminal"></i>
-            </div>
-            
-          </div>
-          
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
 
       {/* Student Table */}
       <div className="p-6 bg-gray-100">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-semibold">Student List</h3>
-          
         </div>
 
         <div className="flex justify-between items-center mb-4">
-          {/* <p>
-            Showing {indexOfFirstEntry + 1} to {Math.min(indexOfLastEntry, totalEntries)} of {totalEntries} entries
-          </p> */}
           <input
             type="text"
             placeholder="Search students..."
@@ -145,24 +129,20 @@ const AdStudents = () => {
               <th className="py-3 px-6">ID</th>
               <th className="py-3 px-6">Name</th>
               <th className="py-3 px-6">Email</th>
-              <th className="py-3 px-6">Sessions Booked</th>
-              <th className="py-3 px-6">Country</th>
-              <th className="py-3 px-6">Language</th>
-              <th className="py-3 px-6">Student ID</th>
+              <th className="py-3 px-6">Phone Number</th>
+              <th className="py-3 px-6">updated_at</th>
               <th className="py-3 px-6">Actions</th>
             </tr>
           </thead>
           <tbody>
             {currentEntries.length > 0 ? (
-              currentEntries.map((student) => (
+              currentEntries.map((student, index) => (
                 <tr key={student.id} className="border-b">
-                  <td className="py-2 px-4 text-center">{student.id}</td>
-                  <td className="py-2 px-4 text-center">{`${student.lastName}, ${student.firstName}`}</td>
+                  <td className="py-2 px-4 text-center">{index + 1 + (currentPage - 1) * entriesPerPage}</td> {/* Incremental ID */}
+                  <td className="py-2 px-4 text-center">{`${student.lastName}, ${student.otherNames}`}</td>
                   <td className="py-2 px-4 text-center">{student.email}</td>
-                  <td className="py-2 px-4 text-center">{student.sessionsBooked}</td>
-                  <td className="py-2 px-4 text-center">{student.country}</td>
-                  <td className="py-2 px-4 text-center">{student.language}</td>
-                  <td className="py-2 px-4 text-center">{student.studentID}</td>
+                  <td className="py-2 px-4 text-center">{student.phoneNumber}</td>
+                  <td className="py-2 px-4 text-center">{new Date(student.updated_at).toLocaleDateString()}</td>
                   <td className="py-2 px-4 text-center">
                     <button
                       onClick={() => openModal(student)}
@@ -176,7 +156,7 @@ const AdStudents = () => {
             ) : (
               <tr>
                 <td colSpan="8" className="text-center py-6">
-                  <img src="assets/no-data.svg" alt="No Data" className="mx-auto h-32" />
+                  <img src="../Images/Admin/empty-grey.svg" alt="No Data" className="mx-auto h-32" />
                   <p>No Data Found</p>
                 </td>
               </tr>
@@ -222,12 +202,13 @@ const AdStudents = () => {
                 </Dialog.Title>
                 {selectedStudent && (
                   <div className="mt-4">
-                    <p><strong>Name:</strong> {`${selectedStudent.lastName}, ${selectedStudent.firstName}`}</p>
+                    <p><strong>Student ID:</strong> {selectedStudent.id}</p>
+                    <p><strong>Last Name:</strong> {selectedStudent.lastName}</p>
+                    <p><strong>Other Names:</strong> {selectedStudent.otherNames}</p>
                     <p><strong>Email:</strong> {selectedStudent.email}</p>
-                    <p><strong>Sessions Booked:</strong> {selectedStudent.sessionsBooked}</p>
-                    <p><strong>Country:</strong> {selectedStudent.country}</p>
-                    <p><strong>Language:</strong> {selectedStudent.language}</p>
-                    <p><strong>Student ID:</strong> {selectedStudent.studentID}</p>
+                    <p><strong>Phone Number:</strong> {selectedStudent.phoneNumber}</p>
+                    <p><strong>Created At:</strong> {new Date(selectedStudent.created_at).toLocaleDateString()}</p>
+                    <p><strong>Last Updated:</strong> {new Date(selectedStudent.updated_at).toLocaleDateString()}</p>
                   </div>
                 )}
                 <div className="mt-6 flex justify-end">
@@ -246,6 +227,6 @@ const AdStudents = () => {
       </Transition>
     </>
   );
-};
+}
 
-export default AdStudents;
+export default AdStudents

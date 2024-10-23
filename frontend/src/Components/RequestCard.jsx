@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 
-const RequestCard = ({ session, handleUpdateSession }) => {
+const RequestCard = ({ session, handleUpdateSession, onDelete }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [updatedDuration, setUpdatedDuration] = useState(session.duration);
@@ -50,7 +50,7 @@ const RequestCard = ({ session, handleUpdateSession }) => {
       </div>
 
       <div className="mt-4 flex space-x-4">
-        <button className="text-custom-blue" onClick={() => session.onCancel(session.id)}>Cancel</button>
+        <button className="text-custom-blue" onClick={onDelete}>Cancel</button>
         <button className="text-custom-purple" onClick={handleEdit}>Edit</button>
       </div>
 

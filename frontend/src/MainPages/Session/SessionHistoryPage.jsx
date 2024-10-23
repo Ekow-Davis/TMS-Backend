@@ -180,7 +180,8 @@ const SessionsHistoryPage = () => {
             <RequestCard
               key={session.id}
               session={session}
-              handleUpdateSession={handleUpdateSession}
+              onDelete={handleDelete(session.id)}
+              handleUpdateSession={handleUpdateSession(session.id)}
             />
           ))}
         </div>
@@ -235,11 +236,11 @@ const SessionsHistoryPage = () => {
                       <h3 className="text-lg font-semibold">{session.subject}</h3>
                       <div className='flex gap-4'>
                         <div className={`rounded-lg p-2 ${
-                            session.session_status === 'Pending'
+                            session.session_status === 'pending'
                               ? 'bg-yellow-200'
-                              : session.session_status === 'Cancelled'
+                              : session.session_status === 'rejected'
                               ? 'bg-red-200'
-                              : session.session_status === 'Accepted'
+                              : session.session_status === 'approved'
                               ? 'bg-green-200'
                               : ''
                           }`}>
@@ -324,9 +325,9 @@ const SessionsHistoryPage = () => {
                           handleUpdateSession({
                             subject: e.target.subject.value,
                             course: e.target.course.value,
-                            day: e.target.day.value.split(','),
-                            time: e.target.time.value.split(','),
-                            duration: parseInt(e.target.duration.value) * 60,
+                            day: e.target.day.value,
+                            time: e.target.time.value,
+                            duration: e.target.duration.value,
                             venue: e.target.venue.value,
                             level_of_education: e.target.venue.value,
                             repetition_period: e.target.venue.value,

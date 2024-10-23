@@ -68,7 +68,7 @@ const RequestSessionFormPage = () => {
       time: dayTimeData.times,
       repitition_period: repitition,
       additional_information,
-      duration: duration*60,
+      duration,
       level_of_education,
       venue,      
     }
