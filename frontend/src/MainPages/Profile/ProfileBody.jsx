@@ -51,6 +51,7 @@ const ProfileBody = () => {
       if (response.ok) {
         // Assuming the server returns the updated user data
         const updatedUserData = await response.json();
+        console.log(editedUserInfo)
         
         // // Update context with the new user info
         // setUser(updatedUserData);
@@ -110,7 +111,7 @@ const ProfileBody = () => {
                 <input
                   type="text"
                   name="otherNames"
-                  defaultValue={user.otherNames}
+                  
                   value={editedUserInfo.otherNames || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
@@ -134,7 +135,7 @@ const ProfileBody = () => {
                 <input
                   type="email"
                   name="email"
-                  defaultValue={user.email}
+                 
                   value={editedUserInfo.email || ''}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
