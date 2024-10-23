@@ -38,7 +38,7 @@ const ProfileBody = () => {
       const token = localStorage.getItem('token');
       
       // Create the PUT request to update user info
-      const response = await fetch('https://yourapi.com/user/update', {
+      const response = await fetch('http://localhost:8000/api/user/update', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
