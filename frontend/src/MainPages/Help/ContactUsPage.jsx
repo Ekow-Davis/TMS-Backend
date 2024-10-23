@@ -177,7 +177,7 @@ const ContactUsPage = () => {
               <span>Message</span>
             </div>
            <div className='flex gap-2'>
-           <button className={styles.btn}>
+           <button type='submit' className={styles.btn}>
               Send
             </button>
             <button type="button" onClick={() => navigate(-1)} className={styles.btn}>

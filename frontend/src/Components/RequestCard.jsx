@@ -8,6 +8,7 @@ const RequestCard = ({ session, handleUpdateSession }) => {
   const [updatedExtra, setUpdatedExtra] = useState(session.additional_information);
   const [updatedDay, setUpdatedDay] = useState(session.day);
   const [updatedVenue, setUpdatedVenue] = useState(session.venue);
+  const [updatedRepetition, setUpdatedRepetition] = useState(session.repetition_period);
 
   const [updatedCourse, setUpdatedCourse] = useState(session.course);
   const [updatedSubject, setUpdatedSubject] = useState(session.subject);
@@ -29,7 +30,7 @@ const RequestCard = ({ session, handleUpdateSession }) => {
       additional_information: updatedExtra,
       day: updatedDay,
       venue: updatedVenue,
-      session_status: session.session_status
+      repetition_period: updatedRepetition
     };
 
     // Call the update function with session ID and updated data
@@ -61,7 +62,7 @@ const RequestCard = ({ session, handleUpdateSession }) => {
             <Dialog.Title>Edit Session</Dialog.Title>
             <form onSubmit={handleSave}>
               <div className="mb-4">
-                <label className="block text-sm font-medium">course</label>
+                <label className="block text-sm font-medium">Course</label>
                 <input
                   type="text"
                   value={updatedCourse}
@@ -115,6 +116,15 @@ const RequestCard = ({ session, handleUpdateSession }) => {
                 />
               </div>
               <div className="mb-4">
+                <label className="block text-sm font-medium">Monthly Repetition</label>
+                <input
+                  type="number"
+                  value={updatedRepetition}
+                  onChange={(e) => setUpdatedRepetition(e.target.value)}
+                  className="mt-1 block w-full"
+                />
+              </div>
+              <div className="mb-4">
                 <label className="block text-sm font-medium">Venue</label>
                 <input
                   type="text"
@@ -124,7 +134,7 @@ const RequestCard = ({ session, handleUpdateSession }) => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-sm font-medium">Addditional Information</label>
+                <label className="block text-sm font-medium">Additional Information</label>
                 <input
                   type="text"
                   value={updatedExtra}
