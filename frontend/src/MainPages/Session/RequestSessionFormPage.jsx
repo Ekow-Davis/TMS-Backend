@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import VenueInputBox from "../../Components/VenueInput"
 import MatchInput from '../../Components/MatchInput'
 import Sidebar from '../../Components/Layout/Sidebar'
 import FormInputBox from '../../Components/FormInputBox'
@@ -32,7 +33,7 @@ const RequestSessionFormPage = () => {
   // const [tutorDays, setTutorDays] = useState([])
   // const [tutorTime, setTutorTime] = useState('')
   const [level_of_education, setLevelOfEducation] = useState('')
-  const [venue, setVenue] = useState()
+  const [venue, setVenue] = useState('')
 
   const navigate = useNavigate();
 
@@ -289,6 +290,7 @@ const RequestSessionFormPage = () => {
           miniLabel="Duration in Hours"
           value={duration}
           setValue={setDuration}
+          min={1}
         />
         <FormInputBox
           type="number"
@@ -312,12 +314,12 @@ const RequestSessionFormPage = () => {
           setValue={setLevelOfEducation}
         />
 
-        <CheckboxInputBox 
-          options={['Online','In-Person', 'Fine Either Way']}
+        <RadioInputBox
+          options={['Online', 'In-Person', 'Fine Either Way']}
           label="Mode of Teaching"
-          miniLabel="How you would like to be taught"         
-          selectedOptions={venue}
-          setSelectedOptions={setVenue}
+          miniLabel="How you would like to be taught"
+          selectedOption={venue}
+          setSelectedOption={setVenue}
         />
 
         <label className='font-bold mt-1 text-custom-heading'>
