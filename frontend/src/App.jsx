@@ -48,10 +48,12 @@ function App() {
 
  
 
-  return (    
-    <UserProvider>
+  return (       
     
+
     <BrowserRouter>
+    
+
     <Routes>
    
       <Route path="/SignIn" element={<SignInPage />} />
@@ -99,8 +101,10 @@ function App() {
       <Route path="/Admin/Notification" element={<AdminNotification />} />
       
     </Routes>
+   
     </BrowserRouter>
-    </UserProvider>
+    
+    
   );
 }
 

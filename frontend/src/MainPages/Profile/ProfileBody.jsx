@@ -4,7 +4,7 @@ import { UserContext } from '../../Components/Utils/UserContext';
 
 const ProfileBody = () => {
 
-  const { user } = useContext(UserContext);
+  // const { user, loginUser } = useContext(UserContext);
 
   const [userInfo, setUserInfo] = useState({});
   const [isEditing, setIsEditing] = useState(false);
@@ -50,8 +50,8 @@ const ProfileBody = () => {
         // Assuming the server returns the updated user data
         const updatedUserData = await response.json();
         
-        // Update context with the new user info
-        setUser(updatedUserData);
+        // // Update context with the new user info
+        // setUser(updatedUserData);
   
         // Update local storage with the new user info
         localStorage.setItem('user', JSON.stringify(updatedUserData));
@@ -62,7 +62,8 @@ const ProfileBody = () => {
         setChangesMade(false);
         
         alert('User information updated successfully!');
-      } else {
+      }
+      else {
         alert('Failed to update user information');
       }
     } catch (error) {
