@@ -109,7 +109,7 @@ const ProfileBody = () => {
                 <label className="block text-gray-700">First Name</label>
                 <input
                   type="text"
-                  name="firstName"
+                  name="otherNames"
                   defaultValue={user.otherNames}
                   value={editedUserInfo.otherNames || ''}
                   onChange={handleChange}
@@ -133,7 +133,7 @@ const ProfileBody = () => {
                 <label className="block text-gray-700">Email Address</label>
                 <input
                   type="email"
-                  name="emailAddress"
+                  name="email"
                   defaultValue={user.email}
                   value={editedUserInfo.email || ''}
                   onChange={handleChange}
