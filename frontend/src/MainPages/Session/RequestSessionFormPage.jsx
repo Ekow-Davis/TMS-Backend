@@ -27,7 +27,7 @@ const RequestSessionFormPage = () => {
   const [subject, setSubject] = useState('')
   const [course, setCourse] = useState('')
   const [duration, setDuration] = useState('')
-  const [repitition, setRepetition] = useState('')
+  const [repetition, setRepetition] = useState('')
   const [ additional_information, setAdditional_information] = useState('')
   // const [tutorDays, setTutorDays] = useState([])
   // const [tutorTime, setTutorTime] = useState('')
@@ -66,7 +66,7 @@ const RequestSessionFormPage = () => {
       // tutorTime,
       day: dayTimeData.days,       
       time: dayTimeData.times,
-      repitition_period: repitition,
+      repetition_period: repetition,
       additional_information,
       duration,
       level_of_education,
@@ -296,7 +296,7 @@ const RequestSessionFormPage = () => {
           placeholder="1, 2"
           label="Months"
           miniLabel="Number of Months"
-          value={repitition}
+          value={repetition}
           setValue={setRepetition}
         />
           </div>
