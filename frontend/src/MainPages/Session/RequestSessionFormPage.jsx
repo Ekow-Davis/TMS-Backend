@@ -314,7 +314,7 @@ const RequestSessionFormPage = () => {
           setValue={setLevelOfEducation}
         />
 
-        <RadioInputBox
+        <VenueInputBox
           options={['Online', 'In-Person', 'Fine Either Way']}
           label="Mode of Teaching"
           miniLabel="How you would like to be taught"
