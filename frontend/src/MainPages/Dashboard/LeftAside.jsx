@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import DonutChart from '../../Components/DonutChart';
+import { UserContext } from '../../Components/Utils/UserContext'
 
 const Aside = () => {
+
+  const { user } = useContext(UserContext)
+
   return (
     <aside className="lg:w-[50%] p-4 ">
       {/* Greeting */}
       <div className="mb-4">
-        <h2 className="text-xl font-bold">Hello user, welcome back!</h2>
+        <h2 className="text-xl font-bold">Hello {user?.lastName || 'user'}, welcome back!</h2>
       </div>
 
       {/* My Courses */}

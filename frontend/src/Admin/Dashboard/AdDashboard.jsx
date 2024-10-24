@@ -4,7 +4,6 @@ import NavBar from '../AdComponent/Layout/NavBar';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto'; 
 import './style.css';
-
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import {
   ArchiveBoxXMarkIcon,  
@@ -14,6 +13,9 @@ import {
 } from '@heroicons/react/16/solid'
 
 const AdminDashboard = () => {
+
+  
+
   const [weekDates, setWeekDates] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [chartRange, setChartRange] = useState('1Y'); // Options: '1Y', '6M', '3M'

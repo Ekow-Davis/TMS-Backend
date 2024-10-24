@@ -131,6 +131,37 @@ const AdminSession = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    const token = localStorage.getItem('token');
+  
+    if (!token) {
+      console.error('No token found. Please login first.');
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:8000/api/session-requests/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+  
+      if (response.ok) {
+        alert(`Session with ID ${id} has been deleted successfully.`);
+      } 
+      else {
+        const errorData = await response.json();
+        console.error('Deletion failed:', errorData);
+        alert('Failed to delete session. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error deleting session:', error);
+      alert('An error occurred while deleting the session. Please try again later.');
+    }
+  };
+
   // Function to convert duration to hours and minutes
   const formatDuration = (minutes) => {
     const hours = Math.floor(minutes / 60);
@@ -273,7 +304,9 @@ const AdminSession = () => {
                       
                       <td className="p-4 text-center">{session.venue}</td>
                       <td className="p-4 text-center">{session.session_status}</td>
-                      <td className="p-4 text-center">{session.day}</td>
+                      <td className="p-4 text-center overflow-hidden hover:overflow-auto whitespace-nowrap">
+                        {Array.isArray(session.day) ? session.day.join(', ') : session.day}
+                      </td>
                       <td className="p-4 flex justify-center gap-2">
                         <button
                           className="bg-custom-purple text-white px-4 py-2 rounded-lg hover:bg-custom-hover"
@@ -341,15 +374,37 @@ const AdminSession = () => {
                       Session Details
                     </Dialog.Title>
                     {selectedSession && (
-                      <div className="mt-4">
-                        <p><strong>Student ID:</strong> {selectedSession.student?.id}</p>
-                        <p><strong>Subject:</strong> {selectedSession.subject}</p>
-                        <p><strong>Course:</strong> {selectedSession.course}</p>
-                        <p><strong>Day & Time:</strong> {selectedSession.day} - {selectedSession.time}</p>
-                        <p><strong>Duration:</strong> {formatDuration(selectedSession.duration)}</p> {/* Format duration */}
-                        <p><strong>Venue:</strong> {selectedSession.venue}</p>
-                        <p><strong>Status:</strong> {selectedSession.session_status}</p>
-                        <p><strong>Additional Information:</strong> {selectedSession.additional_information || 'None'}</p>
+                      <div>
+                        <div className="mt-4">
+                          <p><strong>Student ID:</strong> {selectedSession.student?.id}</p>
+                          <p><strong>Subject:</strong> {selectedSession.subject}</p>
+                          <p><strong>Course:</strong> {selectedSession.course}</p>
+                          <p><strong>Day & Time:</strong> {selectedSession.day} - {selectedSession.time}</p>
+                          <p><strong>Duration:</strong> {formatDuration(selectedSession.duration)}</p> {/* Format duration */}
+                          <p><strong>Venue:</strong> {selectedSession.venue}</p>
+                          <p><strong>Status:</strong> {selectedSession.session_status}</p>
+                          <p><strong>Additional Information:</strong> {selectedSession.additional_information || 'None'}</p>
+                        </div>
+                        <div className='flex gap-4 items-center justify-center'>
+                          <button
+                            className="bg-custom-purple text-white px-4 py-2 rounded-lg hover:bg-custom-hover-teal"
+                            onClick={() => handleApprove(selectedSession.id)}
+                          >
+                            Approve
+                          </button>
+                          <button
+                            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+                            onClick={() => handleReject(selectedSession.id)}
+                          >
+                            Reject
+                          </button>
+                          <button
+                            className="bg-slate-700 text-white px-4 py-2 rounded-lg hover:bg-red-400"
+                            onClick={() => handleDelete(selectedSession.id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                     )}
                     <div className="mt-6 flex justify-end">

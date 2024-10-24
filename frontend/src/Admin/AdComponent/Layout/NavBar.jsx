@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu } from '@headlessui/react';
 import { Help as HelpIcon, Person as PersonIcon, Settings as SettingsIcon, Logout as LogoutIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
+import { UserContext } from '../../Components/Utils/UserContext'
 import '../../Dashboard/style.css';
 
 const NavBar = () => {
+
+  const { user } = useContext(UserContext)
+
   const navigate = useNavigate();
 
   // Handle the logout logic
@@ -45,8 +49,8 @@ const NavBar = () => {
               <div className="info cursor-pointer">
                 <img src="../Images/Admin/profileAd.jpg" alt="Profile" />
                 <div>
-                  <p className="font-semibold">User's Name</p>
-                  <p>1st Rank Admin</p>
+                  <p className="font-semibold">User: {user?.lastName}</p>
+                  <p>Administrator</p>
                 </div>
               </div>
               <i className="bx bx-chevron-down">
@@ -59,7 +63,7 @@ const NavBar = () => {
               <Menu.Item>
                 {({ active }) => (
                   <Link
-                    to="/Profile"
+                    to="/Admin/Profile"
                     className={`${
                       active ? 'bg-gray-100' : ''
                     } flex items-center px-4 py-2 text-sm text-gray-700`}

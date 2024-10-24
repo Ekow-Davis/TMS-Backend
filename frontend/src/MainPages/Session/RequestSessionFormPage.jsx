@@ -285,24 +285,24 @@ const RequestSessionFormPage = () => {
           
           <div className='md:flex md:gap-4'>
             <FormInputBox
-          type="number"
-          width='w-full'
-          placeholder="2, 4"
-          label="Duration"
-          miniLabel="Duration in Hours"
-          value={duration}
-          setValue={setDuration}
-          min={1}
-        />
-        <FormInputBox
-          type="number"
-          width='w-full'
-          placeholder="1, 2"
-          label="Months"
-          miniLabel="Number of Months"
-          value={repetition}
-          setValue={setRepetition}
-        />
+              type="number"
+              width='w-full'
+              placeholder="2, 4"
+              label="Duration"
+              miniLabel="Duration in Hours"
+              value={duration}
+              setValue={setDuration}
+              min={1}
+            />
+            <FormInputBox
+              type="number"
+              width='w-full'
+              placeholder="1, 2"
+              label="Months"
+              miniLabel="Number of Months"
+              value={repetition}
+              setValue={setRepetition}
+            />
           </div>
         
         <label className='font-bold mt-1 text-custom-heading'>

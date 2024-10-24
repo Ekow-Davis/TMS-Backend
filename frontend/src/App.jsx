@@ -2,17 +2,20 @@
 import ProtectedRoute from "./Components/Utils/ProtectedRoute"
 import { UserProvider } from "./Components/Utils/UserContext"
 
-// Student Parts
-import DashboardPage from "./MainPages/Dashboard/DashboardPage"
-import HelpPage from "./MainPages/Help/HelpPage"
+// Public Parts
 import ContactUsPage from "./MainPages/Help/ContactUsPage"
 import HomePage from "./MainPages/Home/HomePage"
 import PricingPage from "./MainPages/Home/PricingPage"
 import StudentPage from "./MainPages/Home/StudentPage"
 import TutorPage from "./MainPages/Home/TutorPage"
 import AboutUsPage from "./MainPages/Home/AboutUsPage"
-import MessagePage from "./MainPages/Message/MessagePage"
-import MDetailPage from "./MainPages/Message/MDetailPage"
+
+// Student Parts
+import DashboardPage from "./MainPages/Dashboard/DashboardPage"
+import HelpPage from "./MainPages/Help/HelpPage"
+
+// import MessagePage from "./MainPages/Message/MessagePage"
+// import MDetailPage from "./MainPages/Message/MDetailPage"
 import NotificationPage from "./MainPages/Notification/NotificationPage"
 import NDetailPage from "./MainPages/Notification/NDetailPage"
 import PaymentHistoryPage from "./MainPages/Payment/PaymentHistoryPage"
@@ -39,8 +42,6 @@ import AdminSettings from './Admin/Settings/AdSettings'
 import AdminFeedback from './Admin/Feedback/AdFeedback'
 import AdminNotification from './Admin/Notifications/AdNotification'
 
-
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -55,9 +56,7 @@ function App() {
     
 
     <Routes>
-   
-      <Route path="/SignIn" element={<SignInPage />} />
-
+      {/* Public Routes */}      
       <Route path="/Help" element={<HelpPage />} />
       <Route path="/ContactUs" element={<ContactUsPage />} />
 
@@ -67,38 +66,135 @@ function App() {
         <Route path="/Tutor" element={<TutorPage />} />        
         <Route path="/AboutUs" element={<AboutUsPage />} />  
 
-      
-      <Route path="/Dashboard" element={<ProtectedRoute roleRequired="Student"> <DashboardPage /> </ProtectedRoute>} />
+      <Route path="/SignIn" element={<SignInPage />} />
 
-      <Route path="/Message" element={<MessagePage />} />
-        <Route path="/MDetail" element={<MDetailPage />} />
+      {/* Student Routes */}
 
-      <Route path="/Notification" element={ <NotificationPage /> } />
-        <Route path="/NDetail/:id" element={ <NDetailPage />} />
+      <Route path="/Dashboard" element={
+        <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <DashboardPage /> </ProtectedRoute>
+        </UserProvider>} 
+      />
 
-      <Route path="/PaymentHistory" element={<PaymentHistoryPage />} />
-        <Route path="/Payment" element={ <PaymentPage /> } />
-        <Route path="/MakePayment" element={ <MakePayment />} />
+      {/* <Route path="/Message" element={<MessagePage />} />
+        <Route path="/MDetail" element={<MDetailPage />} /> */}
 
-      <Route path="/Profile" element={ <ProtectedRoute roleRequired="Student"> <ProfilePage /> </ProtectedRoute> } />
-        <Route path="/Security" element={ <SecurityPage /> } />
-        <Route path="/Settings" element={ <SettingsPage /> } />
-        <Route path="/NSettings" element={ <NSettingsPage />} />
-        <Route path="/ExportData" element={ <ExportDataPage /> } />
+      <Route path="/Notification" element={ 
+        <UserProvider>
+        <ProtectedRoute roleRequired="Student"> <NotificationPage /> </ProtectedRoute>
+      </UserProvider> }
+      />
+        <Route path="/NDetail/:id" element={ 
+          <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <NDetailPage /> </ProtectedRoute>
+        </UserProvider> } />
 
-      <Route path="/Sessions" element={ <SessionHistoryPage /> } />
-        <Route path="/BookedSessions" element={ <BookedSessionsPage /> } />
-        <Route path="/RequestSessionPage" element={ <RequestSessionPage />} />
-          <Route path="/RequestSessionFormPage" element={ <RequestSessionFormPage />} />
+      <Route path="/PaymentHistory" element={
+        <UserProvider>
+        <ProtectedRoute roleRequired="Student"> <PaymentHistoryPage /> </ProtectedRoute>
+      </UserProvider> } />
 
-      <Route path="/Admin/Session" element={<AdminSession />} />
-      <Route path="/Admin/Dashboard" element={<AdminDashboard />} />
-      <Route path="/Admin/Jobs" element={<AdminJobs />} />
-      <Route path="/Admin/Students" element={<AdminStudents />} />
-      <Route path="/Admin/Tutors" element={<AdminTutors />} />
-      <Route path="/Admin/Feedback" element={<ProtectedRoute roleRequired="Admin"> <AdminFeedback /> </ProtectedRoute> } />
-      <Route path="/Admin/Settings" element={<AdminSettings />} />
-      <Route path="/Admin/Notification" element={<AdminNotification />} />
+        <Route path="/Payment" element={ 
+          <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <PaymentPage /> </ProtectedRoute>
+        </UserProvider> 
+         } />
+        <Route path="/MakePayment" element={ 
+          <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <MakePayment /> </ProtectedRoute>
+        </UserProvider> 
+        } />
+
+      <Route path="/Profile" element={ 
+        <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <ProfilePage /> </ProtectedRoute>
+        </UserProvider>
+       } />
+
+        <Route path="/Security" element={ 
+          <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <SecurityPage /> </ProtectedRoute>
+        </UserProvider> 
+         } />
+
+        <Route path="/Settings" element={ 
+          <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <SettingsPage /> </ProtectedRoute>
+        </UserProvider> 
+         } />
+        <Route path="/NSettings" element={ 
+          <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <NSettingsPage /> </ProtectedRoute>
+        </UserProvider> 
+        } />
+        <Route path="/ExportData" element={ 
+          <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <ExportDataPage /> </ProtectedRoute>
+        </UserProvider> 
+         } />
+
+      <Route path="/Sessions" element={ 
+        <UserProvider>
+        <ProtectedRoute roleRequired="Student"> <SessionHistoryPage /> </ProtectedRoute>
+        </UserProvider> 
+       } />
+        <Route path="/BookedSessions" element={ 
+          <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <BookedSessionsPage /> </ProtectedRoute>
+        </UserProvider> 
+         } />
+        <Route path="/RequestSessionPage" element={ 
+          <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <RequestSessionPage /> </ProtectedRoute>
+        </UserProvider> 
+        } />
+        <Route path="/RequestSessionFormPage" element={ 
+          <UserProvider>
+          <ProtectedRoute roleRequired="Student"> <RequestSessionFormPage /> </ProtectedRoute>
+        </UserProvider> 
+        } />
+
+        {/* Admin Routes */}
+      <Route path="/Admin/Session" element={
+        <UserProvider>
+        <ProtectedRoute roleRequired="Admin"> <AdminSession /> </ProtectedRoute>
+      </UserProvider> 
+      } />
+      <Route path="/Admin/Dashboard" element={
+        <UserProvider>
+        <ProtectedRoute roleRequired="Admin"> <AdminDashboard /> </ProtectedRoute>
+      </UserProvider> 
+      } />
+      <Route path="/Admin/Jobs" element={
+        <UserProvider>
+        <ProtectedRoute roleRequired="Admin"> <AdminJobs /> </ProtectedRoute>
+      </UserProvider> 
+      } />
+      <Route path="/Admin/Students" element={
+        <UserProvider>
+        <ProtectedRoute roleRequired="Admin"> <AdminStudents /> </ProtectedRoute>
+      </UserProvider> 
+      } />
+      <Route path="/Admin/Tutors" element={
+        <UserProvider>
+        <ProtectedRoute roleRequired="Admin"> <AdminTutors /> </ProtectedRoute>
+      </UserProvider> 
+      } />
+      <Route path="/Admin/Feedback" element={
+        <UserProvider>
+        <ProtectedRoute roleRequired="Admin"> <AdminFeedback /> </ProtectedRoute>
+      </UserProvider> 
+      } />
+      <Route path="/Admin/Settings" element={
+        <UserProvider>
+        <ProtectedRoute roleRequired="Admin"> <AdminSettings /> </ProtectedRoute>
+      </UserProvider> 
+      } />
+      <Route path="/Admin/Notification" element={
+        <UserProvider>
+        <ProtectedRoute roleRequired="Admin"> <AdminNotification /> </ProtectedRoute>
+      </UserProvider> 
+      } />
       
     </Routes>
    

@@ -73,7 +73,7 @@ const AdFeedback = () => {
                 <p>- 3 From Users</p>
                 <p>- 1 From Non-Users</p>
               </div>
-              <i className="bx bx-data"></i>
+              
             </div>
             
           </div>
@@ -86,7 +86,7 @@ const AdFeedback = () => {
                 <p>- 2  Session Booking Related</p>
                 <p>- 1  Enquiry Related</p>
               </div>
-              <i className="bx bx-terminal"></i>
+             
             </div>
             
           </div>
@@ -99,7 +99,7 @@ const AdFeedback = () => {
                 <p>- 3 lessons left</p>
                 <p>- 1 project left</p>
               </div>
-              <i className="bx bx-data"></i>
+             
             </div>
             
           </div>
@@ -138,7 +138,7 @@ const AdFeedback = () => {
               feedbackData.map((feedback) => (
                 <tr key={feedback.id} className="border-t">
                   <td className="px-4 py-2 text-center">{feedback.id}</td>
-                  <td className="px-4 py-2 text-center">{feedback.student.email}</td>
+                  <td className="px-4 py-2 text-center">{feedback.email}</td>
                   <td className="px-4 py-2 text-center">
                     {new Date(feedback.created_at).toLocaleDateString()}
                   </td>
@@ -182,15 +182,15 @@ const AdFeedback = () => {
                     <p>
                       <strong>Feedback ID:</strong> {selectedFeedback.id}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong>Student ID:</strong> {selectedFeedback.student.id}
-                    </p>
+                    </p> */}
                     <p>
-                      <strong>Email:</strong> {selectedFeedback.student.email}
+                      <strong>Email:</strong> {selectedFeedback.email}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong>Phone:</strong> {selectedFeedback.student.phoneNumber}
-                    </p>
+                    </p> */}
                     <p>
                       <strong>Message:</strong> {selectedFeedback.message}
                     </p>
