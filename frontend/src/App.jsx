@@ -40,6 +40,7 @@ import AdminStudents from './Admin/Students/AdStudents'
 import AdminTutors from './Admin/Tutors/AdTutors'
 import AdminSettings from './Admin/Settings/AdSettings'
 import AdminFeedback from './Admin/Feedback/AdFeedback'
+import AdminProfile from "./Admin/Settings/AdProfile"
 import AdminNotification from './Admin/Notifications/AdNotification'
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -47,14 +48,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
 
- 
-
   return (       
     
-
-    <BrowserRouter>
-    
-
+    <BrowserRouter>    
     <Routes>
       {/* Public Routes */}      
       <Route path="/Help" element={<HelpPage />} />
@@ -69,21 +65,18 @@ function App() {
       <Route path="/SignIn" element={<SignInPage />} />
 
       {/* Student Routes */}
-
       <Route path="/Dashboard" element={
         <UserProvider>
           <ProtectedRoute roleRequired="Student"> <DashboardPage /> </ProtectedRoute>
         </UserProvider>} 
       />
-
       {/* <Route path="/Message" element={<MessagePage />} />
         <Route path="/MDetail" element={<MDetailPage />} /> */}
-
       <Route path="/Notification" element={ 
         <UserProvider>
         <ProtectedRoute roleRequired="Student"> <NotificationPage /> </ProtectedRoute>
-      </UserProvider> }
-      />
+      </UserProvider> } />
+
         <Route path="/NDetail/:id" element={ 
           <UserProvider>
           <ProtectedRoute roleRequired="Student"> <NDetailPage /> </ProtectedRoute>
@@ -163,6 +156,11 @@ function App() {
       <Route path="/Admin/Dashboard" element={
         <UserProvider>
         <ProtectedRoute roleRequired="Admin"> <AdminDashboard /> </ProtectedRoute>
+      </UserProvider> 
+      } />
+      <Route path="/Admin/Profile" element={
+        <UserProvider>
+        <ProtectedRoute roleRequired="Admin"> <AdminProfile /> </ProtectedRoute>
       </UserProvider> 
       } />
       <Route path="/Admin/Jobs" element={
