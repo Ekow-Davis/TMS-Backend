@@ -1,9 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-// Create a context for user data
+// Create a context
 export const UserContext = createContext();
 
-// Create a provider component for context
+// Create a provider component
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
@@ -11,12 +11,22 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      try {
+        setUser(JSON.parse(storedUser));  // Parse only if it's a valid JSON string
+      } catch (error) {
+        console.error("Error parsing JSON from localStorage:", error);
+      }
     }
   }, []);
 
+  // Function to update user data
+  const updateUser = (userData) => {
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData)); // Convert to JSON string before saving
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, updateUser }}>
       {children}
     </UserContext.Provider>
   );
