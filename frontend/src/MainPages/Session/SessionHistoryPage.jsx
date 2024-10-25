@@ -173,7 +173,7 @@ const SessionsHistoryPage = () => {
             <RequestCard
               key={session.id}
               session={session}              
-              handleUpdateSession={handleUpdateSession(session.id)}
+              // handleUpdateSession={handleUpdateSession(session.id)}
             />
           ))}
         </div>

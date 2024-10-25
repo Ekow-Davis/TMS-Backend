@@ -15,7 +15,7 @@ const RequestCard = ({ session, handleUpdateSession }) => {
   const [updatedLevel, setUpdatedLevel] = useState(session.level_of_education);
   const [updatedTime, setUpdatedTime] = useState(session.time.slice(0, 5)); // time without seconds
 
-  const handleEdit = () => setIsOpen(true);
+  // const handleEdit = () => setIsOpen(true);
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -51,7 +51,7 @@ const RequestCard = ({ session, handleUpdateSession }) => {
 
       <div className="mt-4 flex space-x-4">
         
-        <button className="text-custom-purple" onClick={handleEdit}>Edit</button>
+        {/* <button className="text-custom-purple" onClick={handleEdit}>Edit</button> */}
       </div>
 
       {/* Dialog for editing the session */}

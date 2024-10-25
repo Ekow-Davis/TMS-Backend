@@ -12,17 +12,24 @@ export const UserProvider = ({ children }) => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       try {
-        setUser(JSON.parse(storedUser));  // Parse only if it's a valid JSON string
+        // Only parse if storedUser is a valid JSON string
+        setUser(JSON.parse(storedUser));
       } catch (error) {
-        console.error("Error parsing JSON from localStorage:", error);
+        console.error("Error parsing user data from localStorage:", error);
+        localStorage.removeItem('user'); // Clear invalid data if JSON parsing fails
       }
     }
   }, []);
 
-  // Function to update user data
+  // Function to log in the user and update context + localStorage
   const updateUser = (userData) => {
-    setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData)); // Convert to JSON string before saving
+    try {
+      const userString = JSON.stringify(userData);
+      localStorage.setItem('user', userString); // Store as a JSON string
+      setUser(userData); // Update context
+    } catch (error) {
+      console.error("Error stringifying user data for localStorage:", error);
+    }
   };
 
   return (
