@@ -13,9 +13,7 @@ import {
 } from '@heroicons/react/16/solid'
 
 const AdminDashboard = () => {
-
   
-
   const [weekDates, setWeekDates] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [chartRange, setChartRange] = useState('1Y'); // Options: '1Y', '6M', '3M'

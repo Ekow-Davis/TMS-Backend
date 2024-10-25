@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu } from '@headlessui/react';
 import { Help as HelpIcon, Person as PersonIcon, Settings as SettingsIcon, Logout as LogoutIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
-import { UserContext } from '../../Components/Utils/UserContext'
+import { UserContext } from '../../../Components/Utils/UserContext'
 import '../../Dashboard/style.css';
 
 const NavBar = () => {
