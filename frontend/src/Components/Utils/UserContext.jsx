@@ -1,39 +1,24 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
-// Create a context
 export const UserContext = createContext();
 
-// Create a provider component
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // Load user data from localStorage on app initialization
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      try {
-        // Only parse if storedUser is a valid JSON string
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.error("Error parsing user data from localStorage:", error);
-        localStorage.removeItem('user'); // Clear invalid data if JSON parsing fails
-      }
-    }
-  }, []);
+  // Save user to context and localStorage upon login
+  const loginUser = (userData) => {
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
+  };
 
-  // Function to log in the user and update context + localStorage
-  const updateUser = (userData) => {
-    try {
-      const userString = JSON.stringify(userData);
-      localStorage.setItem('user', userString); // Store as a JSON string
-      setUser(userData); // Update context
-    } catch (error) {
-      console.error("Error stringifying user data for localStorage:", error);
-    }
+  // Optional: function to clear user data on logout
+  const logoutUser = () => {
+    setUser(null);
+    localStorage.removeItem('user');
   };
 
   return (
-    <UserContext.Provider value={{ user, updateUser }}>
+    <UserContext.Provider value={{ user, loginUser, logoutUser }}>
       {children}
     </UserContext.Provider>
   );

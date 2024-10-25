@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { UserContext } from '../../Components/Utils/UserContext';
 import {
   Phone as PhoneIcon,
   Email as EmailIcon,
@@ -15,6 +16,8 @@ import { useNavigate } from 'react-router-dom';
 import './signinup.css';
 
 const SignInPage = () => {
+  const { loginUser } = useContext(UserContext);
+
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [loginEmail, setLoginEmail] = useState('');
@@ -40,46 +43,28 @@ const SignInPage = () => {
 
   // Handle login form submission
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent the form from refreshing the page
-
-    console.log("the Login button was clicked")
-  
+    e.preventDefault();
     const loginData = { email: loginEmail, password: loginPassword };
-    
+
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginData),
       });
-  
-      // Check if the request was successful
+
       if (response.ok) {
         const data = await response.json();
         
-        // Log the entire response data to verify if the token is being returned
-        console.log('Response Data:', data);
-        
         if (data.access_token) {
-          localStorage.setItem('token', data.access_token); // Store the token in localStorage
-          localStorage.setItem('user', data.user)
+          localStorage.setItem('token', data.access_token); // Store token
+          loginUser(data.user); // Store user data in context
           
-          console.log('Token:', data.access_token);
-          console.log('Login message:', data.message);
-
-          
-          // Show success message based on the login response message
+          // Navigate based on role
           if (data.message === 'Student login successful') {
-            localStorage.setItem('role', 'Student');
-            console.log("It's a student")
-            alert('Student login successful');
-            navigate('/Dashboard'); // Navigate to the student dashboard
-          }
-          else if (data.message == 'Administrator login successful') {
-            localStorage.setItem('role', 'Admin');
-            console.log("It's an admin")
-            alert('Administrator login successful');
-            navigate('/Admin/Dashboard'); // Navigate to the admin dashboard
+            navigate('/Dashboard');
+          } else if (data.message === 'Administrator login successful') {
+            navigate('/Admin/Dashboard');
           }
         }
       } else {
@@ -91,8 +76,6 @@ const SignInPage = () => {
   };
   
     
-
-
   // Handle registration form submission
   const handleRegister = async (e) => {
     e.preventDefault();

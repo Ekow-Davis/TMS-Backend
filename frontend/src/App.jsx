@@ -127,24 +127,24 @@ function App() {
          } />
 
       <Route path="/Sessions" element={ 
-        <UserProvider>
+      
         <ProtectedRoute roleRequired="Student"> <SessionHistoryPage /> </ProtectedRoute>
-        </UserProvider> 
+         
        } />
         <Route path="/BookedSessions" element={ 
-          <UserProvider>
+        
           <ProtectedRoute roleRequired="Student"> <BookedSessionsPage /> </ProtectedRoute>
-        </UserProvider> 
+         
          } />
         <Route path="/RequestSessionPage" element={ 
-          <UserProvider>
+        
           <ProtectedRoute roleRequired="Student"> <RequestSessionPage /> </ProtectedRoute>
-        </UserProvider> 
+         
         } />
         <Route path="/RequestSessionFormPage" element={ 
-          <UserProvider>
+        
           <ProtectedRoute roleRequired="Student"> <RequestSessionFormPage /> </ProtectedRoute>
-        </UserProvider> 
+         
         } />
 
         {/* Admin Routes */}

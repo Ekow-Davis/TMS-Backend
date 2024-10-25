@@ -19,55 +19,6 @@ const Dashboard = () => {
     return <div>Loading...</div>;
   }
 
-  // const pendingPayments = data.pendingPayments.map((payment) => (
-  //   <div key={payment.id} className="p-4 bg-white rounded-lg shadow-md mb-4">
-  //     <p className="font-bold">Tutor: {payment.tutor}</p>
-  //     <p>Amount: ${payment.amount}</p>
-  //     <p>Status: {payment.status}</p>
-  //   </div>
-  // ));
-
-  // const upcomingSessions = data.upcomingSessions.map((session) => (
-  //   <div key={session.id} className="p-4 bg-white rounded-lg shadow-md mb-4">
-  //     <p className="font-bold">Tutor: {session.tutor}</p>
-  //     <p>Date: {session.date}</p>
-  //     <p>Time: {session.time}</p>
-  //     <p>Topic: {session.topic}</p>
-  //   </div>
-  // ));
-
-  // const pieData = {
-  //   labels: ['Completed', 'Pending'],
-  //   datasets: [
-  //     {
-  //       label: '# of Sessions',
-  //       data: [data.completedSessions.completed, data.completedSessions.total - data.completedSessions.completed],
-  //       backgroundColor: ['#ced0f2', '#21266a']
-  //     }
-  //   ]
-  // };
-
-  // const barDataWeekly = {
-  //   labels: data.sessionCounts.weekly.map(item => item.day),
-  //   datasets: [
-  //     {
-  //       label: 'Number of Sessions',
-  //       data: data.sessionCounts.weekly.map(item => item.count),
-  //       backgroundColor: '#36A2EB'
-  //     }
-  //   ]
-  // };
-
-  // const barDataMonthly = {
-  //   labels: data.sessionCounts.monthly.map(item => item.month),
-  //   datasets: [
-  //     {
-  //       label: 'Number of Sessions',
-  //       data: data.sessionCounts.monthly.map(item => item.count),
-  //       backgroundColor: '#36A2EB'
-  //     }
-  //   ]
-  // };
 
   return (
     <div className="flex h-screen">
