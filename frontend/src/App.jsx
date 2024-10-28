@@ -62,7 +62,11 @@ function App() {
         <Route path="/Tutor" element={<TutorPage />} />        
         <Route path="/AboutUs" element={<AboutUsPage />} />  
 
-      <Route path="/SignIn" element={<SignInPage />} />
+      <Route path="/SignIn" element={
+        <UserProvider>
+          <SignInPage />
+        </UserProvider>
+      } />
 
       {/* Student Routes */}
       <Route path="/Dashboard" element={
