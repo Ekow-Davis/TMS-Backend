@@ -27,6 +27,10 @@ const ProfileBody = () => {
     setChangesMade(true); // Detect if any changes were made
   };
 
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
   // Save changes and update context + localStorage
   const handleSaveChanges = async () => {
     try {
