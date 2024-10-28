@@ -62,8 +62,14 @@ const SignInPage = () => {
           
           // Navigate based on role
           if (data.message === 'Student login successful') {
-            navigate('/Dashboard');
-          } else if (data.message === 'Administrator login successful') {
+            localStorage.setItem('role', 'Student');
+            console.log("Its a student")
+            alert('Student login successful');
+            navigate('/Dashboard'); // Navigate to the student dashboard
+          } else if (data.message === 'Admin login successful') {
+            localStorage.setItem('role', 'Admin');
+            console.log("Its an admin")
+            alert('Administrator login successful');
             navigate('/Admin/Dashboard');
           }
         }

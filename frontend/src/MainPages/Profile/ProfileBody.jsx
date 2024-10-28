@@ -47,7 +47,7 @@ const ProfileBody = () => {
       if (response.ok) {
         const updatedUserData = await response.json(); // Get updated user data
         setUser(updatedUserData); // Update context
-        localStorage.setItem('user', JSON.stringify(updatedUserData)); // Update localStorage
+        
         setUserInfo(updatedUserData); // Reflect changes on the UI
         setIsEditing(false);
         setChangesMade(false); // Reset the edit state
