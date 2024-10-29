@@ -68,7 +68,7 @@ const SessionsHistoryPage = () => {
       });
 
       if (response.ok) {
-        alert('Session updated successfully');
+        alert(`Session ${id} updated successfully`);
         // Update state or refresh sessions
         setSessions(); // Refresh session list
         closeEditDialog(); // Close the dialog after successful update
@@ -314,7 +314,9 @@ const SessionsHistoryPage = () => {
                         className="mt-4"
                         onSubmit={(e) => {
                           e.preventDefault();
-                          handleUpdateSession({
+                          handleUpdateSession(
+                            selectedSession.id,
+                            {
                             subject: e.target.subject.value,
                             course: e.target.course.value,
                             day: e.target.day.value,

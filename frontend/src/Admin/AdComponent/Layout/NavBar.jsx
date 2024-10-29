@@ -49,7 +49,7 @@ const NavBar = () => {
               <div className="info cursor-pointer">
                 <img src="../Images/Admin/profileAd.jpg" alt="Profile" />
                 <div>
-                  <p className="font-semibold">User: {user?.lastName}</p>
+                  <p className="font-semibold">{user?.lastName}</p>
                   <p>Administrator</p>
                 </div>
               </div>
