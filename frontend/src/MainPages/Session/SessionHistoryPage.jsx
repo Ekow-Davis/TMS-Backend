@@ -322,8 +322,8 @@ const SessionsHistoryPage = () => {
                             {
                             subject: e.target.subject.value,
                             course: e.target.course.value,
-                            day: e.target.day.value,
-                            time: e.target.time.value,
+                            day: e.target.day.value.split(',').map(item => item.trim()), // Convert to array
+                            time: e.target.time.value.split(',').map(item => item.trim()),
                             duration: e.target.duration.value,
                             venue: e.target.venue.value,
                             level_of_education: e.target.venue.value,
@@ -357,7 +357,7 @@ const SessionsHistoryPage = () => {
                           <input
                             type="text"
                             name="day"
-                            defaultValue={selectedSession.day}
+                            defaultValue={selectedSession.day.join(', ')}
                             className="w-full border rounded p-2"
                           />
                         </div>
@@ -367,17 +367,17 @@ const SessionsHistoryPage = () => {
                           <input
                             type="text"
                             name="time"
-                            defaultValue={selectedSession.time}
+                            defaultValue={selectedSession.time.join(', ')}
                             className="w-full border rounded p-2"
                           />
                         </div>
 
                         <div className="mb-4">
-                          <label className="block text-sm">Duration (hours)</label>
+                          <label className="block text-sm">Duration (minutes)</label>
                           <input
                             type="number"
                             name="duration"
-                            defaultValue={Math.floor(selectedSession.duration / 60)}
+                            defaultValue={selectedSession.duration}
                             className="w-full border rounded p-2"
                           />
                         </div>
