@@ -57,6 +57,9 @@ const SessionsHistoryPage = () => {
   }, [token]);
   
   const handleUpdateSession = async (id, updatedData) => {
+
+    console.log("Updated Data:", updatedData);  // Ensure you're sending the correct data
+
     try {
       const response = await fetch(`http://localhost:8000/api/session-requests/${id}`, {
         method: 'PUT',
