@@ -399,7 +399,7 @@ const SessionsHistoryPage = () => {
                             <label className="block text-sm">Monthly Duration</label>
                             <input
                               type="number"
-                              name="Repetition period"
+                              name="repetition_period"
                               defaultValue={selectedSession.repetition_period}
                               className="w-full border rounded p-2"
                             />
@@ -421,7 +421,7 @@ const SessionsHistoryPage = () => {
                           <label className="block text-sm">Additional Information</label>
                           <input
                             type="text"
-                            name="Additional Information"
+                            name="additional_information"
                             defaultValue={selectedSession.additional_information}
                             className="w-full border rounded p-2"
                           />
