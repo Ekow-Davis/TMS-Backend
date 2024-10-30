@@ -326,9 +326,9 @@ const SessionsHistoryPage = () => {
                             time: e.target.time.value.split(',').map(item => item.trim()),
                             duration: e.target.duration.value,
                             venue: e.target.venue.value,
-                            level_of_education: e.target.level_of_education.value,
-                            repetition_period: e.target.repetition_period.value,
-                            additional_information: e.target.additional_information.value,
+                            level_of_education: e.target.venue.value,
+                            repetition_period: e.target.venue.value,
+                            additional_information: e.target.venue.value,
                           });
                         }}
                       >
