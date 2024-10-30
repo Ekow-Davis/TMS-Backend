@@ -12,18 +12,18 @@ const RequestSessionFormPage = () => {
 
   const [dayTimeData, setDayTimeData] = useState({ days: [], times: [] })
 
-  const [address, setAddress] = useState('')
-  const [address2, setAddress2] = useState('')
-  const [email, setEmail] = useState('')
-  const [city, setCity] = useState('')
-  const [providence, setProvidence] = useState('')
+  // const [address, setAddress] = useState('')
+  // const [address2, setAddress2] = useState('')
+  // const [email, setEmail] = useState('')
+  // const [city, setCity] = useState('')
+  // const [providence, setProvidence] = useState('')
 
   // const [zipCode, setZipCode] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [otherNames, setOtherNames] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [dateOfBirth, setDateOfBirth] = useState('')
-  const [language, setLanguage] = useState('') 
+  // const [lastName, setLastName] = useState('')
+  // const [otherNames, setOtherNames] = useState('')
+  // const [phoneNumber, setPhoneNumber] = useState('')
+  // const [dateOfBirth, setDateOfBirth] = useState('')
+  // const [language, setLanguage] = useState('') 
   
   const [subject, setSubject] = useState('')
   const [course, setCourse] = useState('')
@@ -46,19 +46,19 @@ const RequestSessionFormPage = () => {
       return;
     }
 
-    const userInfoFormData = {
-      lastName,
-      otherNames,
-      address,
-      address2,
-      city,
-      providence,
-      // zipCode,
-      email,
-      phoneNumber,
-      dateOfBirth,
-      language,
-    }
+    // const userInfoFormData = {
+    //   lastName,
+    //   otherNames,
+    //   address,
+    //   address2,
+    //   city,
+    //   providence,
+    //   // zipCode,
+    //   email,
+    //   phoneNumber,
+    //   dateOfBirth,
+    //   language,
+    // }
 
     const sessionInfoFormData = {
       subject,
@@ -123,7 +123,7 @@ const RequestSessionFormPage = () => {
         </div>
         
         <form onSubmit={handleSessionSubmit} className="p-4">
-          <CollapsableBox label="Personal Information" icon={<faChevronDown />}>
+          {/* <CollapsableBox label="Personal Information" icon={<faChevronDown />}>
             <label className='font-bold text-custom-heading'>
               Name
             </label>
@@ -189,9 +189,9 @@ const RequestSessionFormPage = () => {
               miniLabel="Postal / Zip Code"
               value={zipCode}
               setValue={setZipCode}  
-            /> */}
+            />
 
-            {/*Change the form input type into one that can take phone numbers*/}
+            
             
             <FormInputBox 
               width="w-full" 
@@ -228,7 +228,7 @@ const RequestSessionFormPage = () => {
               value={language}
               setValue={setLanguage} 
             /> 
-          </CollapsableBox>
+          </CollapsableBox> */}
 
       <CollapsableBox label="Session Information" icon={<faChevronDown />}>
         <p className='my-2 '>This Form Contains All Details related to Session Request</p>
@@ -238,6 +238,7 @@ const RequestSessionFormPage = () => {
         <div className='md:flex md:gap-4'>
           
           <FormInputBox 
+          required
           width="w-full" 
           type="text" 
           placeholder="Eg Biology, Chemistry" 
@@ -246,7 +247,8 @@ const RequestSessionFormPage = () => {
           setValue={setSubject}
           /> 
           
-          <FormInputBox 
+          <FormInputBox
+            required 
             width="w-full" 
             type="text" 
             placeholder="Eg Programming Fundamentals" 
@@ -266,6 +268,7 @@ const RequestSessionFormPage = () => {
         /> */}
 
       <MatchInput
+      required
         label="Select a day and a corresponding time for each"
         options={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']}
         onDataChange={setDayTimeData}        
@@ -285,6 +288,7 @@ const RequestSessionFormPage = () => {
           
           <div className='md:flex md:gap-4'>
             <FormInputBox
+            required={true}
               type="number"
               width='w-full'
               placeholder="2, 4"
@@ -295,6 +299,7 @@ const RequestSessionFormPage = () => {
               min={1}
             />
             <FormInputBox
+            required={true}
               type="number"
               width='w-full'
               placeholder="1, 2"
@@ -310,6 +315,8 @@ const RequestSessionFormPage = () => {
         </label>
 
         <FormInputBox 
+          required
+          type="text"
           miniLabel="Level of Education in regards to the Subject"
           placeholder="Eg. Degree level Biology, JHS level Biology"
           value={level_of_education}
@@ -317,6 +324,7 @@ const RequestSessionFormPage = () => {
         />
 
         <VenueInputBox
+        required={true}
           options={['Online', 'In-Person', 'Fine Either Way']}
           label="Mode of Teaching"
           miniLabel="How you would like to be taught"

@@ -135,7 +135,7 @@ const SessionsHistoryPage = () => {
           session.session_status === filter;
   
         const matchSearch = session.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          session.day.toLowerCase().includes(searchQuery.toLowerCase());
+          (Array.isArray(session.day) && session.day.some(day => day.toLowerCase().includes(searchQuery.toLowerCase())));
   
         return matchFilter && matchSearch;
       });
@@ -143,6 +143,7 @@ const SessionsHistoryPage = () => {
       setFilteredSessions(filtered);
     }
   }, [filter, searchQuery, sessions]);
+  
   
   
 
