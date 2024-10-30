@@ -74,7 +74,7 @@ const RequestSessionFormPage = () => {
       venue,      
     }
     
-    console.log("User Information Data:",userInfoFormData)
+    // console.log("User Information Data:",userInfoFormData)
     console.log("Session Information Data:",sessionInfoFormData)
 
     try {
