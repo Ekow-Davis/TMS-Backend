@@ -265,7 +265,8 @@ const SessionsHistoryPage = () => {
             <p>Extra: {selectedSession.additional_information}</p>
 
             {/* Edit Button */}
-            <button
+            <div className='flex gap-4 '>
+              <button
               className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
               onClick={() => openEditDialog(selectedSession)}
             >
@@ -278,6 +279,8 @@ const SessionsHistoryPage = () => {
             >
               Delete
             </button>
+            </div>
+            
           </div>
         )}
 
@@ -317,20 +320,19 @@ const SessionsHistoryPage = () => {
                         className="mt-4"
                         onSubmit={(e) => {
                           e.preventDefault();
-                          handleUpdateSession(
-                            selectedSession.id,
-                            {
-                            subject: e.target.subject.value,
-                            course: e.target.course.value,
-                            day: e.target.day.value.split(',').map(item => item.trim()), // Convert to array
-                            time: e.target.time.value.split(',').map(item => item.trim()),
-                            duration: e.target.duration.value,
-                            venue: e.target.venue.value,
-                            level_of_education: e.target.venue.value,
-                            repetition_period: e.target.venue.value,
-                            additional_information: e.target.venue.value,
+                          const formElements = e.target.elements;
+                          handleUpdateSession(selectedSession.id, {
+                            subject: formElements.subject.value,
+                            course: formElements.course.value,
+                            day: formElements.day.value.split(',').map(item => item.trim()), 
+                            time: formElements.time.value.split(',').map(item => item.trim()),
+                            duration: parseInt(formElements.duration.value),
+                            venue: formElements.venue.value,
+                            level_of_education: formElements.level_of_education.value,
+                            repetition_period: parseInt(formElements.repetition_period.value),
+                            additional_information: formElements.additional_information.value,
                           });
-                        }}
+                        }}                                               
                       >
                         <div className="mb-4">
                           <label className="block text-sm">Subject</label>
