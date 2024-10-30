@@ -4,19 +4,17 @@ import { UserContext } from '../../Components/Utils/UserContext';
 
 const ProfileBody = () => {
   // Get user from UserContext
-  const { user, setUser } = useContext(UserContext); // Destructure to access user and setUser
+  const { user, setUser } = useContext(UserContext);
   
   // State for handling edit mode and storing user info
-  const [userInfo, setUserInfo] = useState(user || {}); // Start with context user data
   const [isEditing, setIsEditing] = useState(false);
   const [changesMade, setChangesMade] = useState(false);
   const [editedUserInfo, setEditedUserInfo] = useState(user || {}); // Editable copy of user info
 
-  // Set initial user data from context (or localStorage on page load)
+  // Set initial user data from context on page load
   useEffect(() => {
     if (user) {
-      setUserInfo(user);
-      setEditedUserInfo(user);
+      setEditedUserInfo(user); // Load data into editable state
     }
   }, [user]);
 
@@ -48,7 +46,6 @@ const ProfileBody = () => {
         const updatedUserData = await response.json(); // Get updated user data
         setUser(updatedUserData); // Update context
         
-        setUserInfo(updatedUserData); // Reflect changes on the UI
         setIsEditing(false);
         setChangesMade(false); // Reset the edit state
         alert('User information updated successfully!');
@@ -80,7 +77,7 @@ const ProfileBody = () => {
         </div>
         <div>
           <h2 className="text-xl font-semibold">
-            {user?.otherNames}, {user?.lastName}
+            {editedUserInfo?.otherNames}, {editedUserInfo?.lastName}
           </h2>
           <p className="text-gray-500">{user?.id}</p>
         </div>
@@ -93,7 +90,7 @@ const ProfileBody = () => {
             <input
               type="text"
               name="otherNames"
-              value={user?.otherNames || editedUserInfo?.otherNames}
+              value={editedUserInfo.otherNames || ''}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               disabled={!isEditing}
@@ -104,7 +101,7 @@ const ProfileBody = () => {
             <input
               type="text"
               name="lastName"
-              value={user?.lastName || editedUserInfo.lastName}
+              value={editedUserInfo.lastName || ''}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               disabled={!isEditing}
@@ -115,7 +112,7 @@ const ProfileBody = () => {
             <input
               type="email"
               name="email"
-              value={user?.email || editedUserInfo.email}
+              value={editedUserInfo.email || ''}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               disabled={!isEditing}
@@ -126,7 +123,7 @@ const ProfileBody = () => {
             <input
               type="text"
               name="phoneNumber"
-              value={user?.phoneNumber || editedUserInfo.phoneNumber}
+              value={editedUserInfo.phoneNumber || ''}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               disabled={!isEditing}
