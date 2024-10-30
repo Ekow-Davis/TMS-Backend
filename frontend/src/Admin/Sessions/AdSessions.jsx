@@ -377,6 +377,7 @@ const AdminSession = () => {
                       <div>
                         <div className="mt-4">
                           <p><strong>Student ID:</strong> {selectedSession.student?.id}</p>
+                          <p><strong>Student Name:</strong> {selectedSession.student?.lastName}, {selectedSession.student?.otherNames}</p>
                           <p><strong>Subject:</strong> {selectedSession.subject}</p>
                           <p><strong>Course:</strong> {selectedSession.course}</p>
                           <p><strong>Day & Time:</strong> {selectedSession.day} - {selectedSession.time}</p>

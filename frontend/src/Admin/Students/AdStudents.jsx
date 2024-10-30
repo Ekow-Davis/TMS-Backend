@@ -36,6 +36,38 @@ const AdStudents = () => {
     fetchStudents();
   }, []);
 
+  const handleDeleteStudent = async () => {
+    if (selectedStudent) {
+      const confirmDelete = window.confirm(`Are you sure you want to delete ${selectedStudent.otherNames}?`);
+  
+      if (confirmDelete) {
+        try {
+          const token = localStorage.getItem('token'); // Adjust as needed for authorization
+          const response = await fetch(`/api/admin/student/${selectedStudent.id}`, {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          });
+  
+          if (response.ok) {
+            alert(`${selectedStudent.otherNames} has been deleted successfully.`);
+            closeModal(); // Close modal after deletion
+            // Optionally, refresh the list of students or remove the student from the local list
+          } else {
+            alert('Failed to delete student.');
+          }
+        } catch (error) {
+          console.error('Error deleting student:', error);
+          alert('An error occurred while deleting the student.');
+        }
+      }
+    }
+  };
+
+
+
   const closeModal = () => setIsOpen(false);
 
   const openModal = (student) => {
@@ -219,6 +251,12 @@ const AdStudents = () => {
                     onClick={closeModal}
                   >
                     Close
+                  </button>
+                  <button
+                  className="bg-custom-heading text-white px-4 py-2 rounded-lg hover:bg-custom-hover"
+                  onClick={handleDeleteStudent}
+                  >
+                    Delete
                   </button>
                 </div>
               </Dialog.Panel>
