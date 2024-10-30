@@ -80,9 +80,9 @@ const ProfileBody = () => {
         </div>
         <div>
           <h2 className="text-xl font-semibold">
-            {userInfo.otherNames} {userInfo.lastName}
+            {user?.otherNames}, {user?.lastName}
           </h2>
-          <p className="text-gray-500">{userInfo.email}</p>
+          <p className="text-gray-500">{user?.id}</p>
         </div>
       </div>
       <div className="mb-4">
@@ -93,7 +93,7 @@ const ProfileBody = () => {
             <input
               type="text"
               name="otherNames"
-              value={editedUserInfo.otherNames || ''}
+              value={user?.otherNames || editedUserInfo?.otherNames}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               disabled={!isEditing}
@@ -104,7 +104,7 @@ const ProfileBody = () => {
             <input
               type="text"
               name="lastName"
-              value={editedUserInfo.lastName || ''}
+              value={user?.lastName || editedUserInfo.lastName}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               disabled={!isEditing}
@@ -115,7 +115,7 @@ const ProfileBody = () => {
             <input
               type="email"
               name="email"
-              value={editedUserInfo.email || ''}
+              value={user?.email || editedUserInfo.email}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               disabled={!isEditing}
@@ -126,7 +126,7 @@ const ProfileBody = () => {
             <input
               type="text"
               name="phoneNumber"
-              value={editedUserInfo.phoneNumber || ''}
+              value={user?.phoneNumber || editedUserInfo.phoneNumber}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               disabled={!isEditing}

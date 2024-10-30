@@ -67,7 +67,7 @@ const ContactUsPage = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`, // Include token in headers
+          // 'Authorization': `Bearer ${token}`, // Include token in headers
         },
         body: JSON.stringify(formData), // Assuming formData is an object containing the form details
       });
@@ -146,6 +146,7 @@ const ContactUsPage = () => {
             </div> */}
             <div className={styles['input-container']}>
               <input 
+              required
                 type="email" 
                 name="email" 
                 className={styles.input} 
@@ -168,6 +169,7 @@ const ContactUsPage = () => {
             </div> */}
             <div className={`${styles['input-container']} ${styles.textarea}`}>
               <textarea 
+              required
                 name="message" 
                 className={styles.input}
                 value={formData.message}
